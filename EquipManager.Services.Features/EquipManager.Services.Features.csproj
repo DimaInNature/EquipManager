@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Employees\Commands\" />
+    <Folder Include="Employees\Queries\" />
+    <Folder Include="PPEs\" />
+    <Folder Include="EmployeeSizeCharts\" />
+  </ItemGroup>
+
+</Project>
