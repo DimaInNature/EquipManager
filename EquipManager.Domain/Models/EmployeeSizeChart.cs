@@ -1,5 +1,7 @@
 ﻿namespace EquipManager.Domain.Models;
 
+/// <summary> Employee table with its sizes </summary>
+
 public class EmployeeSizeChart : IDomainModel
 {
     public int Id { get; set; }

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EquipManager.Domain\EquipManager.Domain.csproj" />
     <ProjectReference Include="..\EquipManager.Infra.Core.Enums\EquipManager.Infra.Core.Enums.csproj" />
   </ItemGroup>
 

@@ -2,14 +2,11 @@
 
 public sealed class ApplicationContext : DbContext
 {
-    public DbSet<EmployeeEntity> Employees
-        => Set<EmployeeEntity>();
+    public DbSet<Employee> Employees => Set<Employee>();
 
-    public DbSet<EmployeeSizeChartEntity> EmployeeSizeCharts
-        => Set<EmployeeSizeChartEntity>();
+    public DbSet<EmployeeSizeChart> EmployeeSizeCharts => Set<EmployeeSizeChart>();
 
-    public DbSet<PersonalProtectiveEquipmentEntity> PersonalProtectiveEquipments
-        => Set<PersonalProtectiveEquipmentEntity>();
+    public DbSet<PPE> PPEs => Set<PPE>();
 
     public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options) => Database.EnsureCreated();
@@ -20,7 +17,7 @@ public sealed class ApplicationContext : DbContext
 
         modelBuilder.AddEmployeeSizeChartProfile();
 
-        modelBuilder.AddPersonalProtectiveEquipmentProfile();
+        modelBuilder.AddPPEsProfile();
 
         base.OnModelCreating(modelBuilder);
     }

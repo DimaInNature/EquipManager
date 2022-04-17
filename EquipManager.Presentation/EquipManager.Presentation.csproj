@@ -3,15 +3,493 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
+    <LangVersion>Preview</LangVersion>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <StartupObject>EquipManager.Presentation.App</StartupObject>
+    <ApplicationIcon>Content\Images\Icon\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Content\" />
-    <Folder Include="Configurations\" />
+    <None Remove="Content\Fonts\Muller\MullerMedium.otf" />
+    <None Remove="Content\Images\Controls\BigButtons\Dark\Default\BigButtonCreateDark.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Dark\Default\BigButtonCreateDocumentDark.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Dark\Default\ExportDocumentDark.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Dark\MouseEnter\BigButtonCreateDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Dark\MouseEnter\BigButtonCreateDocumentDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Dark\MouseEnter\ExportDocumentDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Light\Default\BigButtonCreate.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Light\Default\BigButtonCreateDocument.png" />
+    <None Remove="Content\Images\Controls\BigButtons\Light\Default\ExportDocument.png" />
+    <None Remove="Content\Images\Controls\LanguageButtons\EnglishLanguage.jpg" />
+    <None Remove="Content\Images\Controls\LanguageButtons\RussianLanguage.jpg" />
+    <None Remove="Content\Images\Controls\OtherButtons\SwitchButton\Dark\Checked\ShiftImageCheckedDark.png" />
+    <None Remove="Content\Images\Controls\OtherButtons\SwitchButton\Dark\Default\ShiftImageDark.png" />
+    <None Remove="Content\Images\Controls\OtherButtons\SwitchButton\Light\Checked\ShiftImageChecked.png" />
+    <None Remove="Content\Images\Controls\OtherButtons\SwitchButton\Light\Default\ShiftImage.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\Default\AddImageDark.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\Default\DeleteImageDark.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\Default\EditImageDark.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\Default\GetNowTimeButton.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\Default\ViewImageDark.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\MouseEnter\AddImageDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\MouseEnter\DeleteImageDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\MouseEnter\EditImageDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\MouseEnter\GetNowTimeButtonMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Dark\MouseEnter\ViewImageDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Light\Default\AddImage.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Light\Default\DeleteImage.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Light\Default\EditImage.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Light\Default\GetNowTimeButton.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Light\Default\ViewImage.png" />
+    <None Remove="Content\Images\Controls\SmallButtons\Light\MouseEnter\GetNowTimeButtonMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num10Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num11Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num12Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num1Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num2Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num3Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num4Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num5Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num6Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num7Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num8Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num9Dark.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num10DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num11DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num12DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num1DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num2DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num3DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num4DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num5DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num6DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num7DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num8DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num9DarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num1.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num10.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num11.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num12.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num2.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num3.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num4.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num5.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num6.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num7.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num8.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num9.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num10MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num11MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num12MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num1MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num2MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num3MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num4MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num5MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num6MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num7MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num8MouseEnter.png" />
+    <None Remove="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num9MouseEnter.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Browse\ContractBrowse.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Browse\EmployeBrowse.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Browse\SuitBrowse.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Create\ContractCreate.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Create\EmployeCreate.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Create\SuitCreate.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Delete\ContractDelete.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Delete\EmployeDelete.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Delete\SuitDelete.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Edit\ContractEdit.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Edit\EmployeEdit.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\Edit\SuitEdit.png" />
+    <None Remove="Content\Images\Controls\VerticalButtons\General\ComicBackground.jpg" />
+    <None Remove="Content\Images\Controls\VerticalButtons\General\ComicBackgroundDark.jpg" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Dark\Default\ControlButtonCloseDark.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Dark\Default\ControlButtonMaximazedDark.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Dark\Default\ControlButtonRollUpDark.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Dark\MouseEnter\ControlButtonCloseDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Dark\MouseEnter\ControlButtonMaximazedDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Dark\MouseEnter\ControlButtonRollUpDarkMouseEnter.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Light\Default\ControlButtonClose.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Light\Default\ControlButtonMaximazed.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Light\Default\ControlButtonRollUp.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Light\MouseEnter\ControlButtonCloseMouseEnter.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Light\MouseEnter\ControlButtonMaximazedMouseEnter.png" />
+    <None Remove="Content\Images\Controls\WindowsControlButtons\Light\MouseEnter\ControlButtonRollUpMouseEnter.png" />
+    <None Remove="Content\Images\Icon\Icon.ico" />
+    <None Remove="Content\Images\ImageControls\CompanyLogo\Dark\Default\CompanyImageDark.png" />
+    <None Remove="Content\Images\ImageControls\CompanyLogo\Light\Default\CompanyImage.png" />
+    <None Remove="Content\Images\TemplateImages\DocImage.png" />
+    <None Remove="Content\Images\TemplateImages\GasMaskImage.png" />
+    <None Remove="Content\Images\TemplateImages\ManFace.png" />
+    <None Remove="Content\Images\TemplateImages\ShiftImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Content\Fonts\Muller\MullerMedium.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Dark\Default\BigButtonCreateDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Dark\Default\BigButtonCreateDocumentDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Dark\Default\ExportDocumentDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Dark\MouseEnter\BigButtonCreateDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Dark\MouseEnter\BigButtonCreateDocumentDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Dark\MouseEnter\ExportDocumentDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Light\Default\BigButtonCreate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Light\Default\BigButtonCreateDocument.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\BigButtons\Light\Default\ExportDocument.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\LanguageButtons\EnglishLanguage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\LanguageButtons\RussianLanguage.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\OtherButtons\SwitchButton\Dark\Checked\ShiftImageCheckedDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\OtherButtons\SwitchButton\Dark\Default\ShiftImageDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\OtherButtons\SwitchButton\Light\Checked\ShiftImageChecked.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\OtherButtons\SwitchButton\Light\Default\ShiftImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\Default\AddImageDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\Default\DeleteImageDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\Default\EditImageDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\Default\GetNowTimeButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\Default\ViewImageDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\MouseEnter\AddImageDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\MouseEnter\DeleteImageDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\MouseEnter\EditImageDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\MouseEnter\GetNowTimeButtonMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Dark\MouseEnter\ViewImageDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Light\Default\AddImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Light\Default\DeleteImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Light\Default\EditImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Light\Default\GetNowTimeButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Light\Default\ViewImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SmallButtons\Light\MouseEnter\GetNowTimeButtonMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num10Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num11Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num12Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num1Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num2Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num3Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num4Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num5Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num6Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num7Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num8Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\Default\Num9Dark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num10DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num11DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num12DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num1DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num2DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num3DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num4DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num5DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num6DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num7DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num8DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Dark\MouseEnter\Num9DarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\Default\Num9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num10MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num11MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num12MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num1MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num2MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num3MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num4MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num5MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num6MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num7MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num8MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\SuitChoiceButtons\Light\MouseEnter\Num9MouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Browse\ContractBrowse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Browse\EmployeBrowse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Browse\SuitBrowse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Create\ContractCreate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Create\EmployeCreate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Create\SuitCreate.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Delete\ContractDelete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Delete\EmployeDelete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Delete\SuitDelete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Edit\ContractEdit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Edit\EmployeEdit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\Edit\SuitEdit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\General\ComicBackground.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\VerticalButtons\General\ComicBackgroundDark.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Dark\Default\ControlButtonCloseDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Dark\Default\ControlButtonMaximazedDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Dark\Default\ControlButtonRollUpDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Dark\MouseEnter\ControlButtonCloseDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Dark\MouseEnter\ControlButtonMaximazedDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Dark\MouseEnter\ControlButtonRollUpDarkMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Light\Default\ControlButtonClose.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Light\Default\ControlButtonMaximazed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Light\Default\ControlButtonRollUp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Light\MouseEnter\ControlButtonCloseMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Light\MouseEnter\ControlButtonMaximazedMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Controls\WindowsControlButtons\Light\MouseEnter\ControlButtonRollUpMouseEnter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\Icon\Icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\ImageControls\CompanyLogo\Dark\Default\CompanyImageDark.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\ImageControls\CompanyLogo\Light\Default\CompanyImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\TemplateImages\DocImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\TemplateImages\GasMaskImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\TemplateImages\ManFace.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Images\TemplateImages\ShiftImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Content\Theme\" />
+    <Folder Include="Content\Languages\" />
+    <Folder Include="ViewModels\Interfaces\Exports\" />
+    <Folder Include="ViewModels\UserControls\Exports\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EquipManager.Infra.Core\EquipManager.Infra.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

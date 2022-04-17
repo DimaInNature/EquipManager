@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Employees\Commands\" />
-    <Folder Include="Employees\Queries\" />
-    <Folder Include="PPEs\" />
-    <Folder Include="EmployeeSizeCharts\" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EquipManager.Domain\EquipManager.Domain.csproj" />
+    <ProjectReference Include="..\EquipManager.Infra.Data\EquipManager.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

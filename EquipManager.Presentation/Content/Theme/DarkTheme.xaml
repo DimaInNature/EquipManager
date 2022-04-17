@@ -1,0 +1,3107 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region Base Styles-->
+
+    <!--#region Base Resources-->
+
+    <FontFamily x:Key="BaseFontFamily">/EquipManager.Presentation;component/Content/Fonts/Muller/#Muller Medium</FontFamily>
+
+    <Cursor x:Key="BaseCursor">Hand</Cursor>
+
+    <Brush x:Key="BaseColorTheme">#FFFEA700</Brush>
+
+    <Brush x:Key="BaseSecondColorTheme">White</Brush>
+
+    <Brush x:Key="BaseThirdColorTheme">#22202f</Brush>
+
+    <Brush x:Key="BaseFourthColorTheme">#e83269</Brush>
+
+    <Brush x:Key="BaseColorButtonMouseOver">#FFF6A523</Brush>
+
+    <Brush x:Key="BaseColorWindow">#22202f</Brush>
+
+    <Brush x:Key="BaseColorBackground">#22202f</Brush>
+
+    <Brush x:Key="LogoBackground">LightGray</Brush>
+
+    <Brush x:Key="BaseForeground">Gray</Brush>
+
+    <Brush x:Key="TemplateBackground">LightGray</Brush>
+
+    <Brush x:Key="TemplateForeground">#22202f</Brush>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region TextBlock-->
+
+    <Style x:Key="TextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource BaseForeground}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region DatePicker-->
+
+    <Style x:Key="DatePickerStyle" TargetType="{x:Type DatePicker}">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="IsTodayHighlighted" Value="True" />
+        <Setter Property="SelectedDateFormat" Value="Short" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePicker}">
+                    <Border
+                        Width="200"
+                        Height="40"
+                        Padding="{TemplateBinding Padding}"
+                        Background="White"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
+                        <Grid
+                            x:Name="PART_Root"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid.Resources>
+                                <SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF" />
+                                <ControlTemplate x:Key="DropDownButtonTemplate" TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Grid
+                                            Width="19"
+                                            Height="18"
+                                            Margin="0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Background="#11FFFFFF"
+                                            FlowDirection="LeftToRight">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20*" />
+                                                <ColumnDefinition Width="20*" />
+                                                <ColumnDefinition Width="20*" />
+                                                <ColumnDefinition Width="20*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="23*" />
+                                                <RowDefinition Height="19*" />
+                                                <RowDefinition Height="19*" />
+                                                <RowDefinition Height="19*" />
+                                            </Grid.RowDefinitions>
+                                            <Border
+                                                x:Name="Highlight"
+                                                Grid.Row="0"
+                                                Grid.RowSpan="4"
+                                                Grid.ColumnSpan="4"
+                                                Margin="-1"
+                                                BorderBrush="Transparent"
+                                                BorderThickness="0"
+                                                CornerRadius="0,0,1,1"
+                                                Cursor="Hand"
+                                                Opacity="0" />
+                                            <Border
+                                                x:Name="Background"
+                                                Grid.Row="1"
+                                                Grid.RowSpan="3"
+                                                Grid.ColumnSpan="4"
+                                                Margin="0,-1,0,0"
+                                                Background="#FF1F3B53"
+                                                BorderBrush="#FFFFFFFF"
+                                                BorderThickness="1"
+                                                CornerRadius=".5"
+                                                Opacity="1" />
+                                            <Border
+                                                x:Name="BackgroundGradient"
+                                                Grid.Row="1"
+                                                Grid.RowSpan="3"
+                                                Grid.ColumnSpan="4"
+                                                Margin="0,-1,0,0"
+                                                BorderBrush="Transparent"
+                                                BorderThickness="0"
+                                                CornerRadius=".5"
+                                                Opacity="1">
+                                                <Border.Background>
+                                                    <LinearGradientBrush StartPoint=".7,0" EndPoint=".7,1">
+                                                        <GradientStop Offset="0" Color="#FFFFFFFF" />
+                                                        <GradientStop Offset="0.375" Color="#F9FFFFFF" />
+                                                        <GradientStop Offset="0.625" Color="#E5FFFFFF" />
+                                                        <GradientStop Offset="1" Color="#C6FFFFFF" />
+                                                    </LinearGradientBrush>
+                                                </Border.Background>
+                                            </Border>
+                                            <Rectangle
+                                                Grid.RowSpan="1"
+                                                Grid.ColumnSpan="4"
+                                                StrokeThickness="1">
+                                                <Rectangle.Fill>
+                                                    <LinearGradientBrush StartPoint="0.46,1.6" EndPoint="0.3,-1.1">
+                                                        <GradientStop Color="Gray" />
+                                                        <GradientStop Offset="1" Color="Gray" />
+                                                    </LinearGradientBrush>
+                                                </Rectangle.Fill>
+                                                <Rectangle.Stroke>
+                                                    <LinearGradientBrush StartPoint="0.48,1.25" EndPoint="0.48,-1">
+                                                        <GradientStop Color="Gray" />
+                                                        <GradientStop Offset="1" Color="Gray" />
+                                                    </LinearGradientBrush>
+                                                </Rectangle.Stroke>
+                                            </Rectangle>
+                                            <Path
+                                                Grid.Row="1"
+                                                Grid.RowSpan="3"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="4"
+                                                Margin="4,3,4,3"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Data="M11.426758,8.4305077 L11.749023,8.4305077 L11.749023,16.331387 L10.674805,16.331387 L10.674805,10.299648 L9.0742188,11.298672 L9.0742188,10.294277 C9.4788408,10.090176 9.9094238,9.8090878 10.365967,9.4510155 C10.82251,9.0929432 11.176106,8.7527733 11.426758,8.4305077 z M14.65086,8.4305077 L18.566387,8.4305077 L18.566387,9.3435936 L15.671368,9.3435936 L15.671368,11.255703 C15.936341,11.058764 16.27293,10.960293 16.681133,10.960293 C17.411602,10.960293 17.969301,11.178717 18.354229,11.615566 C18.739157,12.052416 18.931622,12.673672 18.931622,13.479336 C18.931622,15.452317 18.052553,16.438808 16.294415,16.438808 C15.560365,16.438808 14.951641,16.234707 14.468243,15.826504 L14.881817,14.929531 C15.368796,15.326992 15.837872,15.525723 16.289043,15.525723 C17.298809,15.525723 17.803692,14.895514 17.803692,13.635098 C17.803692,12.460618 17.305971,11.873379 16.310528,11.873379 C15.83071,11.873379 15.399232,12.079271 15.016094,12.491055 L14.65086,12.238613 z"
+                                                Fill="Black"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                Stretch="Fill" />
+                                            <Ellipse
+                                                Grid.ColumnSpan="4"
+                                                Width="3"
+                                                Height="3"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Fill="Gray"
+                                                StrokeThickness="0" />
+                                            <Border
+                                                x:Name="DisabledVisual"
+                                                Grid.Row="0"
+                                                Grid.RowSpan="4"
+                                                Grid.ColumnSpan="4"
+                                                BorderBrush="#B2FFFFFF"
+                                                BorderThickness="1"
+                                                CornerRadius="0,0,.5,.5"
+                                                Opacity="0" />
+                                        </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualStateGroup.Transitions>
+                                                    <VisualTransition GeneratedDuration="0" />
+                                                    <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver" />
+                                                    <VisualTransition GeneratedDuration="0:0:0.1" To="Pressed" />
+                                                </VisualStateGroup.Transitions>
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="MouseOver">
+                                                    <Storyboard>
+                                                        <ColorAnimation
+                                                            Storyboard.TargetName="Background"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            To="#FF448DCA"
+                                                            Duration="0" />
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#7FFFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#CCFFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#F2FFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="Background"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#FF448DCA" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <DoubleAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="Highlight"
+                                                            Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineDoubleKeyFrame KeyTime="0" Value="1" />
+                                                        </DoubleAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#EAFFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#C6FFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[3].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#6BFFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                        <ColorAnimationUsingKeyFrames
+                                                            BeginTime="0"
+                                                            Storyboard.TargetName="BackgroundGradient"
+                                                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                                            Duration="00:00:00.001">
+                                                            <SplineColorKeyFrame KeyTime="0" Value="#F4FFFFFF" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Disabled" />
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                x:Name="PART_Button"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Width="40"
+                                Margin="3,0,3,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Focusable="False"
+                                Foreground="{TemplateBinding Foreground}"
+                                Template="{StaticResource DropDownButtonTemplate}" />
+
+                            <DatePickerTextBox
+                                x:Name="PART_TextBox"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Width="160"
+                                Height="40"
+                                Margin="15,-2,0,0"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center"
+                                Focusable="{TemplateBinding Focusable}"
+                                Text="{TemplateBinding Tag}" />
+
+                            <Grid
+                                x:Name="PART_DisabledVisual"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                IsHitTestVisible="False"
+                                Opacity="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Fill="#A5FFFFFF"
+                                    RadiusX="1"
+                                    RadiusY="1" />
+                                <Rectangle
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Width="19"
+                                    Height="18"
+                                    Margin="3,0,3,0"
+                                    Fill="#A5FFFFFF"
+                                    RadiusX="1"
+                                    RadiusY="1" />
+                                <Popup
+                                    x:Name="PART_Popup"
+                                    AllowsTransparency="True"
+                                    Placement="Bottom"
+                                    PlacementTarget="{Binding ElementName=PART_TextBox}"
+                                    StaysOpen="False" />
+                            </Grid>
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="PART_DisabledVisual"
+                                            Storyboard.TargetProperty="Opacity"
+                                            To="1"
+                                            Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Source={x:Static SystemParameters.HighContrast}}" Value="false">
+                            <Setter TargetName="PART_TextBox" Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region TextBox-->
+
+    <Style x:Key="NewTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="BorderBrush" Value="{StaticResource BaseColorTheme}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Foreground" Value="#22202f" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+
+                        <Grid Margin="10,0,0,0">
+
+                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" />
+
+                            <TextBlock
+                                x:Name="hint"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="-1"
+                                Background="Transparent"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="Gray"
+                                IsHitTestVisible="False"
+                                Text="{TemplateBinding Tag}"
+                                TextAlignment="{TemplateBinding TextAlignment}"
+                                Visibility="Collapsed" />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value="" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="hint" Property="Visibility" Value="Visible" />
+                            <Setter Property="BorderBrush" Value="Red" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="hint" Property="Opacity" Value="0.5" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region ComboBox-->
+
+    <ControlTemplate x:Key="ComboBoxToggleButtonTemplate" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Border
+                Name="Border"
+                Grid.ColumnSpan="2"
+                Background="White"
+                CornerRadius="10" />
+            <Border
+                Name="ButtonBorder"
+                Grid.Column="1"
+                Margin="1,1,1,1"
+                BorderThickness="0,0,0,0"
+                CornerRadius="10" />
+
+            <Path
+                Name="Arrow"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                Fill="#22202f" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="UIElement.IsMouseOver" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Panel.Background" Value="Gray" />
+                <Setter TargetName="Arrow" Property="Shape.Fill" Value="LightGray" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Panel.Background" Value="Gray" />
+                <Setter TargetName="Arrow" Property="Shape.Fill" Value="#FFFEA700" />
+            </Trigger>
+            <Trigger Property="UIElement.IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Panel.Background" Value="#eee" />
+                <Setter TargetName="ButtonBorder" Property="Panel.Background" Value="#eee" />
+                <Setter Property="TextElement.Foreground" Value="#888" />
+                <Setter TargetName="Arrow" Property="Shape.Fill" Value="#999" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ModernComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+        <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="TextElement.Foreground" Value="Black" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton
+                            Name="ToggleButton"
+                            Grid.Column="2"
+                            BorderBrush="Transparent"
+                            ClickMode="Press"
+                            Focusable="False"
+                            IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                            Template="{StaticResource ComboBoxToggleButtonTemplate}" />
+
+                        <ContentPresenter
+                            Name="ContentSite"
+                            Margin="15,3,23,3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding ComboBox.SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            IsHitTestVisible="False" />
+                        <TextBox
+                            Name="PART_EditableTextBox"
+                            Margin="3,3,23,3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Focusable="True"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"
+                            Visibility="Hidden">
+                            <TextBox.Template>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border Name="PART_ContentHost" Focusable="False" />
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                        <!--  Popup showing items  -->
+                        <Popup
+                            Name="Popup"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
+                            Placement="Bottom"
+                            PopupAnimation="Fade">
+                            <Grid
+                                Name="DropDown"
+                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}"
+                                SnapsToDevicePixels="True">
+                                <Border
+                                    Name="DropDownBorder"
+                                    Margin="0,1,0,0"
+                                    Background="White"
+                                    BorderBrush="Gray"
+                                    BorderThickness="1"
+                                    CornerRadius="10" />
+                                <ScrollViewer
+                                    Margin="6"
+                                    Background="Transparent"
+                                    FontFamily="{StaticResource BaseFontFamily}"
+                                    Foreground="#22202f">
+                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ItemsControl.HasItems" Value="False">
+                            <Setter TargetName="DropDownBorder" Property="FrameworkElement.MinHeight" Value="95" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="#888" />
+                        </Trigger>
+                        <Trigger Property="ItemsControl.IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                        <Trigger Property="ComboBox.IsEditable" Value="True">
+                            <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                            <Setter TargetName="PART_EditableTextBox" Property="UIElement.Visibility" Value="Visible" />
+                            <Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--#endregion-->
+
+    <!--#region Button-->
+
+    <!--#region Classic Button-->
+
+    <Storyboard x:Key="ClassicButtonMouseEnter">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#0090ab" />
+        </ColorAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="LightGray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="ClassicButtonMouseLeave">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFFEA700" />
+        </ColorAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="Gray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Style x:Key="ModernButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource BaseThirdColorTheme}" />
+        <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="BorderBrush" Value="#FFFEA700" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Width="150"
+                        Height="30"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="12"
+                        IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{StaticResource ClassicButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{StaticResource ClassicButtonMouseLeave}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Language Button-->
+
+    <!--#region Base-->
+
+    <Style x:Key="SettingsLanguageButton" TargetType="Button">
+        <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Setter Property="Margin" Value="2" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+                <Setter Property="Margin" Value="3" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Russian-->
+
+    <Style
+        x:Key="SettingsRussianLanguageButtonStyle"
+        BasedOn="{StaticResource SettingsLanguageButton}"
+        TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/LanguageButtons/RussianLanguage.jpg" Stretch="UniformToFill" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="20" />
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region English-->
+
+    <Style
+        x:Key="SettingsEnglishLanguageButtonStyle"
+        BasedOn="{StaticResource SettingsLanguageButton}"
+        TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/LanguageButtons/EnglishLanguage.jpg" Stretch="UniformToFill" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="20" />
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Settings Button-->
+
+    <Style
+        x:Key="SettingsMenuButton"
+        BasedOn="{StaticResource ModernButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Width="120"
+                        Height="30"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="12"
+                        IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{StaticResource ClassicButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{StaticResource ClassicButtonMouseLeave}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Small Buttons-->
+
+    <!--#region Base-->
+
+    <Storyboard x:Key="SmallButtonMouseEnter">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#0090ab" />
+        </ColorAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="LightGray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="SmallButtonMouseLeave">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFFEA700" />
+        </ColorAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="Gray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Style x:Key="SmallMetroMenuButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BaseColorBackground}" />
+        <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="BorderBrush" Value="#FFFEA700" />
+        <Setter Property="Margin" Value="10" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Margin" Value="11" />
+            </Trigger>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{StaticResource SmallButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{StaticResource SmallButtonMouseLeave}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Browse Small Button-->
+
+    <Style
+        x:Key="BrowseMenuButtonStyle"
+        BasedOn="{StaticResource SmallMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <Viewbox Grid.Row="1">
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    MinWidth="100"
+                                    Margin="0,0,0,25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    FontSize="16"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}" />
+
+                            </Viewbox>
+
+                            <Image
+                                x:Name="BrowseMenuButtonImage"
+                                Grid.Row="0"
+                                Margin="-10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant">
+                                <Image.Source>
+                                    <BitmapImage
+                                        CacheOption="OnLoad"
+                                        DecodePixelHeight="200"
+                                        UriSource="/Content/Images/Controls/SmallButtons/Dark/Default/ViewImageDark.png" />
+                                </Image.Source>
+                            </Image>
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="BrowseMenuButtonImage" Property="Source" Value="/Content/Images/Controls/SmallButtons/Dark/MouseEnter/ViewImageDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Add Small Button-->
+
+    <Style
+        x:Key="AddMenuButtonStyle"
+        BasedOn="{StaticResource SmallMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <Viewbox Grid.Row="1">
+
+                                <TextBlock
+                                    MinWidth="100"
+                                    Margin="30,0,0,25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    FontSize="18"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}" />
+
+                            </Viewbox>
+
+                            <Image
+                                x:Name="AddMenuButtonImage"
+                                Grid.Row="0"
+                                Margin="10"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant">
+                                <Image.Source>
+                                    <BitmapImage
+                                        CacheOption="OnLoad"
+                                        DecodePixelHeight="200"
+                                        UriSource="/Content/Images/Controls/SmallButtons/Dark/Default/AddImageDark.png" />
+                                </Image.Source>
+                            </Image>
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="AddMenuButtonImage" Property="Source" Value="/Content/Images/Controls/SmallButtons/Dark/MouseEnter/AddImageDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Edit Small Button-->
+
+    <Style
+        x:Key="EditMenuButtonStyle"
+        BasedOn="{StaticResource SmallMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <Viewbox Grid.Row="1">
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    MinWidth="100"
+                                    Margin="20,0,0,25"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    FontSize="17"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}" />
+
+                            </Viewbox>
+
+                            <Image
+                                x:Name="EditMenuButtonImage"
+                                Grid.Row="0"
+                                Margin="20"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant">
+                                <Image.Source>
+                                    <BitmapImage
+                                        CacheOption="OnLoad"
+                                        DecodePixelHeight="200"
+                                        UriSource="/Content/Images/Controls/SmallButtons/Dark/Default/EditImageDark.png" />
+                                </Image.Source>
+                            </Image>
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="EditMenuButtonImage" Property="Source" Value="/Content/Images/Controls/SmallButtons/Dark/MouseEnter/EditImageDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Delete Small Button-->
+
+    <Style
+        x:Key="DeleteMenuButtonStyle"
+        BasedOn="{StaticResource SmallMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <Viewbox Grid.Row="1">
+
+                                <TextBlock
+                                    Grid.Row="1"
+                                    MinWidth="100"
+                                    Margin="20,0,0,30"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontSize="20"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}" />
+
+                            </Viewbox>
+
+                            <Image
+                                x:Name="DeleteMenuButtonImage"
+                                Grid.Row="0"
+                                Margin="5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant">
+                                <Image.Source>
+                                    <BitmapImage
+                                        CacheOption="OnLoad"
+                                        DecodePixelHeight="200"
+                                        UriSource="/Content/Images/Controls/SmallButtons/Dark/Default/DeleteImageDark.png" />
+                                </Image.Source>
+                            </Image>
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="DeleteMenuButtonImage" Property="Source" Value="/Content/Images/Controls/SmallButtons/Dark/MouseEnter/DeleteImageDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Big Buttons-->
+
+    <!--#region Base-->
+
+    <Storyboard x:Key="BigButtonMouseEnter">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#0090ab" />
+        </ColorAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="LightGray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="BigButtonMouseLeave">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFFEA700" />
+        </ColorAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.4" Value="Gray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Style x:Key="BigMetroMenuButton" TargetType="Button">
+        <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Setter Property="Background" Value="{StaticResource BaseColorBackground}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="BorderBrush" Value="#FFFEA700" />
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{StaticResource BigButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{StaticResource BigButtonMouseLeave}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Home Grid-->
+
+    <Style
+        x:Key="CreateEmplpoyeButtonStyle"
+        BasedOn="{StaticResource BigMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom">
+
+                                <TextBlock
+                                    Margin="15,0,0,0"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="18"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}"
+                                    TextWrapping="Wrap" />
+
+                            </Viewbox>
+
+                            <Viewbox
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="10"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Margin="10,0,10,0"
+                                    FontSize="15"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding ContentStringFormat}"
+                                    TextWrapping="Wrap" />
+
+                            </Viewbox>
+
+                            <Image
+                                x:Name="Image"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Margin="10,20,20,20"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="/Content/Images/Controls/BigButtons/Dark/Default/BigButtonCreateDark.png" />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/BigButtons/Dark/MouseEnter/BigButtonCreateDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="CreateContractButtonStyle"
+        BasedOn="{StaticResource BigMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Viewbox
+                                Grid.Row="1"
+                                Grid.RowSpan="2"
+                                Margin="20,10,20,0"
+                                VerticalAlignment="Top">
+                                <TextBlock
+                                    FontFamily="{StaticResource BaseFontFamily}"
+                                    FontSize="28"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}"
+                                    TextWrapping="Wrap" />
+                            </Viewbox>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="1"
+                                Margin="0,40,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <Image
+                                    x:Name="Image"
+                                    Margin="30"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Source="/Content/Images/Controls/BigButtons/Dark/Default/BigButtonCreateDocumentDark.png" />
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/BigButtons/Dark/MouseEnter/BigButtonCreateDocumentDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Export Grid-->
+
+    <Style
+        x:Key="ExportSuitButtonStyle"
+        BasedOn="{StaticResource BigMetroMenuButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+
+                        <Grid Width="{TemplateBinding Width}">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2">
+
+                                <TextBlock
+                                    Margin="20,20,20,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Bottom"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="20"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding Content}"
+                                    TextWrapping="Wrap" />
+
+                            </Viewbox>
+
+                            <Viewbox
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2">
+
+                                <TextBlock
+                                    Margin="50,0,60,60"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Top"
+                                    FontSize="18"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    Text="{TemplateBinding ContentStringFormat}" />
+
+                            </Viewbox>
+
+                            <Image
+                                x:Name="Image"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Margin="200,30,30,30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Source="/Content/Images/Controls/BigButtons/Dark/Default/ExportDocumentDark.png" />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/BigButtons/Dark/MouseEnter/ExportDocumentDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Vertical Buttons-->
+
+    <!--#region Base-->
+
+    <ImageSource x:Key="BaseImgBackgroundVerticalButton">/EquipManager.Presentation;component/Content/Images/Controls/VerticalButtons/General/ComicBackgroundDark.jpg</ImageSource>
+
+    <Style x:Key="VerticalMenuButtonBase" TargetType="Button">
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="{StaticResource BaseImgBackgroundVerticalButton}" Stretch="UniformToFill" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region  Browse Grid-->
+
+    <Style
+        x:Key="BrowseEmployeButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox>
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}"
+                                        TextWrapping="Wrap" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="450"
+                                Height="450"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="450"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Browse/EmployeBrowse.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="BrowseSuitButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="750"
+                                Height="750"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="450"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Browse/SuitBrowse.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="BrowseContractButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="400"
+                                Height="400"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Browse/ContractBrowse.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Create Grid-->
+
+    <Style
+        x:Key="CreateEmployeButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="400"
+                                Height="400"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image
+                                    Margin="-55,0,0,0"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Create/EmployeCreate.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="CreateSuitButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="600"
+                                Height="600"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                ClipToBounds="True"
+                                Stretch="Uniform">
+                                <Image
+                                    Margin="20,0,0,0"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Create/SuitCreate.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="CreateContractButtonStyle2"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="550"
+                                Height="550"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                ClipToBounds="True"
+                                Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Create/ContractCreate.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Edit Grid-->
+
+    <Style
+        x:Key="EditEmployeButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="450"
+                                Height="450"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                ClipToBounds="True"
+                                Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Edit/EmployeEdit.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="EditSuitButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="650"
+                                Height="650"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image
+                                    VerticalAlignment="Bottom"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Edit/SuitEdit.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="EditContractButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="500"
+                                Height="500"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image
+                                    Margin="-200,0,0,0"
+                                    VerticalAlignment="Bottom"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Edit/ContractEdit.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Delete Grid-->
+
+    <Style
+        x:Key="DeleteEmployeButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="450"
+                                Height="450"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Delete/EmployeDelete.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="DeleteSuitButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="450"
+                                Height="450"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                Stretch="Uniform">
+                                <Image
+                                    Margin="-325,0,0,0"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Delete/SuitDelete.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="DeleteContractButtonStyle"
+        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="2"
+                                MaxHeight="60"
+                                Margin="-2,90,-2,60"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="1"
+                                Background="#22202f"
+                                Opacity="0.95">
+                                <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock
+                                        Margin="5,5,5,3"
+                                        FontFamily="{StaticResource BaseFontFamily}"
+                                        Foreground="#0090ab"
+                                        Text="{TemplateBinding Content}" />
+                                </Viewbox>
+                            </Border>
+
+                            <Viewbox
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Width="470"
+                                Height="470"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                ClipToBounds="True"
+                                Stretch="Uniform">
+                                <Image
+                                    Margin="-275,0,0,0"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Stretch="Uniform">
+                                    <Image.Source>
+                                        <BitmapImage
+                                            CacheOption="OnLoad"
+                                            DecodePixelHeight="400"
+                                            UriSource="/Content/Images/Controls/VerticalButtons/Delete/ContractDelete.png" />
+                                    </Image.Source>
+                                </Image>
+                            </Viewbox>
+
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Control Buttons-->
+
+    <!--#region Base-->
+
+    <Style x:Key="ControlButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="Width" Value="22" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Roll Up-->
+
+    <Style
+        x:Key="ControlButtonRollUpStyle"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/WindowsControlButtons/Dark/Default/ControlButtonRollUpDark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/WindowsControlButtons/Dark/MouseEnter/ControlButtonRollUpDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Maximazed-->
+
+    <Style
+        x:Key="ControlButtonMaximazedStyle"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/WindowsControlButtons/Dark/Default/ControlButtonMaximazedDark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/WindowsControlButtons/Dark/MouseEnter/ControlButtonMaximazedDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Close-->
+
+    <Style
+        x:Key="ControlButtonCloseStyle"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/WindowsControlButtons/Dark/Default/ControlButtonCloseDark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/WindowsControlButtons/Dark/MouseEnter/ControlButtonCloseDarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Get Now Time-->
+
+    <Style
+        x:Key="GetNowTimeButtonStyle"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SmallButtons/Dark/Default/GetNowTimeButton.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/SmallButtons/Dark/MouseEnter/GetNowTimeButtonMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Images-->
+
+    <!--#region Company Logo-->
+
+    <Style x:Key="CompanyLogoStyle" TargetType="Image">
+        <Setter Property="Source" Value="/Content/Images/ImageControls/CompanyLogo/Dark/Default/CompanyImageDark.png" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region RadioButton-->
+
+    <!--#region Tab Menu-->
+
+    <Style x:Key="RadioButtonTabMenuStyle" TargetType="RadioButton">
+        <Setter Property="Background" Value="#22202f" />
+        <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Setter Property="FontFamily" Value="{DynamicResource BaseFontFamily}" />
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border
+                        Width="150"
+                        Height="29"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="12"
+                        IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="Gray" />
+                <Setter Property="Foreground" Value="GhostWhite" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Menu-->
+
+    <!--#region General Menu-->
+
+    <Storyboard x:Key="GeneralMenuButtonOnChecked">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFEA700" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="GeneralMenuButtonOnUnchecked">
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="Gray" />
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Style
+        x:Key="GeneralMenuButtonStyle"
+        BasedOn="{StaticResource {x:Type ToggleButton}}"
+        TargetType="{x:Type RadioButton}">
+        <Style.Setters>
+            <Setter Property="FontFamily" Value="{DynamicResource BaseFontFamily}" />
+            <Setter Property="Foreground" Value="{DynamicResource BaseForeground}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+
+                        <Border
+                            Margin="2"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+
+                            <TextBlock
+                                Margin="50,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Property=Content}" />
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style.Setters>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                <BeginStoryboard x:Name="OnChecked1_BeginStoryboard" Storyboard="{DynamicResource GeneralMenuButtonOnChecked}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                <BeginStoryboard x:Name="OnUnchecked1_BeginStoryboard" Storyboard="{DynamicResource GeneralMenuButtonOnUnchecked}" />
+            </EventTrigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Settings Menu-->
+
+    <Style
+        x:Key="SettingsMenuButtonStyle"
+        BasedOn="{StaticResource GeneralMenuButtonStyle}"
+        TargetType="{x:Type RadioButton}">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+
+                        <Border
+                            Margin="2"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+
+                            <TextBlock
+                                Margin="30,0,0,0"
+                                VerticalAlignment="Center"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Property=Content}" />
+                        </Border>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Browse Switch RadioButton-->
+
+    <!--#region Scroll-->
+
+    <Style x:Key="BrowseRadioButtonScrollStyle" TargetType="RadioButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="45" />
+        <Setter Property="Height" Value="45" />
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="RadioButton">
+                    <Border
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="Transparent"
+                        CornerRadius="60">
+                        <Image
+                            x:Name="Image"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Stretch="Fill">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/OtherButtons/SwitchButton/Dark/Checked/ShiftImageCheckedDark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/OtherButtons/SwitchButton/Dark/Default/ShiftImageDark.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Table-->
+
+    <Style x:Key="BrowseRadioButtonTableStyle" TargetType="RadioButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Width" Value="45" />
+        <Setter Property="Height" Value="45" />
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="RadioButton">
+                    <Border
+                        Width="{TemplateBinding Width}"
+                        Height="{TemplateBinding Height}"
+                        Background="Transparent"
+                        CornerRadius="60">
+                        <Image
+                            x:Name="Image"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Stretch="Fill">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/OtherButtons/SwitchButton/Dark/Default/ShiftImageDark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/OtherButtons/SwitchButton/Dark/Checked/ShiftImageCheckedDark.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Suit Choice Buttons-->
+
+    <!--#region Base-->
+
+    <Style x:Key="SuitChoiceRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Width" Value="50" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number One-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumOneStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num1Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num1DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Two-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumTwoStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num2Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num2DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Three-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumThreeStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num3Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num3DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Four-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumFourStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num4Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num4DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Five-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumFiveStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num5Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num5DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Six-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumSixStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num6Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num6DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Seven-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumSevenStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num7Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num7DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Eight-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumEightStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num8Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num8DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Nine-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumNineStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num9Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num9DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Ten-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumTenStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num10Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num10DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Eleven-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumElevenStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num11Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num11DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Number Twelve-->
+
+    <Style
+        x:Key="SuitChoiceRadioButtonNumTwelveStyle"
+        BasedOn="{StaticResource SuitChoiceRadioButtonStyle}"
+        TargetType="RadioButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/SuitChoiceButtons/Dark/Default/Num12Dark.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/EquipManager.Presentation;component/Content/Images/Controls/SuitChoiceButtons/Dark/MouseEnter/Num12DarkMouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+</ResourceDictionary>

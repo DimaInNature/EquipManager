@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Employees\" />
-    <Folder Include="PPEs\" />
+    <ProjectReference Include="..\EquipManager.Domain\EquipManager.Domain.csproj" />
   </ItemGroup>
 
 </Project>

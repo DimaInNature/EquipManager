@@ -1,9 +1,18 @@
-﻿<Application x:Class="EquipManager.Presentation.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:EquipManager.Presentation"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    x:Class="EquipManager.Presentation.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:EquipManager.Presentation">
+
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="Content/Theme/LightTheme.xaml" />
+                <ResourceDictionary Source="Content/Languages/Russian.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
+
 </Application>

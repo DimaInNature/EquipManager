@@ -2,15 +2,15 @@
 
 internal static class PersonalProtectiveEquipmentProfile
 {
-    public static void AddPersonalProtectiveEquipmentProfile(this ModelBuilder modelBuilder)
+    public static void AddPPEsProfile(this ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<PersonalProtectiveEquipmentEntity>()
+        modelBuilder.Entity<PPE>()
             .HasIndex(entity => entity.Id)
             .IsUnique();
 
-        modelBuilder.Entity<PersonalProtectiveEquipmentEntity>()
-            .HasData(data: GetPersonalProtectiveEquipments());
+        modelBuilder.Entity<PPE>()
+            .HasData(data: GetPPEs());
     }
 
-    private static List<PersonalProtectiveEquipmentEntity> GetPersonalProtectiveEquipments() => new();
+    private static List<PPE> GetPPEs() => new();
 }
