@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.PPEs;
 
-public partial class DeletePPEView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class DeletePPEView : UserControl
 {
-    private readonly IDeletePPEViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IDeletePPEViewModel>();
+    private readonly IViewModel<DeletePPEView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<DeletePPEView>>();
 
     public DeletePPEView()
     {

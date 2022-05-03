@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.PPEContracts;
 
-public partial class ExportPPEContractView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class ExportPPEContractView : UserControl
 {
-    private readonly IExportPPEContractViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IExportPPEContractViewModel>();
+    private readonly IViewModel<ExportPPEContractView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<ExportPPEContractView>>();
 
     public ExportPPEContractView()
     {

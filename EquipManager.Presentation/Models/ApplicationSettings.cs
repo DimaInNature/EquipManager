@@ -1,59 +1,94 @@
 ﻿namespace EquipManager.Presentation.Models;
 
+/// <summary> Модель с настройками состояния приложения.</summary>
 internal static class ApplicationSettings
 {
+    /// <summary> Путь к конфигурационному файлу с настройками.</summary>
     public const string ConfigurationFilePath = @"appsettings.json";
 
+    /// <summary> Тема приложения.</summary>
+    /// <remarks> Список допустимых значений:
+    /// <list type="bullet">
+    /// <item><term>Light</term> Светлая тема.</item>
+    /// <item><term>Dark</term> Тёмная тема.</item>
+    /// </list>
+    /// <term>По умолчанию</term> Light.
+    /// </remarks>
     public static string Theme
     {
         get
         {
-            string defaultValue = "Light";
+            const string defaultValue = "Light";
 
             if (File.Exists(path: ConfigurationFilePath) is false) return defaultValue;
 
-            string json = File.ReadAllText(path: ConfigurationFilePath);
-
-            var result = JsonConvert.DeserializeObject<Settings>(value: json);
+            var result = DeserializeObject();
 
             return result is not null ? result.Theme : defaultValue;
         }
-        set => SerializeObject(new Settings(theme: value, language: Language, topmost: Topmost));
+        set
+        {
+            SerializeObject(new Settings(theme: value, language: Language));
+
+            if (_propsChanged < _propsCount) _propsChanged++;
+            else SettingsChanged();
+        }
     }
 
+    /// <summary> Язык приложения.</summary>
+    /// <remarks> Список допустимых значений:
+    /// <list type="bullet">
+    /// <item><term>Russian</term> Русский язык.</item>
+    /// <item><term>English</term> Английский язык.</item>
+    /// </list>
+    /// <term>По умолчанию</term> Russian.
+    /// </remarks>
     public static string Language
     {
         get
         {
-            string defaultValue = "Russian";
+            const string defaultValue = "Russian";
 
             if (File.Exists(path: ConfigurationFilePath) is false) return defaultValue;
 
-            string json = File.ReadAllText(path: ConfigurationFilePath);
-
-            var result = JsonConvert.DeserializeObject<Settings>(value: json);
+            var result = DeserializeObject();
 
             return result is not null ? result.Language : defaultValue;
         }
-        set => SerializeObject(new Settings(theme: Theme, language: value, topmost: Topmost));
-    }
-
-    public static bool Topmost
-    {
-        get
+        set
         {
-            bool defaultValue = false;
+            SerializeObject(new Settings(theme: Theme, language: value));
 
-            if (File.Exists(path: ConfigurationFilePath) is false) return defaultValue;
-
-            string json = File.ReadAllText(path: ConfigurationFilePath);
-
-            var result = JsonConvert.DeserializeObject<Settings>(value: json);
-
-            return result is not null ? result.Topmost : defaultValue;
+            if (_propsChanged < _propsCount) _propsChanged++;
+            else SettingsChanged();
         }
-        set => SerializeObject(new Settings(theme: Theme, language: Language, topmost: value));
     }
+
+    private static byte _propsChanged = 0;
+    private static readonly byte _propsCount = 0;
+
+    private static readonly IMessageBoxService? _messageBox;
+
+    static ApplicationSettings()
+    {
+        _messageBox = (Application.Current as App)?
+            .ServiceProvider?.GetService<IMessageBoxService>();
+
+        SettingsChanged += () =>
+        {
+            _messageBox?.Show(
+                text: LanguageTranslator.Translate(key: "tm_ToApplyChangesYouNeedToRestartTheProgram"),
+                caption: LanguageTranslator.Translate(key: "tm_Information"),
+                icon: MessageBoxImage.Exclamation);
+
+            Application.Current.Shutdown();
+        };
+
+        _propsCount = (byte)typeof(ApplicationSettings).GetProperties().Length;
+    }
+
+    public delegate void SettingsHandler();
+    public static event SettingsHandler SettingsChanged;
 
     private static void SerializeObject(object obj)
     {
@@ -68,6 +103,14 @@ internal static class ApplicationSettings
         serializer.Serialize(jsonWriter: writer, value: obj);
     }
 
+    private static Settings DeserializeObject()
+    {
+        string json = File.ReadAllText(path: ConfigurationFilePath);
+
+        return JsonConvert.DeserializeObject<Settings>(value: json) ??
+            throw new FileNotFoundException("Configuration file.");
+    }
+
     [Serializable]
     private sealed record class Settings
     {
@@ -75,9 +118,7 @@ internal static class ApplicationSettings
 
         public string Language { get; init; }
 
-        public bool Topmost { get; init; }
-
-        public Settings(string theme, string language, bool topmost) =>
-            (Theme, Language, Topmost) = (theme, language, topmost);
+        public Settings(string theme, string language) =>
+            (Theme, Language) = (theme, language);
     }
 }

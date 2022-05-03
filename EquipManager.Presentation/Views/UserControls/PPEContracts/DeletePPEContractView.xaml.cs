@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.PPEContracts;
 
-public partial class DeletePPEContractView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class DeletePPEContractView : UserControl
 {
-    private readonly IDeletePPEContractViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IDeletePPEContractViewModel>();
+    private readonly IViewModel<DeletePPEContractView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<DeletePPEContractView>>();
 
     public DeletePPEContractView()
     {

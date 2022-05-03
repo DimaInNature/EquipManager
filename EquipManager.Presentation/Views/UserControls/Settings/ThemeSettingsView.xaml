@@ -24,7 +24,7 @@
                 VerticalAlignment="Center"
                 FontSize="28"
                 IsHitTestVisible="False"
-                Style="{DynamicResource SettingsThemeTitleTextBlock}" />
+                Text="{StaticResource t_Theme}" />
 
             <Grid Grid.Row="1" Margin="10">
 
@@ -48,7 +48,7 @@
                     VerticalAlignment="Center"
                     FontSize="20"
                     IsHitTestVisible="False"
-                    Style="{DynamicResource SettingsThemeSecondTitleTextBlock}" />
+                    Text="{StaticResource t_ChoiceApplicationTheme}" />
 
                 <TextBlock
                     Grid.Row="1"
@@ -59,7 +59,7 @@
                     VerticalAlignment="Center"
                     FontSize="16"
                     IsHitTestVisible="False"
-                    Style="{DynamicResource SettingsThemeNameTextBlock}" />
+                    Text="{StaticResource t_ThemeName}" />
 
                 <ComboBox
                     Grid.Row="1"
@@ -67,8 +67,7 @@
                     Width="200"
                     Height="40"
                     ItemsSource="{Binding ThemeList}"
-                    SelectedIndex="{Binding SelectedThemeIndex}"
-                    Style="{DynamicResource ModernComboBox}">
+                    SelectedIndex="{Binding SelectedThemeIndex}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="SelectionChanged">
                             <i:InvokeCommandAction Command="{Binding SelectThemeCommand}" />

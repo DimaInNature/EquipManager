@@ -2,8 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <LangVersion>Preview</LangVersion>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>EquipManager.Presentation.App</StartupObject>
@@ -471,19 +470,24 @@
   <ItemGroup>
     <Folder Include="Content\Theme\" />
     <Folder Include="Content\Languages\" />
-    <Folder Include="ViewModels\Interfaces\Exports\" />
-    <Folder Include="ViewModels\UserControls\Exports\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EquipManager.Infra.Core.Extensions\EquipManager.Infra.Core.Extensions.csproj" />
     <ProjectReference Include="..\EquipManager.Infra.Core\EquipManager.Infra.Core.csproj" />
+    <ProjectReference Include="..\EquipManager.Services.Data\EquipManager.Services.Data.csproj" />
+    <ProjectReference Include="..\EquipManager.Services.Interfaces.Application\EquipManager.Services.Interfaces.Application.csproj" />
+    <ProjectReference Include="..\EquipManager.Services.Interfaces.Data\EquipManager.Services.Interfaces.Data.csproj" />
+    <ProjectReference Include="..\EquipManager.Services.UI.Desktop\EquipManager.Services.UI.Desktop.csproj" />
   </ItemGroup>
 
   <ItemGroup>

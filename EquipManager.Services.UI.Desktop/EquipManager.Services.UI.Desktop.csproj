@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="MessageBoxes\**" />
+    <EmbeddedResource Remove="MessageBoxes\**" />
+    <None Remove="MessageBoxes\**" />
+    <Page Remove="MessageBoxes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EquipManager.Services.Interfaces.UI.Desktop\EquipManager.Services.Interfaces.UI.Desktop.csproj" />
+  </ItemGroup>
+
+</Project>

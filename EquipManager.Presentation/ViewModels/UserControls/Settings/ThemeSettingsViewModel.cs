@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.ViewModels.UserControls.Settings;
 
+/// <summary> Модель представления для <see cref="ThemeSettingsView"/>.</summary>
 internal sealed class ThemeSettingsViewModel
-    : BaseViewModel, IThemeSettingsViewModel
+    : BaseViewModel, IViewModel<ThemeSettingsView>
 {
-    public string[] ThemeList => new string[] { "Light", "Dark" };
+    public static string[] ThemeList => new string[] { "Light", "Dark" };
 
     public int SelectedThemeIndex
     {
@@ -22,11 +23,6 @@ internal sealed class ThemeSettingsViewModel
 
     private int _selectedThemeIndex = 0;
 
-    private void ExecuteSelectTheme(object obj) =>
-        ApplicationSettingsManipulator.ApplyTheme(SelectedThemeIndex == 0 ? "Light" : "Dark");
-
-    private bool CanExecuteSelectTheme(object obj) => true;
-
     public ThemeSettingsViewModel()
     {
         InitializeCommands();
@@ -38,6 +34,14 @@ internal sealed class ThemeSettingsViewModel
             _ => 0,
         };
     }
+
+    private void ExecuteSelectTheme(object obj)
+    {
+        ApplicationSettingsManipulator.ApplyTheme(
+            theme: SelectedThemeIndex == 0 ? "Light" : "Dark");
+    }
+
+    private bool CanExecuteSelectTheme(object obj) => true;
 
     private void InitializeCommands()
     {

@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DesignHeight="600"
     d:DesignWidth="800"
-    FontFamily="{DynamicResource BaseFontFamily}"
     mc:Ignorable="d">
 
     <Grid Grid.Row="1" Grid.Column="1">
@@ -18,41 +17,36 @@
         </Grid.ColumnDefinitions>
 
         <Frame
+            x:Name="MenuFrame"
             Grid.Column="0"
-            Content="{Binding FrameSource, Mode=TwoWay}"
-            NavigationUIVisibility="Hidden"
-            Visibility="{Binding FrameVisibility, Mode=TwoWay}" />
+            Content="{x:Null}"
+            NavigationUIVisibility="Hidden" />
 
         <StackPanel
             Grid.Column="1"
-            Width="150"
+            Width="120"
             Margin="0,0,0,0"
-            HorizontalAlignment="Right">
+            HorizontalAlignment="Center">
 
             <RadioButton
                 Height="50"
-                Command="{Binding ShowThemePageCommand}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="ThemeRadioButton_Click"
+                Content="{StaticResource t_Theme}"
                 FontSize="14"
                 Foreground="{StaticResource BaseColorTheme}"
                 IsChecked="True"
-                Style="{DynamicResource MenuSettingsButtonTheme}" />
+                Style="{StaticResource c_SettingsMenuButtonStyle}" />
 
             <RadioButton
                 Height="50"
-                Command="{Binding ShowLanguagePageCommand}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="LanguageRadioButton_Click"
+                Content="{StaticResource t_Language}"
                 FontSize="14"
-                Style="{DynamicResource MenuSettingsButtonLanguage}" />
-
-            <RadioButton
-                Height="50"
-                Command="{Binding ShowApplicationPageCommand}"
-                FontSize="14"
-                Style="{DynamicResource MenuSettingsButtonApplication}" />
-
-            <Button
-                Height="50"
-                Command="{Binding SetDefaultSettingsCommand}"
-                Style="{DynamicResource MenuSettingsResetButton}" />
+                Style="{StaticResource c_SettingsMenuButtonStyle}" />
 
         </StackPanel>
 

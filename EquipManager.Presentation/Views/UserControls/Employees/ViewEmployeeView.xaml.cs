@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.Employees;
 
-public partial class ViewEmployeeView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class ViewEmployeeView : UserControl
 {
-    private readonly IViewEmployeeViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IViewEmployeeViewModel>();
+    private readonly IViewModel<ViewEmployeeView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<ViewEmployeeView>>();
 
     public ViewEmployeeView()
     {

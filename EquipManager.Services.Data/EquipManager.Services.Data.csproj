@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EquipManager.Services.Data.Features\EquipManager.Services.Data.Features.csproj" />
+    <ProjectReference Include="..\EquipManager.Services.Interfaces.Data\EquipManager.Services.Interfaces.Data.csproj" />
+  </ItemGroup>
+
+</Project>

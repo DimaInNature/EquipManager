@@ -23,7 +23,7 @@
                 Margin="10"
                 VerticalAlignment="Center"
                 FontSize="27"
-                Style="{DynamicResource SuitTitleBrowse}" />
+                Text="{StaticResource t_ViewPPE}" />
 
             <RadioButton
                 x:Name="ShiftButtonScroll"
@@ -31,7 +31,7 @@
                 Panel.ZIndex="1"
                 IsChecked="True">
                 <RadioButton.Style>
-                    <Style BasedOn="{StaticResource BrowseRadioButtonScrollStyle}" TargetType="RadioButton">
+                    <Style BasedOn="{StaticResource c_ScrollViewRadioButtonStyle}" TargetType="RadioButton">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="true">
                                 <Setter Property="IsChecked" Value="False" />
@@ -51,7 +51,7 @@
                 HorizontalAlignment="Right"
                 Panel.ZIndex="1">
                 <RadioButton.Style>
-                    <Style BasedOn="{StaticResource BrowseRadioButtonTableStyle}" TargetType="RadioButton">
+                    <Style BasedOn="{StaticResource c_TableViewRadioButtonStyle}" TargetType="RadioButton">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="true">
                                 <Setter Property="IsChecked" Value="False" />
@@ -70,163 +70,206 @@
 
         <ScrollViewer Name="ScrollGrid" Grid.Row="1">
             <StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <ItemsControl x:Name="ListViewSuitsItemsControl" ItemsSource="{Binding Suits}">
+                <StackPanel Margin="10,0" Orientation="Vertical">
+                    <ItemsControl
+                        ItemsSource="{Binding PPEs}"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
 
-                                <Viewbox Margin="10" HorizontalAlignment="Left">
+                                <Border
+                                    Width="450"
+                                    Height="250"
+                                    Margin="0,10,10,0"
+                                    HorizontalAlignment="Center"
+                                    Background="{StaticResource BaseColorBackground}"
+                                    BorderBrush="{StaticResource TemplateBackground}"
+                                    BorderThickness="2"
+                                    CornerRadius="20">
 
-                                    <Border
-                                        MaxHeight="85"
-                                        Margin="10,0,10,0"
-                                        Background="{StaticResource TemplateBackground}"
-                                        CornerRadius="10">
+                                    <Grid>
 
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="0.5*" />
-                                                <ColumnDefinition Width="1*" />
-                                                <ColumnDefinition Width="1*" />
-                                            </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
 
-                                            <!--#region Image-->
+                                        <!--#region Top-->
 
-                                            <Grid Grid.Column="0">
+                                        <RadioButton
+                                            Grid.Row="0"
+                                            Margin="0,5,65,0"
+                                            HorizontalAlignment="Center"
+                                            Content="Private"
+                                            Foreground="{StaticResource BaseColorTheme}"
+                                            IsHitTestVisible="False"
+                                            Style="{StaticResource ac_MenuButtonStyle}" />
+
+                                        <!--#endregion-->
+
+                                        <!--#region Data-->
+
+                                        <Border
+                                            Grid.Row="1"
+                                            Background="{StaticResource TemplateBackground}"
+                                            BorderBrush="{StaticResource BaseColorBackground}"
+                                            BorderThickness="5"
+                                            CornerRadius="15"
+                                            ToolTip="{StaticResource t_HoverOverTheParameterToGetAHint}">
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
 
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="2*" />
+                                                    <RowDefinition Height="30" />
                                                     <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition Height="50" />
                                                 </Grid.RowDefinitions>
 
-                                                <Grid
-                                                    Grid.Row="0"
-                                                    Margin="0,0,0,10"
-                                                    VerticalAlignment="Center">
-                                                    <Image RenderOptions.BitmapScalingMode="Fant">
-                                                        <Image.Source>
-                                                            <BitmapImage
-                                                                CacheOption="OnLoad"
-                                                                DecodePixelHeight="240"
-                                                                UriSource="/Content/Images/TemplateImages/GasMaskImage.png" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                </Grid>
+                                                <TextBlock
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Naming}"
+                                                    ToolTip="{StaticResource t_NamePPE}" />
+
+                                                <TextBox
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Name}"
+                                                    ToolTip="{StaticResource t_NamePPE}" />
+
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Quantity}"
+                                                    ToolTip="{StaticResource t_TheNumberOfPPEInWarehouse}" />
+
+                                                <TextBox
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding QuantityPerYear}"
+                                                    ToolTip="{StaticResource t_TheNumberOfPPEInWarehouse}" />
+
+                                                <TextBlock
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Unit}"
+                                                    ToolTip="{StaticResource t_TheUnitOfMeasurementIsTheNumberOfPPE}" />
+
+                                                <TextBox
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding UnitOfMeasurement}"
+                                                    ToolTip="{StaticResource t_TheUnitOfMeasurementIsTheNumberOfPPE}" />
+
+                                                <TextBlock
+                                                    Grid.Row="4"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Certificate}"
+                                                    ToolTip="{StaticResource t_CertificateOfConformityOfPPE}" />
+
+                                                <TextBox
+                                                    Grid.Row="4"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding CertificateOfConformity}"
+                                                    ToolTip="{StaticResource t_CertificateOfConformityOfPPE}" />
+
+                                                <!--#region Top-->
 
                                                 <Grid
-                                                    Grid.Row="0"
-                                                    Grid.RowSpan="2"
-                                                    Margin="0,0,0,10"
-                                                    VerticalAlignment="Bottom">
+                                                    Grid.Row="5"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="5">
+
                                                     <TextBlock
                                                         HorizontalAlignment="Center"
-                                                        FontSize="5"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding Id, StringFormat='Number: {0}'}"
-                                                        TextWrapping="Wrap" />
-                                                </Grid>
-
-                                            </Grid>
-
-                                            <!--#endregion-->
-
-                                            <!--#region Basic data-->
-
-                                            <Grid Grid.Column="1">
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock
-                                                    Grid.Row="0"
-                                                    Margin="-10,10,10,10"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="5"
-                                                    Style="{StaticResource SuitBasicTitleTextBlock}" />
-
-                                                <Grid Grid.Row="1">
-
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition Height="2*" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <TextBlock
-                                                        Grid.Row="0"
-                                                        FontSize="5"
-                                                        Style="{DynamicResource SuitNameTextBlock}" />
-
-                                                    <TextBlock
-                                                        Grid.Row="1"
-                                                        FontFamily="{StaticResource BaseFontFamily}"
-                                                        FontSize="5"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding Name}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="2"
-                                                        FontSize="5"
-                                                        Style="{DynamicResource SuitQuantityPerYearTextBlock}" />
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{StaticResource TemplateForeground}"
+                                                        Text="{StaticResource t_InformationAboutPPE}" />
 
                                                 </Grid>
 
-                                            </Grid>
-
-                                            <!--#endregion-->
-
-                                            <!--#region Additional data-->
-
-                                            <Grid Grid.Column="2">
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock
-                                                    Grid.Row="0"
-                                                    Margin="-5,10,10,10"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="5"
-                                                    Style="{StaticResource SuitAdditionalTitleTextBlock}" />
-
-                                                <Grid Grid.Row="1">
-
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition Height="2*" />
-                                                    </Grid.RowDefinitions>
-
-                                                    <TextBlock
-                                                        Grid.Row="0"
-                                                        Margin="-5,0,0,0"
-                                                        FontSize="5"
-                                                        Style="{DynamicResource SuitCertificateOfConformityTextBlock}" />
-
-                                                    <TextBlock
-                                                        Grid.Row="1"
-                                                        Grid.RowSpan="2"
-                                                        Margin="-5,4,0,0"
-                                                        VerticalAlignment="Top"
-                                                        FontSize="5"
-                                                        Style="{DynamicResource SuitUnitOfMeasurementTextBlock}" />
-                                                </Grid>
+                                                <!--#endregion-->
 
                                             </Grid>
 
-                                            <!--#endregion-->
+                                        </Border>
 
-                                        </Grid>
+                                        <!--#endregion-->
 
-                                    </Border>
+                                    </Grid>
 
-                                </Viewbox>
+                                </Border>
 
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -261,13 +304,13 @@
         </ScrollViewer>
 
         <Grid x:Name="TableGrid" Grid.Row="1">
-            <ListView Name="ViewAllSuitsTable" ItemsSource="{Binding Path=Suits}">
+            <ListView Name="ViewAllSuitsTable" ItemsSource="{Binding PPEs}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}" HeaderContainerStyle="{DynamicResource SuitIdGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" HeaderContainerStyle="{DynamicResource SuitNameGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding UnitOfMeasurement}" HeaderContainerStyle="{DynamicResource SuitUnitOfMeasurementGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding QuantityPerYear}" HeaderContainerStyle="{DynamicResource SuitQuantityPerYearGridViewItem}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="{StaticResource t_PPE_Name}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UnitOfMeasurement}" Header="{StaticResource t_PPE_UnitOfMeasurement}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding QuantityPerYear}" Header="{StaticResource t_PPE_QuantityPerYear}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -292,6 +335,7 @@
             </Grid.Style>
 
         </Grid>
+
     </Grid>
 
 </UserControl>

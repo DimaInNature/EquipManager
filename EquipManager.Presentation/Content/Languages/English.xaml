@@ -1,1373 +1,227 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <!--#region Grids-->
-
-    <!--#region Base-->
-
-    <Style
-        x:Key="TemplateTextBlockBase"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource TemplateForeground}" />
-        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Home Grid-->
-
-    <Style
-        x:Key="HomeTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Home" />
-    </Style>
-
-    <Style
-        x:Key="HomeSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Quick actions" />
-    </Style>
-
-    <Style
-        x:Key="CreateEmplpoyeButton"
-        BasedOn="{StaticResource CreateEmplpoyeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Add employe&#10;for editing!" />
-        <Setter Property="ContentStringFormat" Value="Get started!" />
-    </Style>
-
-    <Style
-        x:Key="CreateContractButton"
-        BasedOn="{StaticResource CreateContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Create document!" />
-    </Style>
-
-    <Style
-        x:Key="BrowseMenuButton"
-        BasedOn="{StaticResource BrowseMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Watch it" />
-    </Style>
-
-    <Style
-        x:Key="AddMenuButton"
-        BasedOn="{StaticResource AddMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Create" />
-    </Style>
-
-    <Style
-        x:Key="EditMenuButton"
-        BasedOn="{StaticResource EditMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Edit" />
-    </Style>
-
-    <Style
-        x:Key="DeleteMenuButton"
-        BasedOn="{StaticResource DeleteMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Delete" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse Grid-->
-
-    <Style
-        x:Key="BrowseTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Browse" />
-    </Style>
-
-    <Style
-        x:Key="BrowseEmployeButton"
-        BasedOn="{StaticResource BrowseEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Employe" />
-    </Style>
-
-    <Style
-        x:Key="BrowseSuitButton"
-        BasedOn="{StaticResource BrowseSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="PPE" />
-    </Style>
-
-    <Style
-        x:Key="BrowseContractButton"
-        BasedOn="{StaticResource BrowseContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Documents" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Create Grid-->
-
-    <Style
-        x:Key="CreateTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Create" />
-    </Style>
-
-    <Style
-        x:Key="CreateEmployeButton"
-        BasedOn="{StaticResource CreateEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Employe" />
-    </Style>
-
-    <Style
-        x:Key="CreateSuitButton"
-        BasedOn="{StaticResource CreateSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="PPE" />
-    </Style>
-
-    <Style
-        x:Key="CreateContractButton2"
-        BasedOn="{StaticResource CreateContractButtonStyle2}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit Grid-->
-
-    <Style
-        x:Key="EditTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Edit" />
-    </Style>
-
-    <Style
-        x:Key="EditEmployeButton"
-        BasedOn="{StaticResource EditEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Employe" />
-    </Style>
-
-    <Style
-        x:Key="EditSuitButton"
-        BasedOn="{StaticResource EditSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="PPE" />
-    </Style>
-
-    <Style
-        x:Key="EditContractButton"
-        BasedOn="{StaticResource EditContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete Grid-->
-
-    <Style
-        x:Key="DeleteTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Delete" />
-    </Style>
-
-    <Style
-        x:Key="DeleteEmployeButton"
-        BasedOn="{StaticResource DeleteEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Employe" />
-    </Style>
-
-    <Style
-        x:Key="DeleteSuitButton"
-        BasedOn="{StaticResource DeleteSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="PPE" />
-    </Style>
-
-    <Style
-        x:Key="DeleteContractButton"
-        BasedOn="{StaticResource DeleteContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Export Grid-->
-
-    <Style
-        x:Key="ExportTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Export" />
-    </Style>
-
-    <Style
-        x:Key="ExportSuitButton"
-        BasedOn="{StaticResource ExportSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Export the contract" />
-        <Setter Property="ContentStringFormat" Value="Export now!" />
-    </Style>
-
-    <Style
-        x:Key="ExportSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Quick actions" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Settings Grid-->
-
-    <!--#region Settings Theme Grid-->
-
-    <Style
-        x:Key="SettingsThemeTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Theme" />
-    </Style>
-
-    <Style
-        x:Key="SettingsThemeSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Application theme settings" />
-    </Style>
-
-    <Style
-        x:Key="SettingsThemeNameTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Theme name:" />
-    </Style>
-
-    <Style
-        x:Key="SettingsThemeSaveButton"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Save" />
-    </Style>
-
-    <Style x:Key="SettingsThemeNameLightComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Light" />
-    </Style>
-
-    <Style x:Key="SettingsThemeNameDarkComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Dark" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Settings Language Grid-->
-
-    <Style
-        x:Key="SettingsLanguageTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Language" />
-    </Style>
-
-    <Style
-        x:Key="SettingsLanguageSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Change language application" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Application Grid-->
-
-    <Style
-        x:Key="SettingsApplicationTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Application" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Application settings" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationScreenResolutionTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Screen resolution:" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationTopmostTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Topmost:" />
-    </Style>
-
-    <Style x:Key="SettingsApplicationTopmostTrueComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="On" />
-    </Style>
-
-    <Style x:Key="SettingsApplicationTopmostFalseComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Off" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationSaveButton"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Save" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Menu-->
-
-    <Style
-        x:Key="MenuSettingsButtonTheme"
-        BasedOn="{StaticResource SettingsMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Theme" />
-    </Style>
-
-    <Style
-        x:Key="MenuSettingsButtonLanguage"
-        BasedOn="{StaticResource SettingsMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Language" />
-    </Style>
-
-    <Style
-        x:Key="MenuSettingsButtonApplication"
-        BasedOn="{StaticResource SettingsMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Application" />
-    </Style>
-
-    <Style
-        x:Key="MenuSettingsResetButton"
-        BasedOn="{StaticResource SettingsMenuButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Reset" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region General Left Menu-->
-
-    <Style
-        x:Key="HomeGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Home" />
-    </Style>
-
-    <Style
-        x:Key="BrowseGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Browse" />
-    </Style>
-
-    <Style
-        x:Key="CreateGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Create" />
-    </Style>
-
-    <Style
-        x:Key="EditGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Edit" />
-    </Style>
-
-    <Style
-        x:Key="DeleteGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Delete" />
-    </Style>
-
-    <Style
-        x:Key="ExportGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Export" />
-    </Style>
-
-    <Style
-        x:Key="SettingsGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Settings" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region General-->
-
-    <!--#region Buttons-->
-
-    <Style
-        x:Key="ButtonChoice"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Choice" />
-    </Style>
-
-    <Style
-        x:Key="ButtonCreate"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Create" />
-    </Style>
-
-    <Style
-        x:Key="ButtonDelete"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Delete" />
-    </Style>
-
-    <Style
-        x:Key="ButtonEdit"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Edit" />
-    </Style>
-
-    <Style
-        x:Key="ButtonExport"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Export" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Suit-->
-
-    <!--#region TextBox-->
-
-    <Style
-        x:Key="SuitNameTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Name" />
-    </Style>
-
-    <Style
-        x:Key="SuitQuantityPerYearTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Quantity per year" />
-    </Style>
-
-    <Style
-        x:Key="SuitUnitOfMeasurementTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Unit of measurement" />
-    </Style>
-
-    <Style
-        x:Key="SuitCertificateOfConformityTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Certificate of conformity" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region GridView Item-->
-
-    <Style x:Key="SuitIdGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Id" />
-    </Style>
-
-    <Style x:Key="SuitNameGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Name" />
-    </Style>
-
-    <Style x:Key="SuitUnitOfMeasurementGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Unit of measurement" />
-    </Style>
-
-    <Style x:Key="SuitQuantityPerYearGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Quantity per year" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region TextBlock-->
-
-    <Style
-        x:Key="SuitBasicTitleTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="General" />
-    </Style>
-
-    <Style
-        x:Key="SuitAdditionalTitleTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Additionally" />
-    </Style>
-
-    <Style
-        x:Key="SuitNameTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Name:" />
-    </Style>
-
-    <Style
-        x:Key="SuitUnitOfMeasurementTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding UnitOfMeasurement, StringFormat='Unit: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="SuitQuantityPerYearTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding QuantityPerYear, StringFormat='Quantity: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="SuitCertificateOfConformityTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding CertificateOfConformity, StringFormat='Certificate: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Titles-->
-
-    <!--#region General-->
-
-    <Style
-        x:Key="SuitTitleInfoAboutSuit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Info about PPE" />
-    </Style>
-
-    <Style
-        x:Key="SuitTitleChangeSuit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Choice PPE" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Add-->
-
-    <Style
-        x:Key="SuitTitleAdd"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Create -&gt; Personal protective equipment" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse-->
-
-    <Style
-        x:Key="SuitTitleBrowse"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Browse -&gt; Personal protective equipment" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete-->
-
-    <Style
-        x:Key="SuitTitleDelete"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Delete -&gt; Personal protective equipment" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit-->
-
-    <Style
-        x:Key="SuitTitleEdit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Edit -&gt; Personal protective equipment" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region RadioButton-->
-
-    <Style
-        x:Key="SuitRadioButton"
-        BasedOn="{StaticResource RadioButtonTabMenuStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="PPE" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Employe-->
-
-    <!--#region TextBox-->
-
-    <!--#region Personal Data-->
-
-    <Style
-        x:Key="EmployeIdTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Identity" />
-    </Style>
-
-    <Style
-        x:Key="EmployeNameTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Name" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSurnameTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Surname" />
-    </Style>
-
-    <Style
-        x:Key="EmployePatronymicTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Patronymic" />
-    </Style>
-
-    <Style
-        x:Key="EmployeGenderTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Gender" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Corporate Data-->
-
-    <Style
-        x:Key="EmployeTabelNumberTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Tabel number" />
-    </Style>
-
-    <Style
-        x:Key="EmployeStructuralDivisionTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Structural division" />
-    </Style>
-
-    <Style
-        x:Key="EmployeProfessionTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Profession" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfEmploymentDatePicker"
-        BasedOn="{StaticResource DatePickerStyle}"
-        TargetType="DatePicker">
-        <Setter Property="Tag" Value="Date of employment" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfEmploymentTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Date of employment" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfProfessionChangeDatePicker"
-        BasedOn="{StaticResource DatePickerStyle}"
-        TargetType="DatePicker">
-        <Setter Property="Tag" Value="Date of profession change" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfProfessionChangeTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Date of profession change" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Physical data-->
-
-    <Style
-        x:Key="EmployeHeightTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Height" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Clothing Size-->
-
-    <Style
-        x:Key="EmployeSizeClothTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size cloth" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGazMaskTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size gaz mask" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeSleeveTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size sleeve" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeShoesTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size shoes" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeHeaddressTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size headdress" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeRespiratorTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size respirator" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGloveTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Size glove" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region GridView Item-->
-
-    <Style x:Key="EmployeIdGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value=" Id " />
-    </Style>
-
-    <Style x:Key="EmployeNameGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Name" />
-    </Style>
-
-    <Style x:Key="EmployeSurnameGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Surname" />
-    </Style>
-
-    <Style x:Key="EmployePatronymicGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Patronymic" />
-    </Style>
-
-    <Style x:Key="EmployeGenderGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Gender" />
-    </Style>
-
-    <Style x:Key="EmployeTabelNumberGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Tabel number" />
-    </Style>
-
-    <Style x:Key="EmployeStructuralDivisionGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Structural division" />
-    </Style>
-
-    <Style x:Key="EmployeProfessionGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Profession" />
-    </Style>
-
-    <Style x:Key="EmployeDateOfEmploymentGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Date of employment" />
-    </Style>
-
-    <Style x:Key="EmployeDateOfProfessionGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Date of profession change" />
-    </Style>
-
-    <Style x:Key="EmployeHeightGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Height" />
-    </Style>
-
-    <Style x:Key="EmployeSizeClothGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Size cloth" />
-    </Style>
-
-    <Style x:Key="EmployeSizeGloveGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Glove" />
-    </Style>
-
-    <Style x:Key="EmployeSizeGazMaskGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Gaz mask" />
-    </Style>
-
-    <Style x:Key="EmployeSizeSleeveGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Sleeve" />
-    </Style>
-
-    <Style x:Key="EmployeSizeHeaddressGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Headdress" />
-    </Style>
-
-    <Style x:Key="EmployeSizeRespiratorGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Respirator" />
-    </Style>
-
-    <Style x:Key="EmployeSizeShoesGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Shoes" />
-    </Style>
-
-
-    <!--#endregion-->
-
-    <!--#region TextBlock-->
-
-    <!--#region Personal Data-->
-
-    <Style
-        x:Key="EmployeNameTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Name, StringFormat='Name: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSurnameTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Surname, StringFormat='Surname: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployePatronymicTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Patronymic, StringFormat='Patronymic: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeGenderTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Gender, StringFormat='Gender: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Corporate Data-->
-
-    <Style
-        x:Key="EmployeTabelNumberTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding TabelNumber, StringFormat='Tabel number: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeStructuralDivisionTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Structural division:" />
-    </Style>
-
-    <Style
-        x:Key="EmployeProfessionTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Profession:" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfEmploymentTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Employment date:" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfProfessionChangeTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Change date:" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Physical Data-->
-
-    <Style
-        x:Key="EmployeHeightTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Height, StringFormat='Height: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Clothing Size-->
-
-    <Style
-        x:Key="EmployeSizeClothTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeCloth, StringFormat='Size cloth: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGloveTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeGlove, StringFormat='Glove: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGazMaskTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeGazMask, StringFormat='Gaz mask: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeSleeveTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeSleeve, StringFormat='Sleeve: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeHeaddressTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeHeaddress, StringFormat='Headdress: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeRespiratorTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeRespirator, StringFormat='Respirator: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeShoesTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Размер обуви:" />
-        <Setter Property="Text" Value="{Binding SizeShoes, StringFormat='Shoes: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Titles-->
-
-    <!--#region General-->
-
-    <Style
-        x:Key="EmployeTitleChoiceEmploye"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Select Employe" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitlePersonalData"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Personal data" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitleCorporateData"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Corporate data" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitlePhysicalData"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Phisical data" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitleClothingSize"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Clothing size" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Add-->
-
-    <Style
-        x:Key="EmployeTitleAdd"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Create -&gt; Employe" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse-->
-
-    <Style
-        x:Key="EmployeTitleBrowse"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Browse -&gt; Employes" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete-->
-
-    <Style
-        x:Key="EmployeTitleDelete"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Delete -&gt; Employe" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit-->
-
-    <Style
-        x:Key="EmployeTitleEdit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Edit -&gt; Employe" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region RadioButton-->
-
-    <Style
-        x:Key="EmployeRadioButton"
-        BasedOn="{StaticResource RadioButtonTabMenuStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Employe" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Contract-->
-
-    <!--#region Title-->
-
-    <!--#region General-->
-
-    <Style
-        x:Key="ContractTitleChoiceEmployePanel"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Employee selection panel" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleChoiceSuitPanel"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="PPE selection panel" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleChoiceContractPanel"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Select document" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleEmploye"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Employe" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleSuits"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="PPE" />
-    </Style>
-
-    <!--#region Item 1-->
-
-    <Style
-        x:Key="ContractTitleItem1"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №1" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 2-->
-
-    <Style
-        x:Key="ContractTitleItem2"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №2" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 3-->
-
-    <Style
-        x:Key="ContractTitleItem3"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №3" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 4-->
-
-    <Style
-        x:Key="ContractTitleItem4"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №4" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 5-->
-
-    <Style
-        x:Key="ContractTitleItem5"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №5" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 6-->
-
-    <Style
-        x:Key="ContractTitleItem6"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №6" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 7-->
-
-    <Style
-        x:Key="ContractTitleItem7"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №7" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 8-->
-
-    <Style
-        x:Key="ContractTitleItem8"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №8" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 9-->
-
-    <Style
-        x:Key="ContractTitleItem9"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №9" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 10-->
-
-    <Style
-        x:Key="ContractTitleItem10"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №10" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 11-->
-
-    <Style
-        x:Key="ContractTitleItem11"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №11" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 12-->
-
-    <Style
-        x:Key="ContractTitleItem12"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Information about PPE №12" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Add-->
-
-    <Style
-        x:Key="ContractTitleAdd"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Create -&gt; Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse-->
-
-    <Style
-        x:Key="ContractTitleBrowse"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Browse -&gt; Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete-->
-
-    <Style
-        x:Key="ContractTitleDelete"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Delete -&gt; Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit-->
-
-    <Style
-        x:Key="ContractTitleEdit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Edit -&gt; Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Export-->
-
-    <Style
-        x:Key="ContractTitleExport"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Export -&gt; Document" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region RadioButton-->
-
-    <Style
-        x:Key="ContractRadioButton"
-        BasedOn="{StaticResource RadioButtonTabMenuStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Document" />
-    </Style>
-
-    <!--#endregion-->
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <v:String x:Key="t_Main">Home</v:String>
+
+    <v:String x:Key="t_View">View</v:String>
+
+    <v:String x:Key="t_Create">Create</v:String>
+
+    <v:String x:Key="t_Update">Update</v:String>
+
+    <v:String x:Key="t_Delete">Delete</v:String>
+
+    <v:String x:Key="t_Export">Export</v:String>
+
+    <v:String x:Key="t_Settings">Settings</v:String>
+
+    <v:String x:Key="t_QuickActions">Quick actions</v:String>
+
+    <v:String x:Key="t_CreateEmployee">Create Employee</v:String>
+
+    <v:String x:Key="t_CreatingEmployee">Creating Employee</v:String>
+
+    <v:String x:Key="t_GetStartedNow">Get started now!</v:String>
+
+    <v:String x:Key="t_CreateContract">Create contract!</v:String>
+
+    <v:String x:Key="t_DeleteEmployee">Delete employee</v:String>
+
+    <v:String x:Key="t_UpdateEmployee">Update employee</v:String>
+
+    <v:String x:Key="t_ViewEmployee">View employee</v:String>
+
+    <v:String x:Key="t_Employee">Employee</v:String>
+
+    <v:String x:Key="t_PPE">PPE</v:String>
+
+    <v:String x:Key="t_Contract">Contract</v:String>
+
+    <v:String x:Key="t_ExportContract">Export contract</v:String>
+
+    <v:String x:Key="t_ExportNow">Export now!</v:String>
+
+    <v:String x:Key="t_Theme">Theme</v:String>
+
+    <v:String x:Key="t_Language">Language</v:String>
+
+    <v:String x:Key="t_DeletePPE">Delete PPE</v:String>
+
+    <v:String x:Key="t_UpdatePPE">Update PPE</v:String>
+
+    <v:String x:Key="t_CreatePPE">Create PPE</v:String>
+
+    <v:String x:Key="t_ViewPPE">View PPE</v:String>
+
+    <v:String x:Key="t_ChoiceApplicationLanguage">Choice application language</v:String>
+
+    <v:String x:Key="t_ChoiceApplicationTheme">Choice application theme</v:String>
+
+    <v:String x:Key="t_ThemeName">Theme name:</v:String>
+
+    <v:String x:Key="t_ChoiceEmployee">Choice employee</v:String>
+
+    <v:String x:Key="t_Private">Private</v:String>
+
+    <v:String x:Key="t_Company">Company</v:String>
+
+    <v:String x:Key="t_PhysicData">Physic data</v:String>
+
+    <v:String x:Key="t_Cloth">Cloth</v:String>
+
+    <v:String x:Key="t_Employee_Name">Name</v:String>
+
+    <v:String x:Key="t_Employee_Surname">Surname</v:String>
+
+    <v:String x:Key="t_Employee_Patronymic">Patronymic</v:String>
+
+    <v:String x:Key="t_Employee_StructuralDivision">Structural Division</v:String>
+
+    <v:String x:Key="t_Employee_Profession">Profession</v:String>
+
+    <v:String x:Key="t_Employee_DateOfEmployment">Date of employment</v:String>
+
+    <v:String x:Key="t_Employee_DateOfProfessionChange">Date of profession change</v:String>
+
+    <v:String x:Key="t_Employee_Height">Height</v:String>
+
+    <v:String x:Key="t_Employee_Gender">Gender</v:String>
+
+    <v:String x:Key="t_SizeChart_ClothSize">Cloth size</v:String>
+
+    <v:String x:Key="t_SizeChart_GazMaskSize">Gaz mask size</v:String>
+
+    <v:String x:Key="t_SizeChart_SleeveSize">Sleeve size</v:String>
+
+    <v:String x:Key="t_SizeChart_ShoesSize">Shoes size</v:String>
+
+    <v:String x:Key="t_SizeChart_HeaddressSize">Headdress size</v:String>
+
+    <v:String x:Key="t_SizeChart_RespiratorSize">Respirator size</v:String>
+
+    <v:String x:Key="t_SizeChart_GloveSize">Glove size</v:String>
+
+    <v:String x:Key="t_SizeChart_Cloth">Cloth</v:String>
+
+    <v:String x:Key="t_SizeChart_GazMask">Gaz mask</v:String>
+
+    <v:String x:Key="t_SizeChart_Sleeve">Sleeve</v:String>
+
+    <v:String x:Key="t_SizeChart_Shoes">Shoes</v:String>
+
+    <v:String x:Key="t_SizeChart_Headdress">Headdress</v:String>
+
+    <v:String x:Key="t_SizeChart_Respirator">Respirator</v:String>
+
+    <v:String x:Key="t_SizeChart_Glove">Glove</v:String>
+
+    <v:String x:Key="t_InfoAboutPPE">Info about PPE</v:String>
+
+    <v:String x:Key="t_ChoicePPE">Choice PPE</v:String>
+
+    <v:String x:Key="t_PPE_Name">Name</v:String>
+
+    <v:String x:Key="t_PPE_QuantityPerYear">Quantity per year</v:String>
+
+    <v:String x:Key="t_PPE_UnitOfMeasurement">Unit of measurement</v:String>
+
+    <v:String x:Key="t_PPE_CertificateOfConformity">Certificate of conformity</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithPersonalData">Select the tab with personal data.</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithCorporateData">Select the tab with corporate data.</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithPhysicalData">Select the tab with physical data.</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithSizeTable">Select the tab with size table.</v:String>
+
+    <v:String x:Key="t_HoverOverTheParameterToGetAHint">Hover over the parameter to get a hint.</v:String>
+
+    <v:String x:Key="t_NameEmployee">Name employee.</v:String>
+
+    <v:String x:Key="t_SurnameEmployee">Surname employee.</v:String>
+
+    <v:String x:Key="t_PatronymicEmployee">Patronymic employee.</v:String>
+
+    <v:String x:Key="t_Employee_TabelNumber">Tabel number.</v:String>
+
+    <v:String x:Key="t_TheEmployeesUniqueServiceNumber">The employee's unique service number.</v:String>
+
+    <v:String x:Key="t_PrivateData">Private data.</v:String>
+
+    <v:String x:Key="t_TheDepartmentInWhichTheEmployeeWorks">The department in which the employee works.</v:String>
+
+    <v:String x:Key="t_ThePositionWhereTheEmployeeWorks">The position where the employee works.</v:String>
+
+    <v:String x:Key="t_TheDateWhenTheEmployeeStartedWork">Date when the employee started work.</v:String>
+
+    <v:String x:Key="t_TheDateWhenTheEmployeeTookOfficeForTheLastTime">Date when the employee took office for the last time.</v:String>
+
+    <v:String x:Key="t_TheEmployeesHeightInCentimeters">The employees height in centimeters.</v:String>
+
+    <v:String x:Key="t_TheGenderOfTheEmployee">The gender of the employee.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesClothes">The size of the employee's clothes.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesHeaddress">The size of the employee's headdress.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesGazMask">The size of the employee's gaz mask.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesRespiratorMask">The size of the employee's respirator mask.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesSleeve">The size of the employee's sleeve.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesGlove">The size of the employee's glove.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesShoes">The size of the employee's shoes.</v:String>
+
+    <v:String x:Key="t_SizeChart">Size chart</v:String>
+
+    <v:String x:Key="t_NamePPE">PPE name</v:String>
+
+    <v:String x:Key="t_Naming">Naming</v:String>
+
+    <v:String x:Key="t_Quantity">Quantity</v:String>
+
+    <v:String x:Key="t_TheNumberOfPPEInWarehouse">The number of PPE in warehouse.</v:String>
+
+    <v:String x:Key="t_Unit">Unit.</v:String>
+
+    <v:String x:Key="t_TheUnitOfMeasurementIsTheNumberOfPPE">The unit of measurement is the number of PPE</v:String>
+
+    <v:String x:Key="t_Certificate">Certificate</v:String>
+
+    <v:String x:Key="t_CertificateOfConformityOfPPE">Certificate of conformity of PPE.</v:String>
+
+    <v:String x:Key="t_InformationAboutPPE">Information about PPE.</v:String>
+
+    <!--#region Messages-->
+
+    <v:String x:Key="tm_Success">Success.</v:String>
+
+    <v:String x:Key="tm_Information">Information.</v:String>
+
+    <v:String x:Key="tm_ValidationError">Validation error.</v:String>
+
+    <v:String x:Key="tm_EmployeeSuccessfullyCreated">Employee successfully created.</v:String>
+
+    <v:String x:Key="tm_EmployeeSuccessfullyDeleted">Employee sucessfully deleted.</v:String>
+
+    <v:String x:Key="tm_EmployeeSuccessfullyUpdated">Employee sucessfully updated.</v:String>
+
+    <v:String x:Key="tm_PPESuccessfullyCreated">PPE successfully created.</v:String>
+
+    <v:String x:Key="tm_PPESuccessfullyDeleted">PPE sucessfully deleted.</v:String>
+
+    <v:String x:Key="tm_PPESuccessfullyUpdated">&gt;PPE sucessfully updated.</v:String>
+
+    <v:String x:Key="tm_MinValue">Min value</v:String>
+
+    <v:String x:Key="tm_MaxValue">Max value</v:String>
+
+    <v:String x:Key="tm_ToApplyChangesYouNeedToRestartTheProgram">To apply changes, you need to restart the program.</v:String>
 
     <!--#endregion-->
 

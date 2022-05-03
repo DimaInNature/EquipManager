@@ -1,7 +1,8 @@
 ﻿namespace EquipManager.Presentation.ViewModels.UserControls.Settings;
 
+/// <summary> Модель представления для <see cref="LanguageSettingsView"/>.</summary>
 internal sealed class LanguageSettingsViewModel
-    : BaseViewModel, ILanguageSettingsViewModel
+    : BaseViewModel, IViewModel<LanguageSettingsView>
 {
     public RelayCommand? SetRussianLanguageCommand { get; private set; }
 

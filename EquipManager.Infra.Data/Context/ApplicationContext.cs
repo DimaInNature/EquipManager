@@ -1,11 +1,15 @@
 ﻿namespace EquipManager.Infra.Data.Context;
 
+/// <summary> Контекст данных.</summary>
 public sealed class ApplicationContext : DbContext
 {
+    /// <summary> Сотрудники.</summary>
     public DbSet<Employee> Employees => Set<Employee>();
 
+    /// <summary> Таблица с размерами сотрудника.</summary>
     public DbSet<EmployeeSizeChart> EmployeeSizeCharts => Set<EmployeeSizeChart>();
 
+    /// <summary> Средство индивидуальной защиты (С.И.З.).</summary>
     public DbSet<PPE> PPEs => Set<PPE>();
 
     public ApplicationContext(DbContextOptions<ApplicationContext> options)
@@ -21,7 +25,4 @@ public sealed class ApplicationContext : DbContext
 
         base.OnModelCreating(modelBuilder);
     }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => base.OnConfiguring(optionsBuilder);
 }

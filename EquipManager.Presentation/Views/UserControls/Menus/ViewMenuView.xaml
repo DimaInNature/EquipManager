@@ -11,7 +11,7 @@
 
     <Grid>
 
-        <Grid Visibility="{Binding MenuIsVisible, Mode=TwoWay}">
+        <Grid x:Name="MenuBody">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
@@ -26,7 +26,7 @@
                 <TextBlock
                     Margin="8"
                     FontSize="28"
-                    Style="{DynamicResource BrowseTitleTextBlock}" />
+                    Text="{StaticResource t_View}" />
             </Viewbox>
 
             <Grid Grid.Row="1">
@@ -41,31 +41,35 @@
                     Grid.Column="0"
                     MaxWidth="325"
                     Margin="20"
-                    Command="{Binding ShowEmployeePageCommand}"
-                    Style="{DynamicResource BrowseEmployeButton}" />
+                    Click="EmployeeButton_Click"
+                    Content="{StaticResource t_Employee}"
+                    Style="{StaticResource c_ViewEmployeeVerticalMenuButtonStyle}" />
 
                 <Button
                     Grid.Column="1"
                     MaxWidth="325"
                     Margin="20"
-                    Command="{Binding ShowEmployeePageCommand}"
-                    Style="{DynamicResource BrowseSuitButton}" />
+                    Click="PPEButton_Click"
+                    Content="{StaticResource t_PPE}"
+                    Style="{StaticResource c_ViewPPEVerticalMenuButtonStyle}" />
 
                 <Button
                     Grid.Column="2"
                     MaxWidth="325"
                     Margin="20"
-                    Command="{Binding ShowPPEContractPageCommand}"
-                    Style="{DynamicResource BrowseContractButton}" />
+                    Click="ContractButton_Click"
+                    Content="{StaticResource t_Contract}"
+                    Style="{StaticResource c_ViewContractVerticalMenuButtonStyle}" />
 
             </Grid>
 
         </Grid>
 
         <Frame
-            Content="{Binding FrameSource, Mode=TwoWay}"
+            x:Name="MenuFrame"
+            Content="{x:Null}"
             NavigationUIVisibility="Hidden"
-            Visibility="{Binding FrameVisibility, Mode=TwoWay}" />
+            Visibility="Collapsed" />
 
     </Grid>
 

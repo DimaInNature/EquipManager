@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.PPEContracts;
 
-public partial class UpdatePPEContractView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class UpdatePPEContractView : UserControl
 {
-    private readonly IUpdatePPEContractViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IUpdatePPEContractViewModel>();
+    private readonly IViewModel<UpdatePPEContractView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<UpdatePPEContractView>>();
 
     public UpdatePPEContractView()
     {

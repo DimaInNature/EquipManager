@@ -20,12 +20,93 @@
 
         <!--#region Top-->
 
-        <Grid Grid.Row="0">
+        <TextBlock
+            Grid.Row="0"
+            Margin="10"
+            FontSize="23"
+            Text="{StaticResource t_UpdatePPE}" />
 
-            <TextBlock
-                Margin="10"
-                FontSize="23"
-                Style="{DynamicResource SuitTitleEdit}" />
+        <RadioButton
+            x:Name="ShiftButtonScroll"
+            HorizontalAlignment="Right"
+            Panel.ZIndex="1"
+            IsChecked="True">
+            <RadioButton.Style>
+                <Style BasedOn="{StaticResource c_ScrollViewRadioButtonStyle}" TargetType="RadioButton">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="true">
+                            <Setter Property="IsChecked" Value="False" />
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="False">
+                            <Setter Property="IsChecked" Value="True" />
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </RadioButton.Style>
+        </RadioButton>
+
+        <RadioButton
+            x:Name="ShiftButtonTable"
+            HorizontalAlignment="Right"
+            Panel.ZIndex="1">
+            <RadioButton.Style>
+                <Style BasedOn="{StaticResource c_TableViewRadioButtonStyle}" TargetType="RadioButton">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="true">
+                            <Setter Property="IsChecked" Value="False" />
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="False">
+                            <Setter Property="IsChecked" Value="True" />
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </RadioButton.Style>
+        </RadioButton>
+
+        <!--#endregion-->
+
+        <!--#region View-->
+
+        <Grid
+            x:Name="Table"
+            Grid.Row="1"
+            Margin="10">
+            <ListView
+                Name="ViewAllSuitsTable"
+                ItemsSource="{Binding PPEs}"
+                SelectedItem="{Binding PPE, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="{StaticResource t_PPE_Name}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding UnitOfMeasurement}" Header="{StaticResource t_PPE_UnitOfMeasurement}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding QuantityPerYear}" Header="{StaticResource t_PPE_QuantityPerYear}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Grid.Style>
+
+                <Style TargetType="Grid">
+
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+
+                    </Style.Triggers>
+
+                </Style>
+
+            </Grid.Style>
 
         </Grid>
 
@@ -33,132 +114,93 @@
 
         <!--#region Body-->
 
-        <Grid Grid.Row="1">
+        <Grid
+            x:Name="Body"
+            Grid.Row="1"
+            Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.1*" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.1*" />
+            </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="125" />
-                <RowDefinition Height="250" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <!--#region  Top-->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20"
+                Text="{StaticResource t_InfoAboutPPE}" />
 
-            <Grid Grid.Row="0" Margin="10">
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Width="200"
+                Height="40"
+                Tag="{StaticResource t_PPE_Name}"
+                Text="{Binding PPE.Name}" />
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*" />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="0.1*" />
-                </Grid.ColumnDefinitions>
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="2"
+                Width="200"
+                Height="40"
+                Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                Text="{Binding PPE.UnitOfMeasurement}" />
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.7*" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Width="200"
+                Height="40"
+                Tag="{StaticResource t_PPE_QuantityPerYear}"
+                Text="{Binding PPE.QuantityPerYear}" />
 
-                <TextBlock
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="20"
-                    Style="{DynamicResource SuitTitleChangeSuit}" />
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="200"
+                Height="40"
+                Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                Text="{Binding PPE.CertificateOfConformity}" />
 
-                <ComboBox
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Width="200"
-                    Height="40"
-                    DisplayMemberPath="Id"
-                    ItemsSource="{Binding ComboItems}"
-                    SelectedIndex="{Binding IdComboBoxSelectedIndex}"
-                    Style="{DynamicResource ModernComboBox}"
-                    Text="{Binding Id}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectionChanged">
-                            <i:InvokeCommandAction Command="{Binding IdComboBoxSelectionChanged}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </ComboBox>
+            <Button
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Width="200"
+                Height="40"
+                Command="{Binding UpdatePPECommand}"
+                Content="{StaticResource t_Update}" />
 
-            </Grid>
+            <Grid.Style>
 
-            <!--#endregion-->
+                <Style TargetType="Grid">
 
-            <!--#region Body-->
+                    <Style.Triggers>
 
-            <Grid Grid.Row="1" Margin="10">
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.1*" />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="0.1*" />
-                </Grid.ColumnDefinitions>
+                    </Style.Triggers>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.7*" />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+                </Style>
 
-                <TextBlock
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="20"
-                    Style="{DynamicResource SuitTitleInfoAboutSuit}" />
-
-                <TextBox
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Width="200"
-                    Height="40"
-                    Style="{DynamicResource SuitNameTextBox}"
-                    Text="{Binding Name}" />
-
-                <TextBox
-                    Grid.Row="1"
-                    Grid.Column="2"
-                    Width="200"
-                    Height="40"
-                    Style="{DynamicResource SuitUnitOfMeasurementTextBox}"
-                    Text="{Binding UnitOfMeasurement}" />
-
-                <TextBox
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    Width="200"
-                    Height="40"
-                    Style="{DynamicResource SuitQuantityPerYearTextBox}"
-                    Text="{Binding QuantityOfYear}" />
-
-                <TextBox
-                    Grid.Row="2"
-                    Grid.Column="2"
-                    Width="200"
-                    Height="40"
-                    Style="{DynamicResource SuitCertificateOfConformityTextBox}"
-                    Text="{Binding CertificateOfConformity}" />
-
-                <!--#endregion-->
-
-                <Button
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Width="200"
-                    Height="40"
-                    Command="{Binding EditSuitCommand}"
-                    Style="{DynamicResource ButtonEdit}" />
-
-            </Grid>
-
-            <!--#endregion-->
+            </Grid.Style>
 
         </Grid>
 

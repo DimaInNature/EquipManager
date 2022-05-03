@@ -21,7 +21,7 @@
         <WindowChrome CaptionHeight="0" ResizeBorderThickness="10" />
     </WindowChrome.WindowChrome>
 
-    <Border Background="{DynamicResource BaseColorBackground}" CornerRadius="20">
+    <Border Background="{StaticResource BaseColorBackground}" CornerRadius="20">
 
         <Grid>
 
@@ -37,19 +37,19 @@
 
             <!--#region Logo-->
 
-            <Border HorizontalAlignment="Left" Background="{DynamicResource BaseColorWindow}">
+            <Border HorizontalAlignment="Left" Background="{StaticResource BaseColorWindow}">
 
                 <Grid Margin="5,0,0,0">
 
-                    <Image Margin="15,0,120,5" Style="{DynamicResource CompanyLogoStyle}" />
+                    <Image Margin="15,0,120,5" Style="{StaticResource img_CompanyLogo}" />
 
                     <TextBlock
                         Margin="0,2,25,0"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        FontFamily="{DynamicResource BaseFontFamily}"
+                        FontFamily="{StaticResource BaseFontFamily}"
                         FontSize="22"
-                        Foreground="{DynamicResource LogoBackground}"
+                        Foreground="{StaticResource LogoBackground}"
                         Text="Телплюс" />
 
                 </Grid>
@@ -70,72 +70,72 @@
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="HomeMenuButton_Click"
-                    Command="{Binding ShowHomePageCommand}"
+                    Click="HomeButton_Click"
+                    Content="{StaticResource t_Main}"
                     FontSize="14"
                     Foreground="{StaticResource BaseColorTheme}"
                     IsChecked="True"
-                    Style="{DynamicResource HomeGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
                 <RadioButton
                     x:Name="ViewMenuButton"
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="ViewMenuButton_Click"
-                    Command="{Binding ShowViewMenuPageCommand}"
+                    Click="ViewButton_Click"
+                    Content="{StaticResource t_View}"
                     FontSize="14"
-                    Style="{DynamicResource BrowseGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
                 <RadioButton
                     x:Name="CreateMenuButton"
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="CreateMenuButton_Click"
-                    Command="{Binding ShowCreateMenuPageCommand}"
+                    Click="CreateButton_Click"
+                    Content="{StaticResource t_Create}"
                     FontSize="14"
-                    Style="{DynamicResource CreateGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
                 <RadioButton
                     x:Name="UpdateMenuButton"
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="UpdateMenuButton_Click"
-                    Command="{Binding ShowUpdateMenuPageCommand}"
+                    Click="UpdateButton_Click"
+                    Content="{StaticResource t_Update}"
                     FontSize="14"
-                    Style="{DynamicResource EditGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
                 <RadioButton
                     x:Name="DeleteMenuButton"
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="DeleteMenuButton_Click"
-                    Command="{Binding ShowDeleteMenuPageCommand}"
+                    Click="DeleteButton_Click"
+                    Content="{StaticResource t_Delete}"
                     FontSize="14"
-                    Style="{DynamicResource DeleteGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
                 <RadioButton
                     x:Name="ExportMenuButton"
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="ExportMenuButton_Click"
-                    Command="{Binding ShowExportMenuPageCommand}"
+                    Click="ExportButton_Click"
+                    Content="{StaticResource t_Export}"
                     FontSize="14"
-                    Style="{DynamicResource ExportGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
                 <RadioButton
                     x:Name="SettingsMenuButton"
                     Width="200"
                     Height="50"
                     HorizontalAlignment="Left"
-                    Click="SettingsMenuButton_Click"
-                    Command="{Binding ShowSettingsMenuPageCommand}"
+                    Click="SettingsButton_Click"
+                    Content="{StaticResource t_Settings}"
                     FontSize="14"
-                    Style="{DynamicResource SettingsGeneralMenuButton}" />
+                    Style="{StaticResource ac_MenuButtonStyle}" />
 
             </StackPanel>
 
@@ -143,7 +143,7 @@
 
             <!--#region Top-->
 
-            <Border Grid.Column="1" Background="{DynamicResource BaseColorWindow}">
+            <Border Grid.Column="1" Background="{StaticResource BaseColorWindow}">
 
                 <Grid>
 
@@ -151,19 +151,19 @@
                         x:Name="RollUpButton"
                         Margin="0,0,90,20"
                         Click="RollUpButton_Click"
-                        Style="{DynamicResource ControlButtonRollUpStyle}" />
+                        Style="{StaticResource c_ControlButtonRollUpStyle}" />
 
                     <Button
                         x:Name="MaximazedButton"
                         Margin="0,0,55,20"
                         Click="MaximazedButton_Click"
-                        Style="{DynamicResource ControlButtonMaximazedStyle}" />
+                        Style="{StaticResource c_ControlButtonMaximazedStyle}" />
 
                     <Button
                         x:Name="ExitButton"
                         Margin="0,0,20,20"
                         Click="ExitButton_Click"
-                        Style="{DynamicResource ControlButtonCloseStyle}" />
+                        Style="{StaticResource c_ControlButtonCloseStyle}" />
 
                 </Grid>
 
@@ -171,15 +171,18 @@
 
             <!--#endregion-->
 
+            <!--#region Body-->
+
             <!--#region Home-->
 
             <Grid
+                x:Name="HomeBody"
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="0,10,10,10"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Visibility="{Binding MenuIsVisible, Mode=TwoWay}">
+                Visibility="Visible">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80" />
@@ -191,7 +194,7 @@
                     Margin="10,10,0,0"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center">
-                    <TextBlock Margin="4" Style="{DynamicResource HomeTitleTextBlock}" />
+                    <TextBlock Margin="4" Text="{StaticResource t_Main}" />
                 </Viewbox>
 
                 <Grid
@@ -220,16 +223,16 @@
                             MaxWidth="700"
                             MaxHeight="400"
                             Margin="5"
-                            Click="ShowCreateMenuPageButton_Click"
-                            Command="{Binding ShowCreateEmployeePageCommand}"
-                            Style="{DynamicResource CreateEmplpoyeButton}" />
+                            Click="CreateButton_Click"
+                            Content="{StaticResource t_CreateEmployee}"
+                            ContentStringFormat="{StaticResource t_GetStartedNow}"
+                            Style="{StaticResource c_CreateEmployeeBigMenuButtonStyle}" />
 
                         <Button
                             Grid.Column="1"
                             Margin="10,5,10,5"
-                            Click="ShowCreateMenuPageButton_Click"
-                            Command="{Binding ShowCreatePPEContractPageCommand}"
-                            Style="{DynamicResource CreateContractButton}" />
+                            Content="{StaticResource t_CreateContract}"
+                            Style="{StaticResource CreateContractButtonStyle}" />
 
                     </Grid>
 
@@ -245,7 +248,7 @@
                         </Grid.RowDefinitions>
 
                         <Viewbox HorizontalAlignment="Center">
-                            <TextBlock FontFamily="{DynamicResource BaseFontFamily}" Style="{DynamicResource HomeSecondTitleTextBlock}" />
+                            <TextBlock Text="{StaticResource t_QuickActions}" />
                         </Viewbox>
 
                         <Grid Grid.Row="1">
@@ -259,30 +262,30 @@
                             <Button
                                 x:Name="ShowViewMenuPageButton"
                                 Grid.Column="0"
-                                Click="ShowViewMenuPageButton_Click"
-                                Command="{Binding ShowViewMenuPageCommand}"
-                                Style="{DynamicResource BrowseMenuButton}" />
+                                Click="ViewButton_Click"
+                                Content="{StaticResource t_View}"
+                                Style="{StaticResource c_ViewMenuButtonStyle}" />
 
                             <Button
                                 x:Name="ShowCreateMenuPageButton"
                                 Grid.Column="1"
-                                Click="ShowCreateMenuPageButton_Click"
-                                Command="{Binding ShowCreateMenuPageCommand}"
-                                Style="{DynamicResource AddMenuButton}" />
+                                Click="CreateButton_Click"
+                                Content="{StaticResource t_Create}"
+                                Style="{StaticResource c_CreateMenuButtonStyle}" />
 
                             <Button
                                 x:Name="ShowUpdateMenuPageButton"
                                 Grid.Column="2"
-                                Click="ShowUpdateMenuPageButton_Click"
-                                Command="{Binding ShowUpdateMenuPageCommand}"
-                                Style="{DynamicResource EditMenuButton}" />
+                                Click="UpdateButton_Click"
+                                Content="{StaticResource t_Update}"
+                                Style="{StaticResource c_UpdateMenuButtonStyle}" />
 
                             <Button
                                 x:Name="ShowDeleteMenuPageButton"
                                 Grid.Column="3"
-                                Click="ShowDeleteMenuPageButton_Click"
-                                Command="{Binding ShowDeleteMenuPageCommand}"
-                                Style="{DynamicResource DeleteMenuButton}" />
+                                Click="DeleteButton_Click"
+                                Content="{StaticResource t_Delete}"
+                                Style="{StaticResource c_DeleteMenuButtonStyle}" />
 
                         </Grid>
                     </Grid>
@@ -293,13 +296,124 @@
 
             <!--#endregion-->
 
+            <!--#region Export-->
+
+            <Grid
+                x:Name="ExportBody"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,10,10,10"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Visibility="Collapsed">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Viewbox
+                    Grid.Row="0"
+                    Margin="10,10,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <TextBlock Margin="4" Text="{StaticResource t_Export}" />
+                </Viewbox>
+
+                <Grid
+                    Grid.Row="1"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100*" />
+                        <RowDefinition Height="85*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Margin="0,0,0,10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+
+                        <Button
+                            MaxWidth="1100"
+                            MaxHeight="420"
+                            Margin="5,5,10,5"
+                            Click="ExportButton_Click"
+                            Content="{StaticResource t_ExportContract}"
+                            ContentStringFormat="{StaticResource t_ExportNow}"
+                            Style="{StaticResource c_ExportContractBigMenuButtonStyle}" />
+
+                    </Grid>
+
+                    <Grid
+                        Grid.Row="1"
+                        Margin="5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*" />
+                            <RowDefinition Height="200*" />
+                        </Grid.RowDefinitions>
+
+                        <Viewbox HorizontalAlignment="Center">
+                            <TextBlock Text="{StaticResource t_QuickActions}" />
+                        </Viewbox>
+
+                        <Grid Grid.Row="1">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                Grid.Column="0"
+                                Click="ViewButton_Click"
+                                Content="{StaticResource t_View}"
+                                Style="{StaticResource c_ViewMenuButtonStyle}" />
+
+                            <Button
+                                Grid.Column="1"
+                                Click="CreateButton_Click"
+                                Content="{StaticResource t_Create}"
+                                Style="{StaticResource c_CreateMenuButtonStyle}" />
+
+                            <Button
+                                Grid.Column="2"
+                                Click="UpdateButton_Click"
+                                Content="{StaticResource t_Update}"
+                                Style="{StaticResource c_UpdateMenuButtonStyle}" />
+
+                            <Button
+                                Grid.Column="3"
+                                Click="DeleteButton_Click"
+                                Content="{StaticResource t_Delete}"
+                                Style="{StaticResource c_DeleteMenuButtonStyle}" />
+
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+            <!--#endregion-->
+
+            <!--#endregion-->
+
             <Frame
+                x:Name="MenuFrame"
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="0,10,25,10"
-                Content="{Binding FrameSource, Mode=TwoWay}"
+                Content="{x:Null}"
                 NavigationUIVisibility="Hidden"
-                Visibility="{Binding FrameVisibility, Mode=TwoWay}" />
+                Visibility="Collapsed" />
 
         </Grid>
 

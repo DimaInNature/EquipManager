@@ -28,7 +28,125 @@
                 VerticalAlignment="Center"
                 FontSize="28"
                 IsHitTestVisible="False"
-                Style="{DynamicResource EmployeTitleDelete}" />
+                Text="{StaticResource t_DeleteEmployee}" />
+
+            <RadioButton
+                x:Name="ShiftButtonScroll"
+                HorizontalAlignment="Right"
+                Panel.ZIndex="1"
+                IsChecked="True">
+                <RadioButton.Style>
+                    <Style BasedOn="{StaticResource c_ScrollViewRadioButtonStyle}" TargetType="RadioButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="True">
+                                <Setter Property="IsChecked" Value="False" />
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="False">
+                                <Setter Property="IsChecked" Value="True" />
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RadioButton.Style>
+            </RadioButton>
+
+            <RadioButton
+                x:Name="ShiftButtonTable"
+                HorizontalAlignment="Right"
+                Panel.ZIndex="1">
+                <RadioButton.Style>
+                    <Style BasedOn="{StaticResource c_TableViewRadioButtonStyle}" TargetType="RadioButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="True">
+                                <Setter Property="IsChecked" Value="False" />
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="False">
+                                <Setter Property="IsChecked" Value="True" />
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RadioButton.Style>
+            </RadioButton>
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <!--#region View-->
+
+        <Grid x:Name="TableGrid" Grid.Row="1">
+
+            <ListView ItemsSource="{Binding Employees}" SelectedItem="{Binding Employee, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+
+                        <!--#region Id-->
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+
+                        <!--#endregion-->
+
+                        <!--#region Personal data-->
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="{StaticResource t_Employee_Name}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Surname}" Header="{StaticResource t_Employee_Surname}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Patronymic}" Header="{StaticResource t_Employee_Patronymic}" />
+
+                        <!--#endregion-->
+
+                        <!--#region Corporate data-->
+
+                        <GridViewColumn DisplayMemberBinding="{Binding StructuralDivision}" Header="{StaticResource t_Employee_StructuralDivision}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Profession}" Header="{StaticResource t_Employee_Profession}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfEmployment}" Header="{StaticResource t_Employee_DateOfEmployment}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfProfessionChange}" Header="{StaticResource t_Employee_DateOfProfessionChange}" />
+
+                        <!--#endregion-->
+
+                        <!--#region Physical data-->
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Height}" Header="{StaticResource t_Employee_Height}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Gender}" Header="{StaticResource t_Employee_Gender}" />
+
+                        <!--#endregion-->
+
+                        <!--#region Clothing size-->
+
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Cloth}" Header="{StaticResource t_SizeChart_Cloth}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Glove}" Header="{StaticResource t_SizeChart_Glove}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.GazMask}" Header="{StaticResource t_SizeChart_GazMask}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Sleeve}" Header="{StaticResource t_SizeChart_Sleeve}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Headdress}" Header="{StaticResource t_SizeChart_Headdress}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Respirator}" Header="{StaticResource t_SizeChart_Respirator}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Shoes}" Header="{StaticResource t_SizeChart_Shoes}" />
+
+                        <!--#endregion-->
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Grid.Style>
+
+                <Style TargetType="Grid">
+
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+
+                    </Style.Triggers>
+
+                </Style>
+
+            </Grid.Style>
 
         </Grid>
 
@@ -36,67 +154,23 @@
 
         <!--#region Body-->
 
-        <ScrollViewer Grid.Row="1" Background="Transparent">
+        <ScrollViewer
+            x:Name="Body"
+            Grid.Row="1"
+            Background="Transparent">
 
             <Grid>
+
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="120" />
                     <RowDefinition Height="200" />
-                    <RowDefinition Height="250" />
+                    <RowDefinition Height="200" />
                     <RowDefinition Height="125" />
                     <RowDefinition Height="300" />
                 </Grid.RowDefinitions>
 
-                <!--#region Choice-->
-
-                <Grid Grid.Row="0" Margin="10">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.1*" />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="0.1*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.7*" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="20"
-                        Style="{DynamicResource EmployeTitleChoiceEmploye}" />
-
-                    <ComboBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        Width="200"
-                        Height="40"
-                        DisplayMemberPath="Id"
-                        ItemsSource="{Binding ComboItems}"
-                        SelectedIndex="{Binding IdComboBoxSelectedIndex}"
-                        Style="{DynamicResource ModernComboBox}"
-                        Text="{Binding Id}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding IdComboBoxSelectionChanged}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </ComboBox>
-
-                </Grid>
-
-                <!--#endregion-->
-
                 <!--#region Personal Data-->
 
-                <Grid Grid.Row="1" Margin="10">
+                <Grid Grid.Row="0" Margin="10">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.1*" />
@@ -119,7 +193,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         FontSize="20"
-                        Style="{DynamicResource EmployeTitlePersonalData}" />
+                        Text="{StaticResource t_Private}" />
 
                     <TextBox
                         Grid.Row="1"
@@ -127,8 +201,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeNameTextBox}"
-                        Text="{Binding Name}" />
+                        Tag="{StaticResource t_Employee_Name}"
+                        Text="{Binding Employee.Name}" />
 
                     <TextBox
                         Grid.Row="2"
@@ -136,8 +210,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSurnameTextBox}"
-                        Text="{Binding Surname}" />
+                        Tag="{StaticResource t_Employee_Surname}"
+                        Text="{Binding Employee.Surname}" />
 
                     <TextBox
                         Grid.Row="1"
@@ -145,23 +219,80 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployePatronymicTextBox}"
-                        Text="{Binding Patronymic}" />
-
-                    <TextBox
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Width="200"
-                        Height="40"
-                        IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeGenderTextBox}"
-                        Text="{Binding Gender}" />
+                        Tag="{StaticResource t_Employee_Patronymic}"
+                        Text="{Binding Employee.Patronymic}" />
 
                 </Grid>
 
                 <!--#endregion-->
 
                 <!--#region Corporate Data-->
+
+                <Grid Grid.Row="1" Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.7*" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontSize="20"
+                        Text="{StaticResource t_Company}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_Employee_StructuralDivision}"
+                        Text="{Binding Employee.StructuralDivision}" />
+
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_Employee_Profession}"
+                        Text="{Binding Employee.Profession}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_Employee_DateOfEmployment}"
+                        Text="{Binding Employee.DateOfEmployment}" />
+
+                    <TextBox
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_Employee_DateOfProfessionChange}"
+                        Text="{Binding Employee.DateOfProfessionChange}" />
+
+                </Grid>
+
+                <!--#endregion-->
+
+                <!--#region Physical data-->
 
                 <Grid Grid.Row="2" Margin="10">
 
@@ -175,8 +306,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.7*" />
                         <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
                     </Grid.RowDefinitions>
 
                     <TextBlock
@@ -186,7 +315,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         FontSize="20"
-                        Style="{DynamicResource EmployeTitleCorporateData}" />
+                        Text="{StaticResource t_PhysicData}" />
 
                     <TextBox
                         Grid.Row="1"
@@ -194,26 +323,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeTabelNumberTextBox}"
-                        Text="{Binding TabelNumber}" />
-
-                    <TextBox
-                        Grid.Row="2"
-                        Grid.Column="1"
-                        Width="200"
-                        Height="40"
-                        IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeStructuralDivisionTextBox}"
-                        Text="{Binding StructuralDivision}" />
-
-                    <TextBox
-                        Grid.Row="3"
-                        Grid.Column="1"
-                        Width="200"
-                        Height="40"
-                        IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeProfessionTextBox}"
-                        Text="{Binding Profession}" />
+                        Tag="{StaticResource t_Employee_Height}"
+                        Text="{Binding Employee.Height}" />
 
                     <TextBox
                         Grid.Row="1"
@@ -221,23 +332,14 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeDateOfEmploymentTextBox}"
-                        Text="{Binding DateOfEmployment}" />
-
-                    <TextBox
-                        Grid.Row="2"
-                        Grid.Column="2"
-                        Width="200"
-                        Height="40"
-                        IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeDateOfProfessionChangeTextBox}"
-                        Text="{Binding DateOfProfessionChange}" />
+                        Tag="{StaticResource t_Employee_Gender}"
+                        Text="{Binding Employee.Gender}" />
 
                 </Grid>
 
                 <!--#endregion-->
 
-                <!--#region Physical data-->
+                <!--#region Clothing size-->
 
                 <Grid Grid.Row="3" Margin="10">
 
@@ -251,44 +353,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.7*" />
                         <RowDefinition />
-                    </Grid.RowDefinitions>
-
-                    <TextBlock
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="2"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="20"
-                        Style="{DynamicResource EmployeTitlePhysicalData}" />
-
-                    <TextBox
-                        Grid.Row="1"
-                        Grid.Column="1"
-                        Width="200"
-                        Height="40"
-                        IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeHeightTextBox}"
-                        Text="{Binding Height}" />
-
-                </Grid>
-
-                <!--#endregion-->
-
-                <!--#region Clothing size-->
-
-                <Grid Grid.Row="4" Margin="10">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.1*" />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="0.1*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.7*" />
-                        <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
@@ -302,7 +366,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         FontSize="20"
-                        Style="{DynamicResource EmployeTitleClothingSize}" />
+                        Text="{StaticResource t_Cloth}" />
 
                     <TextBox
                         Grid.Row="1"
@@ -310,8 +374,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeClothTextBox}"
-                        Text="{Binding SizeCloth}" />
+                        Tag="{StaticResource t_SizeChart_ClothSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.Cloth}" />
 
                     <TextBox
                         Grid.Row="2"
@@ -319,8 +383,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeGazMaskTextBox}"
-                        Text="{Binding SizeGazMask}" />
+                        Tag="{StaticResource t_SizeChart_GazMaskSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.GazMask}" />
 
                     <TextBox
                         Grid.Row="3"
@@ -328,8 +392,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeSleeveTextBox}"
-                        Text="{Binding SizeSleeve}" />
+                        Tag="{StaticResource t_SizeChart_SleeveSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.Sleeve}" />
 
                     <TextBox
                         Grid.Row="1"
@@ -337,8 +401,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeHeaddressTextBox}"
-                        Text="{Binding SizeHeaddress}" />
+                        Tag="{StaticResource t_SizeChart_HeaddressSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.Headdress}" />
 
                     <TextBox
                         Grid.Row="2"
@@ -346,8 +410,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeRespiratorTextBox}"
-                        Text="{Binding SizeRespirator}" />
+                        Tag="{StaticResource t_SizeChart_RespiratorSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.Respirator}" />
 
                     <TextBox
                         Grid.Row="3"
@@ -355,8 +419,8 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeGloveTextBox}"
-                        Text="{Binding SizeGlove}" />
+                        Tag="{StaticResource t_SizeChart_GloveSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.Glove}" />
 
                     <TextBox
                         Grid.Row="4"
@@ -364,14 +428,33 @@
                         Width="200"
                         Height="40"
                         IsHitTestVisible="False"
-                        Style="{DynamicResource EmployeSizeShoesTextBox}"
-                        Text="{Binding SizeShoes}" />
+                        Tag="{StaticResource t_SizeChart_ShoesSize}"
+                        Text="{Binding Employee.EmployeeSizeChart.Shoes}" />
 
                 </Grid>
 
                 <!--#endregion-->
 
             </Grid>
+
+            <ScrollViewer.Style>
+
+                <Style TargetType="ScrollViewer">
+
+                    <Style.Triggers>
+
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+
+                    </Style.Triggers>
+
+                </Style>
+
+            </ScrollViewer.Style>
 
         </ScrollViewer>
 
@@ -384,8 +467,8 @@
             <Button
                 Width="200"
                 Height="40"
-                Command="{Binding DeleteEmployeCommand}"
-                Style="{DynamicResource ButtonDelete}" />
+                Command="{Binding DeleteEmployeeCommand}"
+                Content="{StaticResource t_Delete}" />
 
         </Grid>
 

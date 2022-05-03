@@ -22,7 +22,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontSize="28"
-                Style="{DynamicResource EmployeTitleBrowse}" />
+                Text="{StaticResource t_ViewEmployee}" />
 
             <RadioButton
                 x:Name="ShiftButtonScroll"
@@ -30,7 +30,7 @@
                 Panel.ZIndex="1"
                 IsChecked="True">
                 <RadioButton.Style>
-                    <Style BasedOn="{StaticResource BrowseRadioButtonScrollStyle}" TargetType="RadioButton">
+                    <Style BasedOn="{StaticResource c_ScrollViewRadioButtonStyle}" TargetType="RadioButton">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ElementName=ShiftButtonTable, Path=IsChecked}" Value="True">
                                 <Setter Property="IsChecked" Value="False" />
@@ -50,7 +50,7 @@
                 HorizontalAlignment="Right"
                 Panel.ZIndex="1">
                 <RadioButton.Style>
-                    <Style BasedOn="{StaticResource BrowseRadioButtonTableStyle}" TargetType="RadioButton">
+                    <Style BasedOn="{StaticResource c_TableViewRadioButtonStyle}" TargetType="RadioButton">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ElementName=ShiftButtonScroll, Path=IsChecked}" Value="True">
                                 <Setter Property="IsChecked" Value="False" />
@@ -72,18 +72,35 @@
             Grid.Row="1"
             Background="Transparent">
             <StackPanel>
-                <StackPanel Margin="20,0" Orientation="Vertical">
-                    <ItemsControl x:Name="ListViewEmployessItemsControl" ItemsSource="{Binding Employees}">
+                <StackPanel Margin="10,0" Orientation="Vertical">
+                    <ItemsControl
+                        ItemsSource="{Binding Employees}"
+                        VirtualizingPanel.IsVirtualizing="True"
+                        VirtualizingPanel.VirtualizationMode="Recycling">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
 
-                                <Viewbox Margin="10" HorizontalAlignment="Left">
-                                    <Border
-                                        Margin="10"
-                                        Background="{StaticResource TemplateBackground}"
-                                        CornerRadius="20">
+                                <Border
+                                    Width="450"
+                                    Height="250"
+                                    Margin="0,10,10,0"
+                                    HorizontalAlignment="Center"
+                                    Background="{StaticResource BaseColorBackground}"
+                                    BorderBrush="{StaticResource TemplateBackground}"
+                                    BorderThickness="2"
+                                    CornerRadius="20">
 
-                                        <Grid>
+                                    <Grid>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="35" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+
+                                        <!--#region Menu-->
+
+                                        <Grid Grid.Row="0">
+
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
@@ -91,302 +108,797 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
 
-                                            <!--#region Image-->
+                                            <RadioButton
+                                                x:Name="PrivateRadioButton"
+                                                Grid.Column="0"
+                                                Content="Private"
+                                                Foreground="{StaticResource BaseColorTheme}"
+                                                IsChecked="True"
+                                                ToolTip="{StaticResource t_SelectTheTabWithPersonalData}">
 
-                                            <Grid Grid.Column="0">
+                                                <RadioButton.Style>
+                                                    <Style BasedOn="{StaticResource ac_MenuButtonStyle}" TargetType="RadioButton">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </RadioButton.Style>
 
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="3*" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
+                                            </RadioButton>
 
-                                                <Grid Grid.Row="0" VerticalAlignment="Center">
-                                                    <Image RenderOptions.BitmapScalingMode="Fant">
-                                                        <Image.Source>
-                                                            <BitmapImage
-                                                                CacheOption="OnLoad"
-                                                                DecodePixelHeight="240"
-                                                                UriSource="/Content/Images/TemplateImages/ManFace.png" />
-                                                        </Image.Source>
-                                                    </Image>
-                                                </Grid>
+                                            <RadioButton
+                                                x:Name="CompanyRadioButton"
+                                                Grid.Column="1"
+                                                Content="Company"
+                                                IsChecked="False"
+                                                ToolTip="{StaticResource t_SelectTheTabWithCorporateData}">
+                                                <RadioButton.Style>
+                                                    <Style BasedOn="{StaticResource ac_MenuButtonStyle}" TargetType="RadioButton">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </RadioButton.Style>
+                                            </RadioButton>
 
-                                                <Grid
-                                                    Grid.Row="1"
-                                                    Margin="0,0,0,50"
-                                                    VerticalAlignment="Top">
-                                                    <TextBlock
-                                                        HorizontalAlignment="Center"
-                                                        FontSize="22"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding Id, StringFormat='Number: {0}'}"
-                                                        TextWrapping="Wrap" />
-                                                </Grid>
+                                            <RadioButton
+                                                x:Name="PhysicalRadioButton"
+                                                Grid.Column="2"
+                                                Content="Physic"
+                                                IsChecked="False"
+                                                ToolTip="{StaticResource t_SelectTheTabWithPhysicalData}">
+                                                <RadioButton.Style>
+                                                    <Style BasedOn="{StaticResource ac_MenuButtonStyle}" TargetType="RadioButton">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </RadioButton.Style>
+                                            </RadioButton>
 
-                                            </Grid>
-
-                                            <!--#endregion-->
-
-                                            <!--#region Personal data-->
-
-                                            <Grid Grid.Column="1">
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock
-                                                    Grid.Row="0"
-                                                    Margin="0,10,0,0"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="15"
-                                                    Foreground="{StaticResource TemplateForeground}"
-                                                    Style="{DynamicResource EmployeTitlePersonalData}" />
-
-                                                <Grid Grid.Row="1" Margin="0,10,0,0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                    </Grid.RowDefinitions>
-
-                                                    <TextBlock
-                                                        Grid.Row="0"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeNameTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="1"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSurnameTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="2"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployePatronymicTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="3"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeGenderTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="4"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeHeightTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                </Grid>
-
-                                            </Grid>
-
-                                            <!--#endregion-->
-
-                                            <!--#region Corporate data-->
-
-                                            <Grid Grid.Column="2">
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock
-                                                    Grid.Row="0"
-                                                    Margin="5,10"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="15"
-                                                    Foreground="{StaticResource TemplateForeground}"
-                                                    Style="{DynamicResource EmployeTitleCorporateData}" />
-
-                                                <Grid Grid.Row="1">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                    </Grid.RowDefinitions>
-
-                                                    <TextBlock
-                                                        Grid.Row="0"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeTabelNumberTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="1"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeStructuralDivisionTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="2"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding StructuralDivision}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="3"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeProfessionTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="4"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding Profession}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="5"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeDateOfEmploymentTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="6"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding DateOfEmployment}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="7"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeDateOfProfessionChangeTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="8"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{StaticResource TemplateTextBlockBase}"
-                                                        Text="{Binding DateOfProfessionChange}"
-                                                        TextWrapping="Wrap" />
-
-                                                </Grid>
-
-                                            </Grid>
-
-                                            <!--#endregion-->
-
-                                            <!--#region Clothing size-->
-
-                                            <Grid Grid.Column="3">
-
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition />
-                                                </Grid.RowDefinitions>
-
-                                                <TextBlock
-                                                    Grid.Row="0"
-                                                    Margin="5,10"
-                                                    HorizontalAlignment="Center"
-                                                    FontSize="15"
-                                                    Foreground="{StaticResource TemplateForeground}"
-                                                    Style="{DynamicResource EmployeTitleClothingSize}" />
-
-                                                <Grid Grid.Row="1">
-
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                        <RowDefinition />
-                                                    </Grid.RowDefinitions>
-
-                                                    <TextBlock
-                                                        Grid.Row="0"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeClothTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="1"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeGloveTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="2"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeGazMaskTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="3"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeSleeveTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="4"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeHeaddressTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="5"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeRespiratorTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                    <TextBlock
-                                                        Grid.Row="6"
-                                                        Margin="5,0"
-                                                        FontSize="13"
-                                                        Style="{DynamicResource EmployeSizeShoesTextBlock}"
-                                                        TextWrapping="Wrap" />
-
-                                                </Grid>
-
-                                            </Grid>
-
-                                            <!--#endregion-->
+                                            <RadioButton
+                                                x:Name="ClothRadioButton"
+                                                Grid.Column="3"
+                                                Content="Cloth"
+                                                IsChecked="False"
+                                                ToolTip="{StaticResource t_SelectTheTabWithSizeTable}">
+                                                <RadioButton.Style>
+                                                    <Style BasedOn="{StaticResource ac_MenuButtonStyle}" TargetType="RadioButton">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                                <Setter Property="IsChecked" Value="False" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </RadioButton.Style>
+                                            </RadioButton>
 
                                         </Grid>
 
-                                    </Border>
+                                        <!--#endregion-->
 
-                                </Viewbox>
+                                        <!--#region Private-->
+
+                                        <Border
+                                            Grid.Row="1"
+                                            Background="{StaticResource TemplateBackground}"
+                                            BorderBrush="{StaticResource BaseColorBackground}"
+                                            BorderThickness="5"
+                                            CornerRadius="15"
+                                            ToolTip="{StaticResource t_HoverOverTheParameterToGetAHint}">
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition Height="50" />
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_Name}"
+                                                    ToolTip="{StaticResource t_NameEmployee}" />
+
+                                                <TextBox
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Name}"
+                                                    ToolTip="{StaticResource t_NameEmployee}" />
+
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_Surname}"
+                                                    ToolTip="{StaticResource t_SurnameEmployee}" />
+
+                                                <TextBox
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Surname}"
+                                                    ToolTip="{StaticResource t_SurnameEmployee}" />
+
+                                                <TextBlock
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_Patronymic}"
+                                                    ToolTip="{StaticResource t_PatronymicEmployee}" />
+
+                                                <TextBox
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Patronymic}"
+                                                    ToolTip="{StaticResource t_PatronymicEmployee}" />
+
+                                                <TextBlock
+                                                    Grid.Row="4"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_TabelNumber}"
+                                                    ToolTip="{StaticResource t_TheEmployeesUniqueServiceNumber}" />
+
+                                                <TextBox
+                                                    Grid.Row="4"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Id}"
+                                                    ToolTip="{StaticResource t_TheEmployeesUniqueServiceNumber}" />
+
+                                                <!--#region Top-->
+
+                                                <Grid
+                                                    Grid.Row="5"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="5">
+
+                                                    <TextBlock
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{StaticResource TemplateForeground}"
+                                                        Text="{StaticResource t_PrivateData}" />
+
+                                                </Grid>
+
+                                                <!--#endregion-->
+
+                                            </Grid>
+
+                                            <Border.Style>
+
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+
+                                            </Border.Style>
+                                        </Border>
+
+                                        <!--#endregion-->
+
+                                        <!--#region Company-->
+
+                                        <Border
+                                            Grid.Row="1"
+                                            Background="{StaticResource TemplateBackground}"
+                                            BorderBrush="{StaticResource BaseColorBackground}"
+                                            BorderThickness="5"
+                                            CornerRadius="20"
+                                            ToolTip="{StaticResource t_HoverOverTheParameterToGetAHint}">
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition Height="50" />
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_StructuralDivision}"
+                                                    ToolTip="{StaticResource t_TheDepartmentInWhichTheEmployeeWorks}" />
+
+                                                <TextBox
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding StructuralDivision}"
+                                                    ToolTip="{StaticResource t_TheDepartmentInWhichTheEmployeeWorks}" />
+
+                                                <TextBlock
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_Profession}"
+                                                    ToolTip="{StaticResource t_ThePositionWhereTheEmployeeWorks}" />
+
+                                                <TextBox
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Profession}"
+                                                    ToolTip="{StaticResource t_ThePositionWhereTheEmployeeWorks}" />
+
+                                                <!--#region Top-->
+
+                                                <Grid
+                                                    Grid.Row="5"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="5">
+
+                                                    <TextBlock
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{StaticResource TemplateForeground}"
+                                                        Text="{StaticResource t_Company}" />
+
+                                                </Grid>
+
+                                                <!--#endregion-->
+
+                                            </Grid>
+
+                                            <Border.Style>
+
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+
+                                            </Border.Style>
+                                        </Border>
+
+                                        <!--#endregion-->
+
+                                        <!--#region Physical-->
+
+                                        <Border
+                                            Grid.Row="1"
+                                            Background="{StaticResource TemplateBackground}"
+                                            BorderBrush="{StaticResource BaseColorBackground}"
+                                            BorderThickness="5"
+                                            CornerRadius="15"
+                                            ToolTip="{StaticResource t_HoverOverTheParameterToGetAHint}">
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition Height="50" />
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_Height}"
+                                                    ToolTip="{StaticResource t_TheEmployeesHeightInCentimeters}" />
+
+                                                <TextBox
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Height}"
+                                                    ToolTip="{StaticResource t_TheEmployeesHeightInCentimeters}" />
+
+                                                <TextBlock
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="15"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_Employee_Gender}"
+                                                    ToolTip="{StaticResource t_TheGenderOfTheEmployee}" />
+
+                                                <TextBox
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="3"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding Profession}"
+                                                    ToolTip="{StaticResource t_TheGenderOfTheEmployee}" />
+
+                                                <!--#region Top-->
+
+                                                <Grid
+                                                    Grid.Row="5"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="5">
+
+                                                    <TextBlock
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{StaticResource TemplateForeground}"
+                                                        Text="{StaticResource t_PhysicData}" />
+
+                                                </Grid>
+
+                                                <!--#endregion-->
+
+                                            </Grid>
+
+                                            <Border.Style>
+
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+
+                                            </Border.Style>
+                                        </Border>
+
+                                        <!--#endregion-->
+
+                                        <!--#region Cloth-->
+
+                                        <Border
+                                            Grid.Row="1"
+                                            Background="{StaticResource TemplateBackground}"
+                                            BorderBrush="{StaticResource BaseColorBackground}"
+                                            BorderThickness="5"
+                                            CornerRadius="20"
+                                            ToolTip="{StaticResource t_HoverOverTheParameterToGetAHint}">
+
+                                            <Grid>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition Height="50" />
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_Cloth}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesClothes}" />
+
+                                                <TextBox
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.Cloth}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesClothes}" />
+
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_Headdress}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesHeaddress}" />
+
+                                                <TextBox
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.Headdress}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesHeaddress}" />
+
+                                                <TextBlock
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_GazMask}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesGazMask}" />
+
+                                                <TextBox
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.GazMask}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesGazMask}" />
+
+                                                <TextBlock
+                                                    Grid.Row="4"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_Respirator}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesRespiratorMask}" />
+
+                                                <TextBox
+                                                    Grid.Row="4"
+                                                    Grid.Column="1"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.Respirator}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesRespiratorMask}" />
+
+                                                <TextBlock
+                                                    Grid.Row="1"
+                                                    Grid.Column="2"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_Sleeve}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesSleeve}" />
+
+                                                <TextBox
+                                                    Grid.Row="1"
+                                                    Grid.Column="3"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.Sleeve}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesSleeve}" />
+
+                                                <TextBlock
+                                                    Grid.Row="2"
+                                                    Grid.Column="2"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_Glove}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesGlove}" />
+
+                                                <TextBox
+                                                    Grid.Row="2"
+                                                    Grid.Column="3"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.Glove}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesGlove}" />
+
+                                                <TextBlock
+                                                    Grid.Row="3"
+                                                    Grid.Column="2"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    Text="{StaticResource t_SizeChart_Shoes}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesShoes}" />
+
+                                                <TextBox
+                                                    Grid.Row="3"
+                                                    Grid.Column="3"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Cursor="Help"
+                                                    FontFamily="{StaticResource BaseFontFamily}"
+                                                    FontSize="13"
+                                                    Foreground="{StaticResource TemplateForeground}"
+                                                    IsReadOnly="True"
+                                                    Text="{Binding EmployeeSizeChart.Shoes}"
+                                                    ToolTip="{StaticResource t_TheSizeOfTheEmployeesShoes}" />
+
+                                                <!--#region Top-->
+
+                                                <Grid
+                                                    Grid.Row="5"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="5">
+
+                                                    <TextBlock
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Foreground="{DynamicResource TemplateForeground}"
+                                                        Text="{StaticResource t_SizeChart}" />
+
+                                                </Grid>
+
+                                                <!--#endregion-->
+
+                                            </Grid>
+
+                                            <Border.Style>
+
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=PrivateRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=CompanyRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=PhysicalRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Collapsed" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ElementName=ClothRadioButton, Path=IsChecked}" Value="true">
+                                                            <Setter Property="Visibility" Value="Visible" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+
+                                            </Border.Style>
+                                        </Border>
+
+                                        <!--#endregion-->
+
+                                    </Grid>
+
+                                </Border>
 
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -422,50 +934,49 @@
 
         <Grid x:Name="TableGrid" Grid.Row="1">
 
-            <ListView Name="ViewAllEmployesTable" ItemsSource="{Binding Employees}">
+            <ListView ItemsSource="{Binding Employees}">
                 <ListView.View>
                     <GridView>
 
                         <!--#region Id-->
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Id}" HeaderContainerStyle="{DynamicResource EmployeIdGridViewItem}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
 
                         <!--#endregion-->
 
                         <!--#region Personal data-->
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" HeaderContainerStyle="{DynamicResource EmployeNameGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Surname}" HeaderContainerStyle="{DynamicResource EmployeSurnameGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Patronymic}" HeaderContainerStyle="{DynamicResource EmployePatronymicGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Gender}" HeaderContainerStyle="{DynamicResource EmployeGenderGridViewItem}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="{StaticResource t_Employee_Name}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Surname}" Header="{StaticResource t_Employee_Surname}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Patronymic}" Header="{StaticResource t_Employee_Patronymic}" />
 
                         <!--#endregion-->
 
                         <!--#region Corporate data-->
 
-                        <GridViewColumn DisplayMemberBinding="{Binding TabelNumber}" HeaderContainerStyle="{DynamicResource EmployeTabelNumberGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding StructuralDivision}" HeaderContainerStyle="{DynamicResource EmployeStructuralDivisionGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Profession}" HeaderContainerStyle="{DynamicResource EmployeProfessionGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding DateOfEmployment}" HeaderContainerStyle="{DynamicResource EmployeDateOfEmploymentGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding DateOfProfessionChange}" HeaderContainerStyle="{DynamicResource EmployeDateOfProfessionGridViewItem}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding StructuralDivision}" Header="{StaticResource t_Employee_StructuralDivision}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Profession}" Header="{StaticResource t_Employee_Profession}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfEmployment}" Header="{StaticResource t_Employee_DateOfEmployment}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfProfessionChange}" Header="{StaticResource t_Employee_DateOfProfessionChange}" />
 
                         <!--#endregion-->
 
                         <!--#region Physical data-->
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Height}" HeaderContainerStyle="{DynamicResource EmployeHeightGridViewItem}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Height}" Header="{StaticResource t_Employee_Height}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Gender}" Header="{StaticResource t_Employee_Gender}" />
 
                         <!--#endregion-->
 
                         <!--#region Clothing size-->
 
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeCloth}" HeaderContainerStyle="{DynamicResource EmployeSizeClothGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeGlove}" HeaderContainerStyle="{DynamicResource EmployeSizeGloveGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeGazMask}" HeaderContainerStyle="{DynamicResource EmployeSizeGazMaskGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeSleeve}" HeaderContainerStyle="{DynamicResource EmployeSizeSleeveGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeHeaddress}" HeaderContainerStyle="{DynamicResource EmployeSizeHeaddressGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeRespirator}" HeaderContainerStyle="{DynamicResource EmployeSizeRespiratorGridViewItem}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding SizeShoes}" HeaderContainerStyle="{DynamicResource EmployeSizeShoesGridViewItem}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Cloth}" Header="{StaticResource t_SizeChart_Cloth}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Glove}" Header="{StaticResource t_SizeChart_Glove}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.GazMask}" Header="{StaticResource t_SizeChart_GazMask}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Sleeve}" Header="{StaticResource t_SizeChart_Sleeve}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Headdress}" Header="{StaticResource t_SizeChart_Headdress}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Respirator}" Header="{StaticResource t_SizeChart_Respirator}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding EmployeeSizeChart.Shoes}" Header="{StaticResource t_SizeChart_Shoes}" />
 
                         <!--#endregion-->
 

@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.Employees;
 
-public partial class DeleteEmployeeView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class DeleteEmployeeView : UserControl
 {
-    private readonly IDeleteEmployeeViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IDeleteEmployeeViewModel>();
+    private readonly IViewModel<DeleteEmployeeView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<DeleteEmployeeView>>();
 
     public DeleteEmployeeView()
     {

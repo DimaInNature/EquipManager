@@ -1,14 +1,15 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.Settings;
 
-public partial class LanguageSettingsView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class LanguageSettingsView : UserControl
 {
-    private readonly ILanguageSettingsViewModel? _viewModel = (Application.Current as App)?
-       .ServiceProvider?.GetService<ILanguageSettingsViewModel>();
+    private readonly IViewModel<LanguageSettingsView>? _viewModel = (Application.Current as App)?
+       .ServiceProvider?.GetService<IViewModel<LanguageSettingsView>>();
 
     public LanguageSettingsView()
     {
         InitializeComponent();
 
-        DataContext = _viewModel ?? throw new ViewModelNotFoundException(nameof(ApplicationSettingsViewModel));
+        DataContext = _viewModel ?? throw new ViewModelNotFoundException(nameof(LanguageSettingsViewModel));
     }
 }

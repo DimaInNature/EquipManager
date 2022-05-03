@@ -1,1373 +1,227 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <!--#region Grids-->
-
-    <!--#region Base-->
-
-    <Style
-        x:Key="TemplateTextBlockBase"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Foreground" Value="{StaticResource TemplateForeground}" />
-        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Home Grid-->
-
-    <Style
-        x:Key="HomeTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Главная" />
-    </Style>
-
-    <Style
-        x:Key="HomeSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Быстрые действия" />
-    </Style>
-
-    <Style
-        x:Key="CreateEmplpoyeButton"
-        BasedOn="{StaticResource CreateEmplpoyeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Добавьте сотрудника&#10;для редактирования" />
-        <Setter Property="ContentStringFormat" Value="Начните сейчас!" />
-    </Style>
-
-    <Style
-        x:Key="CreateContractButton"
-        BasedOn="{StaticResource CreateContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Создайте документ!" />
-    </Style>
-
-    <Style
-        x:Key="BrowseMenuButton"
-        BasedOn="{StaticResource BrowseMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Просмотреть" />
-    </Style>
-
-    <Style
-        x:Key="AddMenuButton"
-        BasedOn="{StaticResource AddMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Создать" />
-    </Style>
-
-    <Style
-        x:Key="EditMenuButton"
-        BasedOn="{StaticResource EditMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Изменить" />
-    </Style>
-
-    <Style
-        x:Key="DeleteMenuButton"
-        BasedOn="{StaticResource DeleteMenuButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Удалить" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse Grid-->
-
-    <Style
-        x:Key="BrowseTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Просмотр" />
-    </Style>
-
-    <Style
-        x:Key="BrowseEmployeButton"
-        BasedOn="{StaticResource BrowseEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сотрудник" />
-    </Style>
-
-    <Style
-        x:Key="BrowseSuitButton"
-        BasedOn="{StaticResource BrowseSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="СИЗ" />
-    </Style>
-
-    <Style
-        x:Key="BrowseContractButton"
-        BasedOn="{StaticResource BrowseContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Документы" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Create Grid-->
-
-    <Style
-        x:Key="CreateTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Создать" />
-    </Style>
-
-    <Style
-        x:Key="CreateEmployeButton"
-        BasedOn="{StaticResource CreateEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сотрудник" />
-    </Style>
-
-    <Style
-        x:Key="CreateSuitButton"
-        BasedOn="{StaticResource CreateSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="СИЗ" />
-    </Style>
-
-    <Style
-        x:Key="CreateContractButton2"
-        BasedOn="{StaticResource CreateContractButtonStyle2}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Документ" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit Grid-->
-
-    <Style
-        x:Key="EditTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Редактировать" />
-    </Style>
-
-    <Style
-        x:Key="EditEmployeButton"
-        BasedOn="{StaticResource EditEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сотрудник" />
-    </Style>
-
-    <Style
-        x:Key="EditSuitButton"
-        BasedOn="{StaticResource EditSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="СИЗ" />
-    </Style>
-
-    <Style
-        x:Key="EditContractButton"
-        BasedOn="{StaticResource EditContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Документ" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete Grid-->
-
-    <Style
-        x:Key="DeleteTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Удалить" />
-    </Style>
-
-    <Style
-        x:Key="DeleteEmployeButton"
-        BasedOn="{StaticResource DeleteEmployeButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сотрудник" />
-    </Style>
-
-    <Style
-        x:Key="DeleteSuitButton"
-        BasedOn="{StaticResource DeleteSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="СИЗ" />
-    </Style>
-
-    <Style
-        x:Key="DeleteContractButton"
-        BasedOn="{StaticResource DeleteContractButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Документ" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Export Grid-->
-
-    <Style
-        x:Key="ExportTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Экспортировать" />
-    </Style>
-
-    <Style
-        x:Key="ExportSuitButton"
-        BasedOn="{StaticResource ExportSuitButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Экспортируйте договор" />
-        <Setter Property="ContentStringFormat" Value="Экспортируйте сейчас!" />
-    </Style>
-
-    <Style
-        x:Key="ExportSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Быстрые действия" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Settings Grid-->
-
-    <!--#region Settings Theme Grid-->
-
-    <Style
-        x:Key="SettingsThemeTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Тема" />
-    </Style>
-
-    <Style
-        x:Key="SettingsThemeSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Настройка темы приложения" />
-    </Style>
-
-    <Style
-        x:Key="SettingsThemeNameTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Название темы:" />
-    </Style>
-
-    <Style
-        x:Key="SettingsThemeSaveButton"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сохранить" />
-    </Style>
-
-    <Style x:Key="SettingsThemeNameLightComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Светлая" />
-    </Style>
-
-    <Style x:Key="SettingsThemeNameDarkComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Тёмная" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Settings Language Grid-->
-
-    <Style
-        x:Key="SettingsLanguageTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Язык" />
-    </Style>
-
-    <Style
-        x:Key="SettingsLanguageSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Выберите язык приложения" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Application Grid-->
-
-    <Style
-        x:Key="SettingsApplicationTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Приложение" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationSecondTitleTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Настройка приложения" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationScreenResolutionTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Разрешение окна:" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationTopmostTextBlock"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Разрешить расположение поверх других окон:" />
-    </Style>
-
-    <Style x:Key="SettingsApplicationTopmostTrueComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Включить" />
-    </Style>
-
-    <Style x:Key="SettingsApplicationTopmostFalseComboBox" TargetType="ComboBoxItem">
-        <Setter Property="Content" Value="Выключить" />
-    </Style>
-
-    <Style
-        x:Key="SettingsApplicationSaveButton"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сохранить" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Menu-->
-
-    <Style
-        x:Key="MenuSettingsButtonTheme"
-        BasedOn="{StaticResource SettingsMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Тема" />
-    </Style>
-
-    <Style
-        x:Key="MenuSettingsButtonLanguage"
-        BasedOn="{StaticResource SettingsMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Язык" />
-    </Style>
-
-    <Style
-        x:Key="MenuSettingsButtonApplication"
-        BasedOn="{StaticResource SettingsMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Приложение" />
-    </Style>
-
-    <Style
-        x:Key="MenuSettingsResetButton"
-        BasedOn="{StaticResource SettingsMenuButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Сбросить" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region General Left Menu-->
-
-    <Style
-        x:Key="HomeGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Главная" />
-    </Style>
-
-    <Style
-        x:Key="BrowseGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Просмотр" />
-    </Style>
-
-    <Style
-        x:Key="CreateGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Создать" />
-    </Style>
-
-    <Style
-        x:Key="EditGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Редактировать" />
-    </Style>
-
-    <Style
-        x:Key="DeleteGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Удалить" />
-    </Style>
-
-    <Style
-        x:Key="ExportGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Экспортировать" />
-    </Style>
-
-    <Style
-        x:Key="SettingsGeneralMenuButton"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Настройки" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region General-->
-
-    <!--#region Buttons-->
-
-    <Style
-        x:Key="ButtonChoice"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Выбрать" />
-    </Style>
-
-    <Style
-        x:Key="ButtonCreate"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Создать" />
-    </Style>
-
-    <Style
-        x:Key="ButtonDelete"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Удалить" />
-    </Style>
-
-    <Style
-        x:Key="ButtonEdit"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Изменить" />
-    </Style>
-
-    <Style
-        x:Key="ButtonExport"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="Button">
-        <Setter Property="Content" Value="Экспорт" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Suit-->
-
-    <!--#region TextBox-->
-
-    <Style
-        x:Key="SuitNameTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Наименование" />
-    </Style>
-
-    <Style
-        x:Key="SuitQuantityPerYearTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Количество на год" />
-    </Style>
-
-    <Style
-        x:Key="SuitUnitOfMeasurementTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Единица измерения" />
-    </Style>
-
-    <Style
-        x:Key="SuitCertificateOfConformityTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Сертификат соответствия" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region GridView Item-->
-
-    <Style x:Key="SuitIdGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Id" />
-    </Style>
-
-    <Style x:Key="SuitNameGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Название" />
-    </Style>
-
-    <Style x:Key="SuitUnitOfMeasurementGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Единица измерения" />
-    </Style>
-
-    <Style x:Key="SuitQuantityPerYearGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Кол-во выданных на год" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region TextBlock-->
-
-    <Style
-        x:Key="SuitBasicTitleTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Основное" />
-    </Style>
-
-    <Style
-        x:Key="SuitAdditionalTitleTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Дополнительно" />
-    </Style>
-
-    <Style
-        x:Key="SuitNameTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Название:" />
-    </Style>
-
-    <Style
-        x:Key="SuitUnitOfMeasurementTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding UnitOfMeasurement, StringFormat='Единица: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="SuitQuantityPerYearTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding QuantityPerYear, StringFormat='Количество: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="SuitCertificateOfConformityTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding CertificateOfConformity, StringFormat='Сертификат: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Titles-->
-
-    <!--#region General-->
-
-    <Style
-        x:Key="SuitTitleInfoAboutSuit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З." />
-    </Style>
-
-    <Style
-        x:Key="SuitTitleChangeSuit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Выберите С.И.З." />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Add-->
-
-    <Style
-        x:Key="SuitTitleAdd"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Создать -&gt; Средство индивидуальной защиты" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse-->
-
-    <Style
-        x:Key="SuitTitleBrowse"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Просмотр -&gt; Средства индивидуальной защиты" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete-->
-
-    <Style
-        x:Key="SuitTitleDelete"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Удалить -&gt; Средства индивидуальной защиты" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit-->
-
-    <Style
-        x:Key="SuitTitleEdit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Редактировать -&gt; Средства индивидуальной защиты" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region RadioButton-->
-
-    <Style
-        x:Key="SuitRadioButton"
-        BasedOn="{StaticResource RadioButtonTabMenuStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="СИЗ" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Employe-->
-
-    <!--#region TextBox-->
-
-    <!--#region Personal Data-->
-
-    <Style
-        x:Key="EmployeIdTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Идентификатор" />
-    </Style>
-
-    <Style
-        x:Key="EmployeNameTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Имя" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSurnameTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Фамилия" />
-    </Style>
-
-    <Style
-        x:Key="EmployePatronymicTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Отчество" />
-    </Style>
-
-    <Style
-        x:Key="EmployeGenderTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Пол" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Corporate Data-->
-
-    <Style
-        x:Key="EmployeTabelNumberTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Табельный номер" />
-    </Style>
-
-    <Style
-        x:Key="EmployeStructuralDivisionTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Структурное подразделение" />
-    </Style>
-
-    <Style
-        x:Key="EmployeProfessionTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Должность" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfEmploymentDatePicker"
-        BasedOn="{StaticResource DatePickerStyle}"
-        TargetType="DatePicker">
-        <Setter Property="Tag" Value="Дата трудоустройства" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfEmploymentTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Дата трудоустройства" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfProfessionChangeDatePicker"
-        BasedOn="{StaticResource DatePickerStyle}"
-        TargetType="DatePicker">
-        <Setter Property="Tag" Value="Дата смены профессии" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfProfessionChangeTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Дата смены профессии" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Physical data-->
-
-    <Style
-        x:Key="EmployeHeightTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Рост" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Clothing Size-->
-
-    <Style
-        x:Key="EmployeSizeClothTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер одежды" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGazMaskTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер противогаза" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeSleeveTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер рукавиц" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeShoesTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер обуви" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeHeaddressTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер головного убора" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeRespiratorTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер респиратора" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGloveTextBox"
-        BasedOn="{StaticResource NewTextBoxStyle}"
-        TargetType="TextBox">
-        <Setter Property="Tag" Value="Размер перчаток" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region GridView Item-->
-
-    <Style x:Key="EmployeIdGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value=" Id " />
-    </Style>
-
-    <Style x:Key="EmployeNameGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Имя" />
-    </Style>
-
-    <Style x:Key="EmployeSurnameGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Фамилия" />
-    </Style>
-
-    <Style x:Key="EmployePatronymicGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Отчество" />
-    </Style>
-
-    <Style x:Key="EmployeGenderGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Пол" />
-    </Style>
-
-    <Style x:Key="EmployeTabelNumberGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Табельный номер" />
-    </Style>
-
-    <Style x:Key="EmployeStructuralDivisionGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Структурное подразделение" />
-    </Style>
-
-    <Style x:Key="EmployeProfessionGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Должность" />
-    </Style>
-
-    <Style x:Key="EmployeDateOfEmploymentGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Дата поступления на работу" />
-    </Style>
-
-    <Style x:Key="EmployeDateOfProfessionGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Дата изменения профессии" />
-    </Style>
-
-    <Style x:Key="EmployeHeightGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Рост" />
-    </Style>
-
-    <Style x:Key="EmployeSizeClothGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Размер одежды" />
-    </Style>
-
-    <Style x:Key="EmployeSizeGloveGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Перчатки" />
-    </Style>
-
-    <Style x:Key="EmployeSizeGazMaskGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Противогаз" />
-    </Style>
-
-    <Style x:Key="EmployeSizeSleeveGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Рукавицы" />
-    </Style>
-
-    <Style x:Key="EmployeSizeHeaddressGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Головной убор" />
-    </Style>
-
-    <Style x:Key="EmployeSizeRespiratorGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Респиратор" />
-    </Style>
-
-    <Style x:Key="EmployeSizeShoesGridViewItem" TargetType="GridViewColumnHeader">
-        <Setter Property="Content" Value="Обувь" />
-    </Style>
-
-
-    <!--#endregion-->
-
-    <!--#region TextBlock-->
-
-    <!--#region Personal Data-->
-
-    <Style
-        x:Key="EmployeNameTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Name, StringFormat='Имя: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSurnameTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Surname, StringFormat='Фамилия: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployePatronymicTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Patronymic, StringFormat='Отчество: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeGenderTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Gender, StringFormat='Пол: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Corporate Data-->
-
-    <Style
-        x:Key="EmployeTabelNumberTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding TabelNumber, StringFormat='Табельный номер: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeStructuralDivisionTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Подразделение:" />
-    </Style>
-
-    <Style
-        x:Key="EmployeProfessionTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Должность:" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfEmploymentTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Начало работы:" />
-    </Style>
-
-    <Style
-        x:Key="EmployeDateOfProfessionChangeTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Смена профессии:" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Physical Data-->
-
-    <Style
-        x:Key="EmployeHeightTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding Height, StringFormat='Рост: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Clothing Size-->
-
-    <Style
-        x:Key="EmployeSizeClothTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeCloth, StringFormat='Размер одежды: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGloveTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeGlove, StringFormat='Перчатки: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeGazMaskTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeGazMask, StringFormat='Противогаз: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeSleeveTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeSleeve, StringFormat='Рукавицы: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeHeaddressTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeHeaddress, StringFormat='Головной убор: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeRespiratorTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="{Binding SizeRespirator, StringFormat='Респиратор: {0}'}" />
-    </Style>
-
-    <Style
-        x:Key="EmployeSizeShoesTextBlock"
-        BasedOn="{StaticResource TemplateTextBlockBase}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Размер обуви:" />
-        <Setter Property="Text" Value="{Binding SizeShoes, StringFormat='Обувь: {0}'}" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Titles-->
-
-    <!--#region General-->
-
-    <Style
-        x:Key="EmployeTitleChoiceEmploye"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Выберите сотрудника" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitlePersonalData"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Личное" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitleCorporateData"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Компания" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitlePhysicalData"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Физические данные" />
-    </Style>
-
-    <Style
-        x:Key="EmployeTitleClothingSize"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Одежда" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Add-->
-
-    <Style
-        x:Key="EmployeTitleAdd"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Создать -&gt; Сотрудник" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse-->
-
-    <Style
-        x:Key="EmployeTitleBrowse"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Просмотр -&gt; Сотрудники" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete-->
-
-    <Style
-        x:Key="EmployeTitleDelete"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Удалить -&gt; Сотрудника" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit-->
-
-    <Style
-        x:Key="EmployeTitleEdit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Редактировать -&gt; Сотрудника" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region RadioButton-->
-
-    <Style
-        x:Key="EmployeRadioButton"
-        BasedOn="{StaticResource RadioButtonTabMenuStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Сотрудник" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Contract-->
-
-    <!--#region Title-->
-
-    <!--#region General-->
-
-    <Style
-        x:Key="ContractTitleChoiceEmployePanel"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Панель выбора сотрудника" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleChoiceSuitPanel"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Панель выбора С.И.З." />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleChoiceContractPanel"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Выберите договор" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleEmploye"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Сотрудник" />
-    </Style>
-
-    <Style
-        x:Key="ContractTitleSuits"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Средства защиты" />
-    </Style>
-
-    <!--#region Item 1-->
-
-    <Style
-        x:Key="ContractTitleItem1"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №1" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 2-->
-
-    <Style
-        x:Key="ContractTitleItem2"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №2" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 3-->
-
-    <Style
-        x:Key="ContractTitleItem3"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №3" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 4-->
-
-    <Style
-        x:Key="ContractTitleItem4"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №4" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 5-->
-
-    <Style
-        x:Key="ContractTitleItem5"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №5" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 6-->
-
-    <Style
-        x:Key="ContractTitleItem6"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №6" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 7-->
-
-    <Style
-        x:Key="ContractTitleItem7"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №7" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 8-->
-
-    <Style
-        x:Key="ContractTitleItem8"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №8" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 9-->
-
-    <Style
-        x:Key="ContractTitleItem9"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №9" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 10-->
-
-    <Style
-        x:Key="ContractTitleItem10"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №10" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 11-->
-
-    <Style
-        x:Key="ContractTitleItem11"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №11" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Item 12-->
-
-    <Style
-        x:Key="ContractTitleItem12"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Информация о С.И.З. №12" />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Add-->
-
-    <Style
-        x:Key="ContractTitleAdd"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Создать -&gt; Карта выдачи С.И.З." />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Browse-->
-
-    <Style
-        x:Key="ContractTitleBrowse"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Просмотр -&gt; Карта выдачи С.И.З." />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Delete-->
-
-    <Style
-        x:Key="ContractTitleDelete"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Удалить -&gt; Карта выдачи С.И.З." />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Edit-->
-
-    <Style
-        x:Key="ContractTitleEdit"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Редактировать -&gt; Карта выдачи С.И.З." />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Export-->
-
-    <Style
-        x:Key="ContractTitleExport"
-        BasedOn="{StaticResource TextBlock}"
-        TargetType="TextBlock">
-        <Setter Property="Text" Value="Экспортировать -&gt; Карта выдачи С.И.З." />
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region RadioButton-->
-
-    <Style
-        x:Key="ContractRadioButton"
-        BasedOn="{StaticResource RadioButtonTabMenuStyle}"
-        TargetType="RadioButton">
-        <Setter Property="Content" Value="Договор" />
-    </Style>
-
-    <!--#endregion-->
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <v:String x:Key="t_Main">Главная</v:String>
+
+    <v:String x:Key="t_View">Просмотр</v:String>
+
+    <v:String x:Key="t_Create">Создать</v:String>
+
+    <v:String x:Key="t_Update">Изменить</v:String>
+
+    <v:String x:Key="t_Delete">Удалить</v:String>
+
+    <v:String x:Key="t_Export">Экспортировать</v:String>
+
+    <v:String x:Key="t_Settings">Настройки</v:String>
+
+    <v:String x:Key="t_QuickActions">Быстрые действия</v:String>
+
+    <v:String x:Key="t_CreateEmployee">Создать сотрудника</v:String>
+
+    <v:String x:Key="t_CreatingEmployee">Создание сотрудника</v:String>
+
+    <v:String x:Key="t_GetStartedNow">Начните сейчас!</v:String>
+
+    <v:String x:Key="t_CreateContract">Создайте документ!</v:String>
+
+    <v:String x:Key="t_DeleteEmployee">Удалить сотрудника</v:String>
+
+    <v:String x:Key="t_UpdateEmployee">Редактировать сотрудника</v:String>
+
+    <v:String x:Key="t_ViewEmployee">Просмотр сотрудника</v:String>
+
+    <v:String x:Key="t_Employee">Сотрудник</v:String>
+
+    <v:String x:Key="t_PPE">СИЗ</v:String>
+
+    <v:String x:Key="t_Contract">Документ</v:String>
+
+    <v:String x:Key="t_ExportContract">Экспортируйте договор</v:String>
+
+    <v:String x:Key="t_ExportNow">Экспортируйте сейчас!</v:String>
+
+    <v:String x:Key="t_Theme">Тема</v:String>
+
+    <v:String x:Key="t_Language">Язык</v:String>
+
+    <v:String x:Key="t_DeletePPE">Удалить СИЗ</v:String>
+
+    <v:String x:Key="t_UpdatePPE">Редактировать СИЗ</v:String>
+
+    <v:String x:Key="t_CreatePPE">Создание СИЗ</v:String>
+
+    <v:String x:Key="t_ViewPPE">Просмотр СИЗ</v:String>
+
+    <v:String x:Key="t_ChoiceApplicationLanguage">Выберите язык приложения</v:String>
+
+    <v:String x:Key="t_ChoiceApplicationTheme">Выберите тему приложения</v:String>
+
+    <v:String x:Key="t_ThemeName">Название темы:</v:String>
+
+    <v:String x:Key="t_ChoiceEmployee">Выберите сотрудника</v:String>
+
+    <v:String x:Key="t_Private">Личное</v:String>
+
+    <v:String x:Key="t_Company">Компания</v:String>
+
+    <v:String x:Key="t_PhysicData">Физические данные</v:String>
+
+    <v:String x:Key="t_Cloth">Одежда</v:String>
+
+    <v:String x:Key="t_Employee_Name">Имя</v:String>
+
+    <v:String x:Key="t_Employee_Surname">Фамилия</v:String>
+
+    <v:String x:Key="t_Employee_Patronymic">Отчество</v:String>
+
+    <v:String x:Key="t_Employee_StructuralDivision">Структурное подразделение</v:String>
+
+    <v:String x:Key="t_Employee_Profession">Должность</v:String>
+
+    <v:String x:Key="t_Employee_DateOfEmployment">Дата трудоустройства</v:String>
+
+    <v:String x:Key="t_Employee_DateOfProfessionChange">Дата смены профессии</v:String>
+
+    <v:String x:Key="t_Employee_Height">Рост</v:String>
+
+    <v:String x:Key="t_Employee_Gender">Пол</v:String>
+
+    <v:String x:Key="t_SizeChart_ClothSize">Размер одежды</v:String>
+
+    <v:String x:Key="t_SizeChart_GazMaskSize">Размер противогаза</v:String>
+
+    <v:String x:Key="t_SizeChart_SleeveSize">Размер рукавиц</v:String>
+
+    <v:String x:Key="t_SizeChart_ShoesSize">Размер обуви</v:String>
+
+    <v:String x:Key="t_SizeChart_HeaddressSize">Размер головного убора</v:String>
+
+    <v:String x:Key="t_SizeChart_RespiratorSize">Размер респиратора</v:String>
+
+    <v:String x:Key="t_SizeChart_GloveSize">Размер перчаток</v:String>
+
+    <v:String x:Key="t_SizeChart_Cloth">Одежда</v:String>
+
+    <v:String x:Key="t_SizeChart_GazMask">Противогаз</v:String>
+
+    <v:String x:Key="t_SizeChart_Sleeve">Рукавицы</v:String>
+
+    <v:String x:Key="t_SizeChart_Shoes">Обувь</v:String>
+
+    <v:String x:Key="t_SizeChart_Headdress">Головной убор</v:String>
+
+    <v:String x:Key="t_SizeChart_Respirator">Респиратор</v:String>
+
+    <v:String x:Key="t_SizeChart_Glove">Перчатки</v:String>
+
+    <v:String x:Key="t_InfoAboutPPE">Информация о С.И.З.</v:String>
+
+    <v:String x:Key="t_ChoicePPE">Выберите С.И.З.</v:String>
+
+    <v:String x:Key="t_PPE_Name">Наименование</v:String>
+
+    <v:String x:Key="t_PPE_QuantityPerYear">Количество на год</v:String>
+
+    <v:String x:Key="t_PPE_UnitOfMeasurement">Единица измерения</v:String>
+
+    <v:String x:Key="t_PPE_CertificateOfConformity">Сертификат соответствия</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithPersonalData">Выбрать вкладку с личными данными.</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithCorporateData">Выбрать вкладку с корпоративными данными.</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithPhysicalData">Выбрать вкладку с физическими данными.</v:String>
+
+    <v:String x:Key="t_SelectTheTabWithSizeTable">Выбрать вкладку с таблицей размеров.</v:String>
+
+    <v:String x:Key="t_HoverOverTheParameterToGetAHint">Наведите на параметр для получения подсказки.</v:String>
+
+    <v:String x:Key="t_NameEmployee">Имя сотрудника.</v:String>
+
+    <v:String x:Key="t_SurnameEmployee">Фамилия сотрудника.</v:String>
+
+    <v:String x:Key="t_PatronymicEmployee">Отчество сотрудника.</v:String>
+
+    <v:String x:Key="t_Employee_TabelNumber">Табельный номер.</v:String>
+
+    <v:String x:Key="t_TheEmployeesUniqueServiceNumber">Уникальный табельный номер сотрудника.</v:String>
+
+    <v:String x:Key="t_PrivateData">Личные данные.</v:String>
+
+    <v:String x:Key="t_TheDepartmentInWhichTheEmployeeWorks">Подразделение, в котором работает сотрудник.</v:String>
+
+    <v:String x:Key="t_ThePositionWhereTheEmployeeWorks">Должность, на которой работает сотрудник.</v:String>
+
+    <v:String x:Key="t_TheDateWhenTheEmployeeStartedWork">Дата, когда сотрудник начал работу.</v:String>
+
+    <v:String x:Key="t_TheDateWhenTheEmployeeTookOfficeForTheLastTime">Дата, когда сотрудник начал работу.</v:String>
+
+    <v:String x:Key="t_TheEmployeesHeightInCentimeters">Рост сотрудника в сантиметрах.</v:String>
+
+    <v:String x:Key="t_TheGenderOfTheEmployee">Половая принадлежность сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesClothes">Размер одежды сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesHeaddress">Размер головного убора сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesGazMask">Размер противогаза сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesRespiratorMask">Размер маски - респиратора сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesSleeve">Размер рукавиц сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesGlove">Размер перчаток сотрудника.</v:String>
+
+    <v:String x:Key="t_TheSizeOfTheEmployeesShoes">Размер обуви сотрудника.</v:String>
+
+    <v:String x:Key="t_SizeChart">Таблица размеров.</v:String>
+
+    <v:String x:Key="t_NamePPE">Название С.И.З.</v:String>
+
+    <v:String x:Key="t_Naming">Название</v:String>
+
+    <v:String x:Key="t_Quantity">Количество</v:String>
+
+    <v:String x:Key="t_TheNumberOfPPEInWarehouse">Количество С.И.З на складе.</v:String>
+
+    <v:String x:Key="t_Unit">Единица.</v:String>
+
+    <v:String x:Key="t_TheUnitOfMeasurementIsTheNumberOfPPE">Единица измерения кол-ва С.И.З.</v:String>
+
+    <v:String x:Key="t_Certificate">Сертификат</v:String>
+
+    <v:String x:Key="t_CertificateOfConformityOfPPE">Сертификат соответствия С.И.З.</v:String>
+
+    <v:String x:Key="t_InformationAboutPPE">Информация о С.И.З.</v:String>
+
+    <!--#region Messages-->
+
+    <v:String x:Key="tm_Success">Успех.</v:String>
+
+    <v:String x:Key="tm_Information">Информация.</v:String>
+
+    <v:String x:Key="tm_ValidationError">Ошибка валидации.</v:String>
+
+    <v:String x:Key="tm_EmployeeSuccessfullyCreated">Сотрудник успешно создан.</v:String>
+
+    <v:String x:Key="tm_EmployeeSuccessfullyDeleted">Сотрудник успешно удалён.</v:String>
+
+    <v:String x:Key="tm_EmployeeSuccessfullyUpdated">Сотрудник успешно изменён.</v:String>
+
+    <v:String x:Key="tm_PPESuccessfullyCreated">С.И.З. успешно создан.</v:String>
+
+    <v:String x:Key="tm_PPESuccessfullyDeleted">С.И.З. успешно удалён.</v:String>
+
+    <v:String x:Key="tm_PPESuccessfullyUpdated">С.И.З. успешно изменён.</v:String>
+
+    <v:String x:Key="tm_MinValue">Минимальное значение</v:String>
+
+    <v:String x:Key="tm_MaxValue">Максимальное значение</v:String>
+
+    <v:String x:Key="tm_ToApplyChangesYouNeedToRestartTheProgram">Для применения изменений необходимо перезапустить программу.</v:String>
 
     <!--#endregion-->
 

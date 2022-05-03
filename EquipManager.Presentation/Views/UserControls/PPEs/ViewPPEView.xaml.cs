@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.PPEs;
 
-public partial class ViewPPEView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class ViewPPEView : UserControl
 {
-    private readonly IViewPPEViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IViewPPEViewModel>();
+    private readonly IViewModel<ViewPPEView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<ViewPPEView>>();
 
     public ViewPPEView()
     {

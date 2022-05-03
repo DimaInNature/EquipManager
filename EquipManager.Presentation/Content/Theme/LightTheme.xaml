@@ -34,18 +34,20 @@
 
     <!--#endregion-->
 
+    <!--#region Base Styles-->
+
     <!--#region TextBlock-->
 
-    <Style x:Key="TextBlock" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{StaticResource BaseForeground}" />
+    <Style TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Foreground" Value="{StaticResource BaseForeground}" />
     </Style>
 
     <!--#endregion-->
 
     <!--#region DatePicker-->
 
-    <Style x:Key="DatePickerStyle" TargetType="{x:Type DatePicker}">
+    <Style TargetType="{x:Type DatePicker}">
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="IsTodayHighlighted" Value="True" />
         <Setter Property="SelectedDateFormat" Value="Short" />
@@ -364,7 +366,7 @@
 
     <!--#region TextBox-->
 
-    <Style x:Key="NewTextBoxStyle" TargetType="TextBox">
+    <Style TargetType="TextBox">
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderBrush" Value="{StaticResource BaseColorTheme}" />
         <Setter Property="BorderThickness" Value="1" />
@@ -477,7 +479,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style x:Key="ModernComboBox" TargetType="{x:Type ComboBox}">
+    <Style TargetType="{x:Type ComboBox}">
         <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
         <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -580,9 +582,7 @@
 
     <!--#region Button-->
 
-    <!--#region Classic Button-->
-
-    <Storyboard x:Key="ClassicButtonMouseEnter">
+    <Storyboard x:Key="sb_Button_MouseEnter">
         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
             <EasingColorKeyFrame KeyTime="0:0:0.25" Value="#22202f" />
         </ColorAnimationUsingKeyFrames>
@@ -590,7 +590,7 @@
             <EasingColorKeyFrame KeyTime="0:0:0.25" Value="White" />
         </ColorAnimationUsingKeyFrames>
     </Storyboard>
-    <Storyboard x:Key="ClassicButtonMouseLeave">
+    <Storyboard x:Key="sb_Button_MouseLeave">
         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
             <EasingColorKeyFrame KeyTime="0:0:0.25" Value="#FFFEA700" />
         </ColorAnimationUsingKeyFrames>
@@ -599,9 +599,10 @@
         </ColorAnimationUsingKeyFrames>
     </Storyboard>
 
-    <Style x:Key="ModernButton" TargetType="{x:Type Button}">
+    <Style TargetType="{x:Type Button}">
         <Setter Property="Background" Value="{StaticResource BaseColorTheme}" />
         <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
+        <Setter Property="Foreground" Value="{StaticResource BaseForeground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -613,33 +614,73 @@
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="12"
                         IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
-                        <ContentPresenter
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="{TemplateBinding Content}" />
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="{TemplateBinding Content}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <EventTrigger RoutedEvent="Button.MouseEnter">
-                <BeginStoryboard Storyboard="{StaticResource ClassicButtonMouseEnter}" />
+                <BeginStoryboard Storyboard="{StaticResource sb_Button_MouseEnter}" />
             </EventTrigger>
             <EventTrigger RoutedEvent="Button.MouseLeave">
-                <BeginStoryboard Storyboard="{StaticResource ClassicButtonMouseLeave}" />
+                <BeginStoryboard Storyboard="{StaticResource sb_Button_MouseLeave}" />
             </EventTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="WhiteSmoke" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
     <!--#endregion-->
 
+    <!--#endregion-->
+
+    <!--#region Images-->
+
+    <Style x:Key="img_CompanyLogo" TargetType="Image">
+        <Setter Property="Source" Value="/Content/Images/ImageControls/CompanyLogo/Light/Default/CompanyImage.png" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="LowQuality" />
+    </Style>
+
+    <ImageBrush
+        x:Key="img_RussianLanguage"
+        ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/LanguageButtons/RussianLanguage.jpg"
+        RenderOptions.BitmapScalingMode="LowQuality"
+        Stretch="UniformToFill" />
+
+    <ImageBrush
+        x:Key="img_EnglishLanguage"
+        ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/LanguageButtons/EnglishLanguage.jpg"
+        RenderOptions.BitmapScalingMode="LowQuality"
+        Stretch="UniformToFill" />
+
+    <!--#endregion-->
+
+    <!--#region Button-->
+
     <!--#region Language Button-->
 
-    <!--#region Base-->
-
-    <Style x:Key="SettingsLanguageButton" TargetType="Button">
+    <Style x:Key="c_LanguageButtonStyle" TargetType="Button">
         <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
         <Setter Property="Margin" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="Black"
+                        BorderThickness="1"
+                        CornerRadius="20" />
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Opacity" Value="0.7" />
@@ -650,122 +691,11 @@
 
     <!--#endregion-->
 
-    <!--#region Russian-->
-
-    <Style
-        x:Key="SettingsRussianLanguageButtonStyle"
-        BasedOn="{StaticResource SettingsLanguageButton}"
-        TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/LanguageButtons/RussianLanguage.jpg" Stretch="UniformToFill" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        CornerRadius="20" />
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region English-->
-
-    <Style
-        x:Key="SettingsEnglishLanguageButtonStyle"
-        BasedOn="{StaticResource SettingsLanguageButton}"
-        TargetType="Button">
-        <Setter Property="Background">
-            <Setter.Value>
-                <ImageBrush ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/LanguageButtons/EnglishLanguage.jpg" Stretch="UniformToFill" />
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="Black"
-                        BorderThickness="1"
-                        CornerRadius="20" />
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Settings Button-->
-
-    <Storyboard x:Key="SettingsMenuButtonMouseEnter">
-        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
-            <EasingColorKeyFrame KeyTime="0:0:0.25" Value="#FFFEA700" />
-        </ColorAnimationUsingKeyFrames>
-        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
-            <EasingColorKeyFrame KeyTime="0:0:0.25" Value="#22202f" />
-        </ColorAnimationUsingKeyFrames>
-    </Storyboard>
-
-    <Storyboard x:Key="SettingsMenuButtonMouseLeave">
-        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
-            <EasingColorKeyFrame KeyTime="0:0:0.25" Value="Transparent" />
-        </ColorAnimationUsingKeyFrames>
-    </Storyboard>
-
-    <Style
-        x:Key="SettingsMenuButton"
-        BasedOn="{StaticResource ModernButton}"
-        TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border
-                        Width="120"
-                        Height="30"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="12"
-                        IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
-                        <ContentPresenter
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Content="{TemplateBinding Content}" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <EventTrigger RoutedEvent="Button.MouseEnter">
-                <BeginStoryboard Storyboard="{StaticResource SettingsMenuButtonMouseEnter}" />
-            </EventTrigger>
-            <EventTrigger RoutedEvent="Button.MouseLeave">
-                <BeginStoryboard Storyboard="{StaticResource SettingsMenuButtonMouseLeave}" />
-            </EventTrigger>
-        </Style.Triggers>
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#region Small Buttons-->
+    <!--#region Menu Buttons-->
 
     <!--#region Base-->
 
-    <Style x:Key="SmallMetroMenuButton" TargetType="Button">
+    <Style x:Key="ac_SmallMenuButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{StaticResource BaseSecondColorTheme}" />
         <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
@@ -780,11 +710,11 @@
 
     <!--#endregion-->
 
-    <!--#region Browse Small Button-->
+    <!--#region View-->
 
     <Style
-        x:Key="BrowseMenuButtonStyle"
-        BasedOn="{StaticResource SmallMetroMenuButton}"
+        x:Key="c_ViewMenuButtonStyle"
+        BasedOn="{StaticResource ac_SmallMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -808,7 +738,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     MinWidth="100"
-                                    Margin="5,0,0,25"
+                                    Margin="20,0,0,25"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Top"
                                     FontSize="16"
@@ -822,7 +752,7 @@
                                 Margin="-10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                RenderOptions.BitmapScalingMode="Fant">
+                                RenderOptions.BitmapScalingMode="LowQuality">
                                 <Image.Source>
                                     <BitmapImage
                                         CacheOption="OnLoad"
@@ -842,11 +772,11 @@
 
     <!--#endregion-->
 
-    <!--#region Add Small Button-->
+    <!--#region Create-->
 
     <Style
-        x:Key="AddMenuButtonStyle"
-        BasedOn="{StaticResource SmallMetroMenuButton}"
+        x:Key="c_CreateMenuButtonStyle"
+        BasedOn="{StaticResource ac_SmallMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -868,7 +798,7 @@
 
                                 <TextBlock
                                     MinWidth="100"
-                                    Margin="35,0,0,25"
+                                    Margin="30,0,0,25"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Top"
                                     FontSize="18"
@@ -882,7 +812,7 @@
                                 Margin="10"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                RenderOptions.BitmapScalingMode="Fant">
+                                RenderOptions.BitmapScalingMode="LowQuality">
                                 <Image.Source>
                                     <BitmapImage
                                         CacheOption="OnLoad"
@@ -902,11 +832,11 @@
 
     <!--#endregion-->
 
-    <!--#region Edit Small Button-->
+    <!--#region Update-->
 
     <Style
-        x:Key="EditMenuButtonStyle"
-        BasedOn="{StaticResource SmallMetroMenuButton}"
+        x:Key="c_UpdateMenuButtonStyle"
+        BasedOn="{StaticResource ac_SmallMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -943,7 +873,7 @@
                                 Margin="20"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                RenderOptions.BitmapScalingMode="Fant">
+                                RenderOptions.BitmapScalingMode="LowQuality">
                                 <Image.Source>
                                     <BitmapImage
                                         CacheOption="OnLoad"
@@ -963,11 +893,11 @@
 
     <!--#endregion-->
 
-    <!--#region Delete Small Button-->
+    <!--#region Delete-->
 
     <Style
-        x:Key="DeleteMenuButtonStyle"
-        BasedOn="{StaticResource SmallMetroMenuButton}"
+        x:Key="c_DeleteMenuButtonStyle"
+        BasedOn="{StaticResource ac_SmallMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -991,7 +921,7 @@
                                 <TextBlock
                                     Grid.Row="1"
                                     MinWidth="100"
-                                    Margin="30,0,0,30"
+                                    Margin="25,0,0,30"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     FontSize="20"
@@ -1005,7 +935,7 @@
                                 Margin="5"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                RenderOptions.BitmapScalingMode="Fant">
+                                RenderOptions.BitmapScalingMode="LowQuality">
                                 <Image.Source>
                                     <BitmapImage
                                         CacheOption="OnLoad"
@@ -1027,7 +957,7 @@
 
     <!--#endregion-->
 
-    <!--#region Big Buttons-->
+    <!--#region Big Menu Buttons-->
 
     <!--#region Base-->
 
@@ -1057,10 +987,10 @@
 
     <!--#endregion-->
 
-    <!--#region Home Grid-->
+    <!--#region Create Employee-->
 
     <Style
-        x:Key="CreateEmplpoyeButtonStyle"
+        x:Key="c_CreateEmployeeBigMenuButtonStyle"
         BasedOn="{StaticResource BigMetroMenuButton}"
         TargetType="Button">
         <Setter Property="Template">
@@ -1090,7 +1020,6 @@
 
                                 <TextBlock
                                     Margin="15,0,0,0"
-                                    FontFamily="{TemplateBinding FontFamily}"
                                     FontSize="18"
                                     Foreground="Black"
                                     Text="{TemplateBinding Content}"
@@ -1121,7 +1050,7 @@
                                 Margin="10,20,20,20"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
-                                RenderOptions.BitmapScalingMode="Fant"
+                                RenderOptions.BitmapScalingMode="LowQuality"
                                 Source="/Content/Images/Controls/BigButtons/Light/Default/BigButtonCreate.png" />
 
                         </Grid>
@@ -1145,15 +1074,15 @@
 
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="2*" />
+                                <RowDefinition Height="1.5*" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
 
                             <Viewbox
                                 Grid.Row="1"
                                 Grid.RowSpan="2"
-                                Margin="20,10,20,0"
-                                VerticalAlignment="Top">
+                                Margin="20,0,20,0"
+                                VerticalAlignment="Center">
                                 <TextBlock
                                     FontFamily="{StaticResource BaseFontFamily}"
                                     FontSize="28"
@@ -1165,12 +1094,12 @@
                             <Viewbox
                                 Grid.Row="0"
                                 Grid.RowSpan="1"
-                                Margin="0,40,0,0"
+                                Margin="0,10,0,0"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
                                 <Image
                                     Margin="30"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Source="/Content/Images/Controls/BigButtons/Light/Default/BigButtonCreateDocument.png" />
                             </Viewbox>
 
@@ -1185,10 +1114,10 @@
 
     <!--#endregion-->
 
-    <!--#region Export Grid-->
+    <!--#region Export Contract-->
 
     <Style
-        x:Key="ExportSuitButtonStyle"
+        x:Key="c_ExportContractBigMenuButtonStyle"
         BasedOn="{StaticResource BigMetroMenuButton}"
         TargetType="Button">
         <Setter Property="Template">
@@ -1219,7 +1148,6 @@
                                     Margin="20,20,20,0"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Bottom"
-                                    FontFamily="{TemplateBinding FontFamily}"
                                     FontSize="20"
                                     Foreground="Black"
                                     Text="{TemplateBinding Content}"
@@ -1251,7 +1179,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Panel.ZIndex="1"
-                                RenderOptions.BitmapScalingMode="Fant"
+                                RenderOptions.BitmapScalingMode="LowQuality"
                                 Source="/Content/Images/Controls/BigButtons/Light/Default/ExportDocument.png" />
                         </Grid>
 
@@ -1270,12 +1198,10 @@
 
     <!--#region Base-->
 
-    <ImageSource x:Key="BaseImgBackgroundVerticalButton">/EquipManager.Presentation;component/Content/Images/Controls/VerticalButtons/General/ComicBackground.jpg</ImageSource>
-
-    <Style x:Key="VerticalMenuButtonBase" TargetType="Button">
+    <Style x:Key="ac_VerticalMenuButtonStyle" TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="{StaticResource BaseImgBackgroundVerticalButton}" Stretch="UniformToFill" />
+                <ImageBrush ImageSource="/EquipManager.Presentation;component/Content/Images/Controls/VerticalButtons/General/ComicBackground.jpg" Stretch="UniformToFill" />
             </Setter.Value>
         </Setter>
         <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
@@ -1288,11 +1214,11 @@
 
     <!--#endregion-->
 
-    <!--#region  Browse Grid-->
+    <!--#region View-->
 
     <Style
-        x:Key="BrowseEmployeButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_ViewEmployeeVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1334,7 +1260,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom"
                                 Stretch="Uniform">
-                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="LowQuality" Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
                                             CacheOption="OnLoad"
@@ -1359,8 +1285,8 @@
     </Style>
 
     <Style
-        x:Key="BrowseSuitButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_ViewPPEVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1401,7 +1327,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom"
                                 Stretch="Uniform">
-                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="LowQuality" Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
                                             CacheOption="OnLoad"
@@ -1426,8 +1352,8 @@
     </Style>
 
     <Style
-        x:Key="BrowseContractButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_ViewContractVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1468,7 +1394,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom"
                                 Stretch="Uniform">
-                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="LowQuality" Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
                                             CacheOption="OnLoad"
@@ -1494,11 +1420,11 @@
 
     <!--#endregion-->
 
-    <!--#region Create Grid-->
+    <!--#region Create-->
 
     <Style
-        x:Key="CreateEmployeButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_CreateEmployeeVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1542,7 +1468,7 @@
                                 Stretch="Uniform">
                                 <Image
                                     Margin="-55,0,0,0"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
@@ -1568,8 +1494,8 @@
     </Style>
 
     <Style
-        x:Key="CreateSuitButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_CreatePPEVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1614,7 +1540,7 @@
                                 Stretch="Uniform">
                                 <Image
                                     Margin="20,0,0,0"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
@@ -1640,8 +1566,8 @@
     </Style>
 
     <Style
-        x:Key="CreateContractButtonStyle2"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_CreateContractVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1683,7 +1609,7 @@
                                 VerticalAlignment="Bottom"
                                 ClipToBounds="True"
                                 Stretch="Uniform">
-                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="LowQuality" Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
                                             CacheOption="OnLoad"
@@ -1709,11 +1635,11 @@
 
     <!--#endregion-->
 
-    <!--#region Edit Grid-->
+    <!--#region Update-->
 
     <Style
-        x:Key="EditEmployeButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_UpdateEmployeeVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1780,8 +1706,8 @@
     </Style>
 
     <Style
-        x:Key="EditSuitButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_UpdatePPEVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1824,7 +1750,7 @@
                                 Stretch="Uniform">
                                 <Image
                                     VerticalAlignment="Bottom"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
@@ -1850,8 +1776,8 @@
     </Style>
 
     <Style
-        x:Key="EditContractButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_UpdateContractVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1895,7 +1821,7 @@
                                 <Image
                                     Margin="-200,0,0,0"
                                     VerticalAlignment="Bottom"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
@@ -1922,11 +1848,11 @@
 
     <!--#endregion-->
 
-    <!--#region Delete Grid-->
+    <!--#region Delete-->
 
     <Style
-        x:Key="DeleteEmployeButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_DeleteEmployeeVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -1967,7 +1893,7 @@
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Bottom"
                                 Stretch="Uniform">
-                                <Image RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform">
+                                <Image RenderOptions.BitmapScalingMode="LowQuality" Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
                                             CacheOption="OnLoad"
@@ -1992,8 +1918,8 @@
     </Style>
 
     <Style
-        x:Key="DeleteSuitButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_DeletePPEVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -2036,7 +1962,7 @@
                                 Stretch="Uniform">
                                 <Image
                                     Margin="-325,0,0,0"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
@@ -2062,8 +1988,8 @@
     </Style>
 
     <Style
-        x:Key="DeleteContractButtonStyle"
-        BasedOn="{StaticResource VerticalMenuButtonBase}"
+        x:Key="c_DeleteContractVerticalMenuButtonStyle"
+        BasedOn="{StaticResource ac_VerticalMenuButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
@@ -2107,7 +2033,7 @@
                                 Stretch="Uniform">
                                 <Image
                                     Margin="-275,0,0,0"
-                                    RenderOptions.BitmapScalingMode="Fant"
+                                    RenderOptions.BitmapScalingMode="LowQuality"
                                     Stretch="Uniform">
                                     <Image.Source>
                                         <BitmapImage
@@ -2140,7 +2066,7 @@
 
     <!--#region Base-->
 
-    <Style x:Key="ControlButtonStyle" TargetType="Button">
+    <Style x:Key="ac_ControlButtonStyle" TargetType="Button">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Height" Value="18" />
         <Setter Property="Width" Value="22" />
@@ -2152,15 +2078,15 @@
     <!--#region Roll Up-->
 
     <Style
-        x:Key="ControlButtonRollUpStyle"
-        BasedOn="{StaticResource ControlButtonStyle}"
+        x:Key="c_ControlButtonRollUpStyle"
+        BasedOn="{StaticResource ac_ControlButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2189,15 +2115,15 @@
     <!--#region Maximazed-->
 
     <Style
-        x:Key="ControlButtonMaximazedStyle"
-        BasedOn="{StaticResource ControlButtonStyle}"
+        x:Key="c_ControlButtonMaximazedStyle"
+        BasedOn="{StaticResource ac_ControlButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2226,15 +2152,15 @@
     <!--#region Close-->
 
     <Style
-        x:Key="ControlButtonCloseStyle"
-        BasedOn="{StaticResource ControlButtonStyle}"
+        x:Key="c_ControlButtonCloseStyle"
+        BasedOn="{StaticResource ac_ControlButtonStyle}"
         TargetType="Button">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2260,56 +2186,6 @@
 
     <!--#endregion-->
 
-    <!--#region Get Now Time-->
-
-    <Style
-        x:Key="GetNowTimeButtonStyle"
-        BasedOn="{StaticResource ControlButtonStyle}"
-        TargetType="Button">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-
-                    <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
-                            <Image.Source>
-                                <BitmapImage
-                                    CacheOption="OnLoad"
-                                    DecodePixelHeight="200"
-                                    UriSource="/Content/Images/Controls/SmallButtons/Light/Default/GetNowTimeButton.png" />
-                            </Image.Source>
-                        </Image>
-                    </Border>
-
-                    <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/SmallButtons/Light/MouseEnter/GetNowTimeButtonMouseEnter.png" />
-                        </MultiTrigger>
-                    </ControlTemplate.Triggers>
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#endregion-->
-
-    <!--#region Images-->
-
-    <!--#region Company Logo-->
-
-    <Style x:Key="CompanyLogoStyle" TargetType="Image">
-        <Setter Property="Source" Value="/Content/Images/ImageControls/CompanyLogo/Light/Default/CompanyImage.png" />
-        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
-    </Style>
-
     <!--#endregion-->
 
     <!--#endregion-->
@@ -2318,10 +2194,10 @@
 
     <!--#region Tab Menu-->
 
-    <Style x:Key="RadioButtonTabMenuStyle" TargetType="RadioButton">
-        <Setter Property="Background" Value="{DynamicResource BaseColorTheme}" />
+    <Style x:Key="c_TabMenuRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Background" Value="{StaticResource BaseColorTheme}" />
         <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
-        <Setter Property="FontFamily" Value="{DynamicResource BaseFontFamily}" />
+        <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
@@ -2355,21 +2231,21 @@
 
     <!--#region Menu-->
 
-    <!--#region General Menu-->
+    <!--#region Base-->
 
-    <Storyboard x:Key="GeneralMenuButtonOnChecked">
+    <Storyboard x:Key="sb_GeneralMenuOnChecked">
         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
             <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#FFFEA700" />
         </ColorAnimationUsingKeyFrames>
     </Storyboard>
-    <Storyboard x:Key="GeneralMenuButtonOnUnchecked">
+    <Storyboard x:Key="sb_GeneralMenuOnUnchecked">
         <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)">
             <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#22202f" />
         </ColorAnimationUsingKeyFrames>
     </Storyboard>
 
     <Style
-        x:Key="GeneralMenuButtonStyle"
+        x:Key="ac_MenuButtonStyle"
         BasedOn="{StaticResource {x:Type ToggleButton}}"
         TargetType="{x:Type RadioButton}">
         <Style.Setters>
@@ -2387,7 +2263,7 @@
                             <TextBlock
                                 Margin="50,0,0,0"
                                 VerticalAlignment="Center"
-                                FontFamily="{DynamicResource BaseFontFamily}"
+                                FontFamily="{StaticResource BaseFontFamily}"
                                 Foreground="{TemplateBinding Foreground}"
                                 Text="{TemplateBinding Property=Content}" />
                         </Border>
@@ -2400,10 +2276,10 @@
         </Style.Setters>
         <Style.Triggers>
             <EventTrigger RoutedEvent="ToggleButton.Checked">
-                <BeginStoryboard Storyboard="{DynamicResource GeneralMenuButtonOnChecked}" />
+                <BeginStoryboard Storyboard="{StaticResource sb_GeneralMenuOnChecked}" />
             </EventTrigger>
             <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                <BeginStoryboard Storyboard="{DynamicResource GeneralMenuButtonOnUnchecked}" />
+                <BeginStoryboard Storyboard="{StaticResource sb_GeneralMenuOnUnchecked}" />
             </EventTrigger>
         </Style.Triggers>
 
@@ -2411,11 +2287,11 @@
 
     <!--#endregion-->
 
-    <!--#region Settings Menu-->
+    <!--#region Settings-->
 
     <Style
-        x:Key="SettingsMenuButtonStyle"
-        BasedOn="{StaticResource GeneralMenuButtonStyle}"
+        x:Key="c_SettingsMenuButtonStyle"
+        BasedOn="{StaticResource ac_MenuButtonStyle}"
         TargetType="{x:Type RadioButton}">
         <Style.Setters>
             <Setter Property="Template">
@@ -2450,7 +2326,7 @@
 
     <!--#region Scroll-->
 
-    <Style x:Key="BrowseRadioButtonScrollStyle" TargetType="RadioButton">
+    <Style x:Key="c_ScrollViewRadioButtonStyle" TargetType="RadioButton">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Width" Value="45" />
         <Setter Property="Height" Value="45" />
@@ -2465,7 +2341,7 @@
                         CornerRadius="60">
                         <Image
                             x:Name="Image"
-                            RenderOptions.BitmapScalingMode="Fant"
+                            RenderOptions.BitmapScalingMode="LowQuality"
                             Stretch="Fill">
                             <Image.Source>
                                 <BitmapImage
@@ -2495,7 +2371,7 @@
 
     <!--#region Table-->
 
-    <Style x:Key="BrowseRadioButtonTableStyle" TargetType="RadioButton">
+    <Style x:Key="c_TableViewRadioButtonStyle" TargetType="RadioButton">
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="Width" Value="45" />
         <Setter Property="Height" Value="45" />
@@ -2510,7 +2386,7 @@
                         CornerRadius="60">
                         <Image
                             x:Name="Image"
-                            RenderOptions.BitmapScalingMode="Fant"
+                            RenderOptions.BitmapScalingMode="LowQuality"
                             Stretch="Fill">
                             <Image.Source>
                                 <BitmapImage
@@ -2564,7 +2440,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2601,7 +2477,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2638,7 +2514,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2675,7 +2551,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2712,7 +2588,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2749,7 +2625,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2786,7 +2662,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2823,7 +2699,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2860,7 +2736,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2897,7 +2773,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2934,7 +2810,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"
@@ -2971,7 +2847,7 @@
                 <ControlTemplate TargetType="RadioButton">
 
                     <Border Background="Transparent" CornerRadius="60">
-                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="LowQuality">
                             <Image.Source>
                                 <BitmapImage
                                     CacheOption="OnLoad"

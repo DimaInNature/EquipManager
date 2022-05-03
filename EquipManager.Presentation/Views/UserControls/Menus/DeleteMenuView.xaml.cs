@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.Menus;
 
-public partial class DeleteMenuView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class DeleteMenuView : UserControl
 {
-    private readonly IDeleteMenuViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IDeleteMenuViewModel>();
+    private readonly IViewModel<DeleteMenuView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<DeleteMenuView>>();
 
     public DeleteMenuView()
     {
@@ -11,4 +12,24 @@ public partial class DeleteMenuView : UserControl
 
         DataContext = _viewModel ?? throw new ViewModelNotFoundException(nameof(DeleteMenuViewModel));
     }
+
+    private void EmployeeButton_Click(object sender, RoutedEventArgs e) =>
+      SetFrame(source: new DeleteEmployeeView());
+
+    private void PPEButton_Click(object sender, RoutedEventArgs e) =>
+         SetFrame(source: new DeletePPEView());
+
+    private void ContractButton_Click(object sender, RoutedEventArgs e) =>
+         SetFrame(source: new DeletePPEContractView());
+
+    private void SetFrame(ContentControl source)
+    {
+        if (source is null) throw new NullReferenceException(nameof(source));
+
+        CollapseBody();
+
+        (MenuFrame.Visibility, MenuFrame.Content) = (Visibility.Visible, source);
+    }
+
+    private void CollapseBody() => MenuBody.Visibility = Visibility.Collapsed;
 }

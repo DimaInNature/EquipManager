@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views;
 
-public partial class MainView : Window
+/// <summary> Представление.</summary>
+public sealed partial class MainView : Window
 {
-    private readonly IMainViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IMainViewModel>();
+    private readonly IViewModel<MainView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<MainView>>();
 
     public MainView()
     {
@@ -27,29 +28,76 @@ public partial class MainView : Window
     private void ExitButton_Click(object sender, RoutedEventArgs e) =>
         Application.Current.Shutdown();
 
-    private void ShowViewMenuPageButton_Click(object sender, RoutedEventArgs e) =>
+    private void HomeButton_Click(object sender, RoutedEventArgs e)
+    {
+        (Title, HomeMenuButton.IsChecked) = ("TelPlus - Home", true);
+
+        SetBody(control: HomeBody);
+    }
+
+    private void ViewButton_Click(object sender, RoutedEventArgs e)
+    {
         (Title, ViewMenuButton.IsChecked) = ("TelPlus - View", true);
 
-    private void ShowCreateMenuPageButton_Click(object sender, RoutedEventArgs e) =>
+        SetFrame(source: new ViewMenuView());
+    }
+
+    private void CreateButton_Click(object sender, RoutedEventArgs e)
+    {
         (Title, CreateMenuButton.IsChecked) = ("TelPlus - Create", true);
 
-    private void ShowUpdateMenuPageButton_Click(object sender, RoutedEventArgs e) =>
+        SetFrame(source: new CreateMenuView());
+    }
+
+    private void UpdateButton_Click(object sender, RoutedEventArgs e)
+    {
         (Title, UpdateMenuButton.IsChecked) = ("TelPlus - Update", true);
 
-    private void ShowDeleteMenuPageButton_Click(object sender, RoutedEventArgs e) =>
+        SetFrame(source: new UpdateMenuView());
+    }
+
+    private void DeleteButton_Click(object sender, RoutedEventArgs e)
+    {
         (Title, DeleteMenuButton.IsChecked) = ("TelPlus - Delete", true);
 
-    private void HomeMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - Home";
+        SetFrame(source: new DeleteMenuView());
+    }
 
-    private void ViewMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - View";
+    private void ExportButton_Click(object sender, RoutedEventArgs e)
+    {
+        (Title, ExportMenuButton.IsChecked) = ("TelPlus - Export", true);
 
-    private void CreateMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - Create";
+        SetBody(control: ExportBody);
+    }
 
-    private void UpdateMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - Update";
+    private void SettingsButton_Click(object sender, RoutedEventArgs e)
+    {
+        (Title, SettingsMenuButton.IsChecked) = ("TelPlus - Settings", true);
 
-    private void DeleteMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - Delete";
+        SetFrame(source: new SettingsMenuView());
+    }
 
-    private void ExportMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - Export";
+    private void SetFrame(ContentControl source)
+    {
+        if (source is null) throw new NullReferenceException(nameof(source));
 
-    private void SettingsMenuButton_Click(object sender, RoutedEventArgs e) => Title = "TelPlus - Settings";
+        CollapseBodies();
+
+        (MenuFrame.Visibility, MenuFrame.Content) = (Visibility.Visible, source);
+    }
+
+    private void SetBody(Panel control)
+    {
+        CollapseFrame();
+
+        CollapseBodies();
+
+        control.Visibility = Visibility.Visible;
+    }
+
+    private void CollapseBodies() =>
+        HomeBody.Visibility = ExportBody.Visibility = Visibility.Collapsed;
+
+    private void CollapseFrame() =>
+        (MenuFrame.Visibility, MenuFrame.Content) = (Visibility.Collapsed, null);
 }

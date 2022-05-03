@@ -2,59 +2,69 @@
 
 internal static class DependencyInjectionConfiguration
 {
-    public static void AddDependencyInjectionConfiguration(this IServiceCollection services!!)
+    public static void AddDependencyInjectionConfiguration(this IServiceCollection services)
     {
+        ArgumentNullException.ThrowIfNull(nameof(services));
 
+        services.AddTransient<IEmployeeRepositoryService, EmployeeRepositoryService>();
+        services.AddTransient<IEmployeeFacadeService, EmployeeFacadeService>();
+
+        services.AddTransient<IEmployeeSizeChartsRepositoryService, EmployeeSizeChartsRepositoryService>();
+
+        services.AddTransient<IPPERepositoryService, PPERepositoryService>();
+        services.AddTransient<IPPEFacadeService, PPEFacadeService>();
+
+        services.AddTransient<IMessageBoxService, WPFMessageBoxService>();
     }
 
-    public static void AddViewModelsConfiguration(this IServiceCollection services!!)
+    public static void AddViewModelsConfiguration(this IServiceCollection services)
     {
-        services.AddTransient<IMainViewModel, MainViewModel>();
+        ArgumentNullException.ThrowIfNull(nameof(services));
+
+        services.AddTransient<IViewModel<MainView>, MainViewModel>();
 
         #region Menu
 
-        services.AddTransient<ICreateMenuViewModel, CreateMenuViewModel>();
-        services.AddTransient<IViewMenuViewModel, ViewMenuViewModel>();
-        services.AddTransient<IUpdateMenuViewModel, UpdateMenuViewModel>();
-        services.AddTransient<IDeleteMenuViewModel, DeleteMenuViewModel>();
-        services.AddTransient<IExportMenuViewModel, ExportMenuViewModel>();
-        services.AddTransient<ISettingsMenuViewModel, SettingsMenuViewModel>();
+        services.AddTransient<IViewModel<CreateMenuView>, CreateMenuViewModel>();
+        services.AddTransient<IViewModel<ViewMenuView>, ViewMenuViewModel>();
+        services.AddTransient<IViewModel<UpdateMenuView>, UpdateMenuViewModel>();
+        services.AddTransient<IViewModel<DeleteMenuView>, DeleteMenuViewModel>();
+        services.AddTransient<IViewModel<SettingsMenuView>, SettingsMenuViewModel>();
 
         #endregion
 
         #region Employee
 
-        services.AddTransient<ICreateEmployeeViewModel, CreateEmployeeViewModel>();
-        services.AddTransient<IViewEmployeeViewModel, ViewEmployeeViewModel>();
-        services.AddTransient<IUpdateEmployeeViewModel, UpdateEmployeeViewModel>();
-        services.AddTransient<IDeleteEmployeeViewModel, DeleteEmployeeViewModel>();
+        services.AddTransient<IViewModel<CreateEmployeeView>, CreateEmployeeViewModel>();
+        services.AddTransient<IViewModel<ViewEmployeeView>, ViewEmployeeViewModel>();
+        services.AddTransient<IViewModel<UpdateEmployeeView>, UpdateEmployeeViewModel>();
+        services.AddTransient<IViewModel<DeleteEmployeeView>, DeleteEmployeeViewModel>();
 
         #endregion
 
         #region PPE
 
-        services.AddTransient<ICreatePPEViewModel, CreatePPEViewModel>();
-        services.AddTransient<IViewPPEViewModel, ViewPPEViewModel>();
-        services.AddTransient<IUpdatePPEViewModel, UpdatePPEViewModel>();
-        services.AddTransient<IDeletePPEViewModel, DeletePPEViewModel>();
+        services.AddTransient<IViewModel<CreatePPEView>, CreatePPEViewModel>();
+        services.AddTransient<IViewModel<ViewPPEView>, ViewPPEViewModel>();
+        services.AddTransient<IViewModel<UpdatePPEView>, UpdatePPEViewModel>();
+        services.AddTransient<IViewModel<DeletePPEView>, DeletePPEViewModel>();
 
         #endregion
 
         #region PPE Contract
 
-        services.AddTransient<ICreatePPEContractViewModel, CreatePPEContractViewModel>();
-        services.AddTransient<IViewPPEContractViewModel, ViewPPEContractViewModel>();
-        services.AddTransient<IUpdatePPEContractViewModel, UpdatePPEContractViewModel>();
-        services.AddTransient<IDeletePPEContractViewModel, DeletePPEContractViewModel>();
-        services.AddTransient<IExportPPEContractViewModel, ExportPPEContractViewModel>();
+        services.AddTransient<IViewModel<CreatePPEContractView>, CreatePPEContractViewModel>();
+        services.AddTransient<IViewModel<ViewPPEContractView>, ViewPPEContractViewModel>();
+        services.AddTransient<IViewModel<UpdatePPEContractView>, UpdatePPEContractViewModel>();
+        services.AddTransient<IViewModel<DeletePPEContractView>, DeletePPEContractViewModel>();
+        services.AddTransient<IViewModel<ExportPPEContractView>, ExportPPEContractViewModel>();
 
         #endregion
 
         #region Settings
 
-        services.AddTransient<IThemeSettingsViewModel, ThemeSettingsViewModel>();
-        services.AddTransient<ILanguageSettingsViewModel, LanguageSettingsViewModel>();
-        services.AddTransient<IApplicationSettingsViewModel, ApplicationSettingsViewModel>();
+        services.AddTransient<IViewModel<ThemeSettingsView>, ThemeSettingsViewModel>();
+        services.AddTransient<IViewModel<LanguageSettingsView>, LanguageSettingsViewModel>();
 
         #endregion
     }

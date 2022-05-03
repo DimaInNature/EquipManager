@@ -12,11 +12,18 @@ public partial class App : Application
 
         ServiceProvider = serviceCollection.BuildServiceProvider();
 
-        new MainView().Show();
+        WPFStartup.LoadState();
+
+        WPFStartup.ShowWindow(startupWindow: new MainView());
     }
 
-    private void ConfigureServices(IServiceCollection services!!)
+    private static void ConfigureServices(IServiceCollection services)
     {
+        ArgumentNullException.ThrowIfNull(nameof(services));
+
+        // Database configuration
+        services.AddDatabaseConfiguration();
+
         // .NET Native DI Abstraction
         services.AddDependencyInjectionConfiguration();
 

@@ -3,27 +3,30 @@
 internal static class ApplicationSettingsManipulator
 {
     private const string DefaultTheme = "Light";
-    private const string DefaultLanguage = "Russian";
-    private const bool DefaultTopmost = false;
 
-    public static void ApplySettings(string theme, string language, bool topmost)
+    private const string DefaultLanguage = "Russian";
+
+    public static void ApplySettings()
     {
-        DictionarySwitcher.SwitchTheme(theme);
-        DictionarySwitcher.SwitchLanguage(language);
-        ApplicationSettings.Topmost = topmost;
+        DictionarySwitcher.SwitchTheme(theme: ApplicationSettings.Theme);
+
+        DictionarySwitcher.SwitchLanguage(language: ApplicationSettings.Language);
     }
 
     public static void ApplyTheme(string theme)
     {
-        DictionarySwitcher.SwitchTheme(theme);
-        DictionarySwitcher.SwitchLanguage(ApplicationSettings.Language);
+        ApplicationSettings.Theme = theme;
     }
 
     public static void ApplyLanguage(string language)
     {
-        DictionarySwitcher.SwitchLanguage(language);
+        ApplicationSettings.Language = language;
     }
 
-    public static void Default() =>
-        ApplySettings(DefaultTheme, DefaultLanguage, DefaultTopmost);
+    public static void Default()
+    {
+        ApplicationSettings.Theme = DefaultTheme;
+
+        ApplicationSettings.Language = DefaultLanguage;
+    }
 }

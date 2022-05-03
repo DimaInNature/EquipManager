@@ -1,9 +1,10 @@
 ﻿namespace EquipManager.Presentation.Views.UserControls.Employees;
 
-public partial class UpdateEmployeeView : UserControl
+/// <summary> Представление.</summary>
+public sealed partial class UpdateEmployeeView : UserControl
 {
-    private readonly IUpdateEmployeeViewModel? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IUpdateEmployeeViewModel>();
+    private readonly IViewModel<UpdateEmployeeView>? _viewModel = (Application.Current as App)?
+        .ServiceProvider?.GetService<IViewModel<UpdateEmployeeView>>();
 
     public UpdateEmployeeView()
     {

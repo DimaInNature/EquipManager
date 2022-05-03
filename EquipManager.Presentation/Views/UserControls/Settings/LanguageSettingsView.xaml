@@ -22,7 +22,7 @@
             VerticalAlignment="Center"
             FontSize="28"
             IsHitTestVisible="False"
-            Style="{DynamicResource SettingsLanguageTitleTextBlock}" />
+            Text="{StaticResource t_Language}" />
 
         <Grid Grid.Row="1" Margin="10">
 
@@ -49,7 +49,7 @@
                 VerticalAlignment="Center"
                 FontSize="20"
                 IsHitTestVisible="False"
-                Style="{DynamicResource SettingsLanguageSecondTitleTextBlock}" />
+                Text="{StaticResource t_ChoiceApplicationLanguage}" />
 
             <Viewbox
                 Grid.Row="1"
@@ -61,8 +61,9 @@
                 <Button
                     Width="40"
                     Height="30"
+                    Background="{StaticResource img_RussianLanguage}"
                     Command="{Binding SetRussianLanguageCommand}"
-                    Style="{DynamicResource SettingsRussianLanguageButtonStyle}" />
+                    Style="{StaticResource c_LanguageButtonStyle}" />
             </Viewbox>
 
             <TextBlock
@@ -73,7 +74,6 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 FontSize="20"
-                Style="{DynamicResource TextBlock}"
                 Text="Русский" />
 
             <Viewbox
@@ -85,8 +85,9 @@
                 <Button
                     Width="40"
                     Height="30"
+                    Background="{StaticResource img_EnglishLanguage}"
                     Command="{Binding SetEnglishLanguageCommand}"
-                    Style="{DynamicResource SettingsEnglishLanguageButtonStyle}" />
+                    Style="{StaticResource c_LanguageButtonStyle}" />
             </Viewbox>
 
             <TextBlock
@@ -97,7 +98,6 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 FontSize="20"
-                Style="{DynamicResource TextBlock}"
                 Text="English" />
 
         </Grid>
