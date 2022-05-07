@@ -76,7 +76,7 @@ internal sealed class CreateEmployeeViewModel
         }
     }
 
-    public DateOnly? DateOfEmployment
+    public DateTime? DateOfEmployment
     {
         get => _dateOfEmployment;
         set
@@ -87,7 +87,7 @@ internal sealed class CreateEmployeeViewModel
         }
     }
 
-    public DateOnly? DateOfProfessionChange
+    public DateTime? DateOfProfessionChange
     {
         get => _dateOfProfessionChange;
         set
@@ -296,9 +296,9 @@ internal sealed class CreateEmployeeViewModel
 
     private string? _profession;
 
-    private DateOnly? _dateOfEmployment;
+    private DateTime? _dateOfEmployment;
 
-    private DateOnly? _dateOfProfessionChange;
+    private DateTime? _dateOfProfessionChange;
 
     private int? _height;
 

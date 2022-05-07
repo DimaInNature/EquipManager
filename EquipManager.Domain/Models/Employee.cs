@@ -53,10 +53,10 @@ public class Employee : IDomainModel
     }
 
     /// <summary> Дата приёма на работу. </summary>
-    public DateOnly DateOfEmployment { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
+    public DateTime DateOfEmployment { get; set; } = DateTime.UtcNow;
 
     /// <summary> Дата последней смены должности. </summary>
-    public DateOnly DateOfProfessionChange { get; set; } = DateOnly.FromDateTime(DateTime.UtcNow);
+    public DateTime DateOfProfessionChange { get; set; } = DateTime.UtcNow;
 
     /// <summary> Номер таблицы с размерами экипировки сотрудника.</summary>
     public int EmployeeSizeChartId { get; set; }

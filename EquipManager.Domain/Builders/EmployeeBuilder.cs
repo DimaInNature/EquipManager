@@ -80,9 +80,9 @@ public class EmployeeBuilder
     /// <para>Устанавливает <see cref="Employee.DateOfEmployment"/></para></remarks>
     /// <param name="date">Дата приёма на работу.</param>
     /// <returns>Возвращает вызывающий метод объект <see cref="EmployeeBuilder"/>.</returns>
-    public EmployeeBuilder SetDateOfEmployment(DateOnly? date)
+    public EmployeeBuilder SetDateOfEmployment(DateTime? date)
     {
-        _employee.DateOfEmployment = date ?? DateOnly.FromDateTime(DateTime.UtcNow);
+        _employee.DateOfEmployment = date ?? DateTime.UtcNow;
 
         return this;
     }
@@ -92,9 +92,9 @@ public class EmployeeBuilder
     /// <para>Устанавливает <see cref="Employee.DateOfProfessionChange"/></para></remarks>
     /// <param name="date">Дата последней смены должности.</param>
     /// <returns>Возвращает вызывающий метод объект <see cref="EmployeeBuilder"/>.</returns>
-    public EmployeeBuilder SetDateOfProfessionChange(DateOnly? date)
+    public EmployeeBuilder SetDateOfProfessionChange(DateTime? date)
     {
-        _employee.DateOfProfessionChange = date ?? DateOnly.FromDateTime(DateTime.UtcNow);
+        _employee.DateOfProfessionChange = date ?? DateTime.UtcNow;
 
         return this;
     }

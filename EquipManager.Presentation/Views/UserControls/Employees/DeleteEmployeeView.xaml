@@ -101,8 +101,8 @@
 
                         <GridViewColumn DisplayMemberBinding="{Binding StructuralDivision}" Header="{StaticResource t_Employee_StructuralDivision}" />
                         <GridViewColumn DisplayMemberBinding="{Binding Profession}" Header="{StaticResource t_Employee_Profession}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding DateOfEmployment}" Header="{StaticResource t_Employee_DateOfEmployment}" />
-                        <GridViewColumn DisplayMemberBinding="{Binding DateOfProfessionChange}" Header="{StaticResource t_Employee_DateOfProfessionChange}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfEmployment, StringFormat=dd/MM/yyyy, ConverterCulture=ru-RU}" Header="{StaticResource t_Employee_DateOfEmployment}" />
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOfProfessionChange, StringFormat=dd/MM/yyyy, ConverterCulture=ru-RU}" Header="{StaticResource t_Employee_DateOfProfessionChange}" />
 
                         <!--#endregion-->
 
@@ -277,7 +277,7 @@
                         Height="40"
                         IsHitTestVisible="False"
                         Tag="{StaticResource t_Employee_DateOfEmployment}"
-                        Text="{Binding Employee.DateOfEmployment}" />
+                        Text="{Binding Employee.DateOfEmployment, StringFormat=dd/MM/yyyy, ConverterCulture=ru-RU}" />
 
                     <TextBox
                         Grid.Row="2"
@@ -286,7 +286,7 @@
                         Height="40"
                         IsHitTestVisible="False"
                         Tag="{StaticResource t_Employee_DateOfProfessionChange}"
-                        Text="{Binding Employee.DateOfProfessionChange}" />
+                        Text="{Binding Employee.DateOfProfessionChange, StringFormat=dd/MM/yyyy, ConverterCulture=ru-RU}" />
 
                 </Grid>
 
