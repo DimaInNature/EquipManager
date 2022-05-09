@@ -32,7 +32,7 @@ internal sealed class ChoicePPEViewModel
 
     #region Private
 
-    private List<PPE> _ppes = new List<PPE>();
+    private List<PPE> _ppes = new();
 
     private PPE? _ppe;
 

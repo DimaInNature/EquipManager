@@ -199,6 +199,8 @@
 
     <v:String x:Key="t_CreatePPEContract">Создание договора</v:String>
 
+    <v:String x:Key="t_TheContractHasBeenSuccessfullyCreated">Договор успешно создан.</v:String>
+
     <!--#region Messages-->
 
     <v:String x:Key="tm_Success">Успех.</v:String>
@@ -226,6 +228,8 @@
     <v:String x:Key="tm_ToApplyChangesYouNeedToRestartTheProgram">Для применения изменений необходимо перезапустить программу.</v:String>
 
     <v:String x:Key="tm_PPEIsNotSelected">Не выбран С.И.З.</v:String>
+
+    <v:String x:Key="tm_EmployeeIsNotSelected">Не выбран сотрудник.</v:String>
 
     <!--#endregion-->
 

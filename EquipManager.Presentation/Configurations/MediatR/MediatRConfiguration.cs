@@ -15,5 +15,9 @@ internal static class MediatRConfiguration
         services.AddEmployeeSizeChartMediatRProfile();
 
         services.AddPPEMediatRProfile();
+
+        services.AddPPEContractMediatRProfile();
+
+        services.AddPPEContractBodyMediatRProfile();
     }
 }

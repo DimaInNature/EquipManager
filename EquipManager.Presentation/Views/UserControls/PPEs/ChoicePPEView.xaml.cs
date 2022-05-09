@@ -19,4 +19,11 @@ public sealed partial class ChoicePPEView : UserControl
     {
         NumberTextBlock.Text = $"{NumberTextBlock.Text} №{number}";
     }
+
+    public void Clear()
+    {
+        if (DataContext is null) return;
+
+        (DataContext as ChoicePPEViewModel).PPE = null;
+    }
 }

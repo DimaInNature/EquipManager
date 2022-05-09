@@ -199,6 +199,8 @@
 
     <v:String x:Key="t_CreatePPEContract">Create contract.</v:String>
 
+    <v:String x:Key="t_TheContractHasBeenSuccessfullyCreated">The contract has been successfully created.</v:String>
+
     <!--#region Messages-->
 
     <v:String x:Key="tm_Success">Success.</v:String>
@@ -226,6 +228,8 @@
     <v:String x:Key="tm_ToApplyChangesYouNeedToRestartTheProgram">To apply changes, you need to restart the program.</v:String>
 
     <v:String x:Key="tm_PPEIsNotSelected">PPE is not selected.</v:String>
+
+    <v:String x:Key="tm_EmployeeIsNotSelected">Employee is not selected.</v:String>
 
     <!--#endregion-->
 

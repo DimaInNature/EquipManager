@@ -14,6 +14,11 @@ internal static class DependencyInjectionConfiguration
         services.AddTransient<IPPERepositoryService, PPERepositoryService>();
         services.AddTransient<IPPEFacadeService, PPEFacadeService>();
 
+        services.AddTransient<IPPEContractRepositoryService, PPEContractRepositoryService>();
+        services.AddTransient<IPPEContractFacadeService, PPEContractFacadeService>();
+
+        services.AddTransient<IPPEContractBodyRepositoryService, PPEContractBodyRepositoryService>();
+
         services.AddTransient<IMessageBoxService, WPFMessageBoxService>();
     }
 

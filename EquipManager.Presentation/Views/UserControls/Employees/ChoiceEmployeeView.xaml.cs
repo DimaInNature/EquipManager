@@ -3,6 +3,8 @@
 /// <summary> Представление.</summary>
 public partial class ChoiceEmployeeView : UserControl
 {
+    public Employee? SelectedEmployee => (DataContext as ChoiceEmployeeViewModel)?.Employee;
+
     private readonly IViewModel<ChoiceEmployeeView>? _viewModel = (Application.Current as App)?
         .ServiceProvider?.GetService<IViewModel<ChoiceEmployeeView>>();
 
@@ -11,5 +13,12 @@ public partial class ChoiceEmployeeView : UserControl
         InitializeComponent();
 
         DataContext = _viewModel ?? throw new ViewModelNotFoundException(nameof(CreatePPEContractViewModel));
+    }
+
+    public void Clear()
+    {
+        if (DataContext is null) return;
+
+        (DataContext as ChoiceEmployeeViewModel).Employee = null;
     }
 }

@@ -3,10 +3,14 @@
 /// <summary> Представление.</summary>
 public sealed partial class CreatePPEContractView : UserControl
 {
-    private readonly IViewModel<CreatePPEContractView>? _viewModel = (Application.Current as App)?
-        .ServiceProvider?.GetService<IViewModel<CreatePPEContractView>>();
-
     private readonly ChoicePPEView[]? _controls = new ChoicePPEView[12];
+
+    private readonly ChoiceEmployeeView _employeeControl = new();
+
+    private readonly IViewModel<CreatePPEContractView>? _viewModel = (Application.Current as App)?
+       .ServiceProvider?.GetService<IViewModel<CreatePPEContractView>>();
+
+    private readonly IPPEContractFacadeService _ppeContractRepository;
 
     public CreatePPEContractView()
     {
@@ -14,7 +18,10 @@ public sealed partial class CreatePPEContractView : UserControl
 
         DataContext = _viewModel ?? throw new ViewModelNotFoundException(nameof(CreatePPEContractViewModel));
 
-        EmployeeFrame.Content = new ChoiceEmployeeView();
+        _ppeContractRepository = (Application.Current as App)?.ServiceProvider?
+            .GetService<IPPEContractFacadeService>() ?? throw new ArgumentNullException(nameof(IPPEContractFacadeService));
+
+        EmployeeFrame.Content = _employeeControl;
 
         for (int i = 0; i < _controls?.Length;)
             _controls[i] = new ChoicePPEView(number: ++i);
@@ -22,10 +29,78 @@ public sealed partial class CreatePPEContractView : UserControl
         SetPage(number: 1);
     }
 
-    private void CreateButton_Click(object sender, RoutedEventArgs e)
+    private async void CreateButton_Click(object sender, RoutedEventArgs e)
     {
+        if (_controls is null) return;
 
+        Employee? employee = _employeeControl?.SelectedEmployee;
+
+        if (employee is null)
+        {
+            MessageBox.Show(
+                messageBoxText: LanguageTranslator.Translate(key: "tm_EmployeeIsNotSelected"),
+                caption: LanguageTranslator.Translate(key: "tm_Information"),
+                button: MessageBoxButton.OK,
+                icon: MessageBoxImage.Exclamation);
+
+            return;
+        }
+
+        if (_controls[0].SelectedPPE is null)
+        {
+            MessageBox.Show(
+                messageBoxText: LanguageTranslator.Translate(key: "tm_PPEIsNotSelected"),
+                caption: LanguageTranslator.Translate(key: "tm_Information"),
+                button: MessageBoxButton.OK,
+                icon: MessageBoxImage.Exclamation);
+
+            return;
+        }
+
+        PPEContract contract = PPEContract.GetBuilder()
+            .AddEmployee(employee.Id)
+            .Build();
+
+        var bodyBuilder = PPEContractBody.GetBuilder();
+
+        for (int i = 0; i < _controls.Length; i++)
+            bodyBuilder.AppendPPE(idPPE: _controls[i]?.SelectedPPE?.Id, number: i + 1);
+
+        PPEContractBody contractBody = bodyBuilder.Build();
+
+        await _ppeContractRepository.CreateAsync(contractModel: (contract, contractBody));
+
+        MessageBox.Show(
+            messageBoxText: LanguageTranslator.Translate(key: "t_TheContractHasBeenSuccessfullyCreated"),
+            caption: LanguageTranslator.Translate(key: "tm_Success"),
+            button: MessageBoxButton.OK,
+            icon: MessageBoxImage.Information);
+
+        Clear();
+
+        SetPage(number: 1);
     }
+
+    private void Clear()
+    {
+        for (int i = 0; i < _controls?.Length;) _controls[i++].Clear();
+
+        _employeeControl?.Clear();
+    }
+
+    private void SetPage(int number)
+    {
+        if (_controls is null) return;
+
+        --number;
+
+        if (number < 0 || number > _controls.Length) return;
+
+        SetFrame(source: _controls[number]);
+    }
+
+    private void SetFrame(ContentControl source) =>
+        MenuFrame.Content = source ?? throw new NullReferenceException(nameof(source));
 
     private void Item1Button_Click(object sender, RoutedEventArgs e) => SetPage(number: 1);
 
@@ -203,23 +278,5 @@ public sealed partial class CreatePPEContractView : UserControl
         }
 
         SetPage(number: 12);
-    }
-
-    private void SetPage(int number)
-    {
-        if (_controls is null) return;
-
-        --number;
-
-        if (number < 0 || number > _controls.Length) return;
-
-        SetFrame(source: _controls[number]);
-    }
-
-    private void SetFrame(ContentControl source)
-    {
-        if (source is null) throw new NullReferenceException(nameof(source));
-
-        MenuFrame.Content = source;
     }
 }
