@@ -39,6 +39,7 @@ internal static class DependencyInjectionConfiguration
         services.AddTransient<IViewModel<ViewEmployeeView>, ViewEmployeeViewModel>();
         services.AddTransient<IViewModel<UpdateEmployeeView>, UpdateEmployeeViewModel>();
         services.AddTransient<IViewModel<DeleteEmployeeView>, DeleteEmployeeViewModel>();
+        services.AddTransient<IViewModel<ChoiceEmployeeView>, ChoiceEmployeeViewModel>();
 
         #endregion
 
@@ -48,6 +49,7 @@ internal static class DependencyInjectionConfiguration
         services.AddTransient<IViewModel<ViewPPEView>, ViewPPEViewModel>();
         services.AddTransient<IViewModel<UpdatePPEView>, UpdatePPEViewModel>();
         services.AddTransient<IViewModel<DeletePPEView>, DeletePPEViewModel>();
+        services.AddTransient<IViewModel<ChoicePPEView>, ChoicePPEViewModel>();
 
         #endregion
 

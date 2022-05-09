@@ -197,6 +197,8 @@
 
     <v:String x:Key="t_InformationAboutPPE">Information about PPE.</v:String>
 
+    <v:String x:Key="t_CreatePPEContract">Create contract.</v:String>
+
     <!--#region Messages-->
 
     <v:String x:Key="tm_Success">Success.</v:String>
@@ -222,6 +224,8 @@
     <v:String x:Key="tm_MaxValue">Max value</v:String>
 
     <v:String x:Key="tm_ToApplyChangesYouNeedToRestartTheProgram">To apply changes, you need to restart the program.</v:String>
+
+    <v:String x:Key="tm_PPEIsNotSelected">PPE is not selected.</v:String>
 
     <!--#endregion-->
 

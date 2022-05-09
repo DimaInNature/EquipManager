@@ -2309,16 +2309,17 @@
                 <ControlTemplate TargetType="RadioButton">
                     <Border
                         Width="150"
-                        Height="29"
+                        Height="30"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="12"
                         IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
-                        <ContentPresenter
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="{TemplateBinding Content}" />
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="{TemplateBinding Content}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

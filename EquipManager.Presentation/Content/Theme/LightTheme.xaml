@@ -2198,21 +2198,23 @@
         <Setter Property="Background" Value="{StaticResource BaseColorTheme}" />
         <Setter Property="Cursor" Value="{StaticResource BaseCursor}" />
         <Setter Property="FontFamily" Value="{StaticResource BaseFontFamily}" />
+        <Setter Property="Foreground" Value="{StaticResource TemplateForeground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RadioButton">
                     <Border
                         Width="150"
-                        Height="29"
+                        Height="30"
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         CornerRadius="12"
                         IsHitTestVisible="{TemplateBinding IsHitTestVisible}">
-                        <ContentPresenter
+                        <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Content="{TemplateBinding Content}" />
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="{TemplateBinding Content}" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
