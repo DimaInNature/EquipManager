@@ -199,7 +199,7 @@
 
     <v:String x:Key="t_CreatePPEContract">Создание договора</v:String>
 
-    <v:String x:Key="t_TheContractHasBeenSuccessfullyCreated">Договор успешно создан.</v:String>
+    <v:String x:Key="t_DeletePPEContract">Удаление документа.</v:String>
 
     <!--#region Messages-->
 
@@ -220,6 +220,10 @@
     <v:String x:Key="tm_PPESuccessfullyDeleted">С.И.З. успешно удалён.</v:String>
 
     <v:String x:Key="tm_PPESuccessfullyUpdated">С.И.З. успешно изменён.</v:String>
+
+    <v:String x:Key="t_TheContractHasBeenSuccessfullyCreated">Договор успешно создан.</v:String>
+
+    <v:String x:Key="tm_ContractSuccessfullyDeleted">Договор успешно удалён.</v:String>
 
     <v:String x:Key="tm_MinValue">Минимальное значение</v:String>
 

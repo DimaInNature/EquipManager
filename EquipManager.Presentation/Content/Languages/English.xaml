@@ -199,7 +199,7 @@
 
     <v:String x:Key="t_CreatePPEContract">Create contract.</v:String>
 
-    <v:String x:Key="t_TheContractHasBeenSuccessfullyCreated">The contract has been successfully created.</v:String>
+    <v:String x:Key="t_DeletePPEContract">Delete contract.</v:String>
 
     <!--#region Messages-->
 
@@ -220,6 +220,10 @@
     <v:String x:Key="tm_PPESuccessfullyDeleted">PPE sucessfully deleted.</v:String>
 
     <v:String x:Key="tm_PPESuccessfullyUpdated">&gt;PPE sucessfully updated.</v:String>
+
+    <v:String x:Key="t_TheContractHasBeenSuccessfullyCreated">The contract has been successfully created.</v:String>
+
+    <v:String x:Key="tm_ContractSuccessfullyDeleted">Contract succesfully deleted.</v:String>
 
     <v:String x:Key="tm_MinValue">Min value</v:String>
 

@@ -5,8 +5,1396 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:EquipManager.Presentation.Views.UserControls.PPEContracts"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="450"
+    d:DesignHeight="800"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid />
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.13*" />
+            <RowDefinition Height="0.13*" />
+            <RowDefinition />
+            <RowDefinition Height="0.13*" />
+        </Grid.RowDefinitions>
+
+        <!--#region Top-->
+
+        <TextBlock
+            Grid.Row="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="28"
+            Text="{StaticResource t_DeletePPEContract}" />
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <RadioButton
+                x:Name="EmployeeRadioButton"
+                Grid.Column="0"
+                Content="{StaticResource t_Employee}"
+                IsChecked="True">
+                <RadioButton.Style>
+                    <Style BasedOn="{StaticResource c_TabMenuRadioButtonStyle}" TargetType="RadioButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=PPERadioButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=PPEContractRadioButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RadioButton.Style>
+            </RadioButton>
+
+            <RadioButton
+                x:Name="PPERadioButton"
+                Grid.Column="1"
+                Content="{StaticResource t_PPE}"
+                IsChecked="False">
+                <RadioButton.Style>
+                    <Style BasedOn="{StaticResource c_TabMenuRadioButtonStyle}" TargetType="RadioButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=EmployeeRadioButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=PPEContractRadioButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RadioButton.Style>
+            </RadioButton>
+
+            <RadioButton
+                x:Name="PPEContractRadioButton"
+                Grid.Column="2"
+                Content="{StaticResource t_Contract}"
+                IsChecked="False">
+                <RadioButton.Style>
+                    <Style BasedOn="{StaticResource c_TabMenuRadioButtonStyle}" TargetType="RadioButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=EmployeeRadioButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=PPERadioButton, Path=IsChecked}" Value="true">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </RadioButton.Style>
+            </RadioButton>
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <!--#region Employee-->
+
+        <Grid x:Name="EmployeeGrid" Grid.Row="2">
+
+            <ScrollViewer Grid.Row="1" Background="Transparent">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="125" />
+                        <RowDefinition Height="300" />
+                    </Grid.RowDefinitions>
+
+                    <!--#region Personal Data-->
+
+                    <Grid Grid.Row="0" Margin="10">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*" />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="0.1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="0,0,0,20"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="{StaticResource t_Private}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_Name}"
+                            Text="{Binding PPEContract.Employee.Name}" />
+
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_Surname}"
+                            Text="{Binding PPEContract.Employee.Surname}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_Patronymic}"
+                            Text="{Binding PPEContract.Employee.Patronymic}" />
+
+                    </Grid>
+
+                    <!--#endregion-->
+
+                    <!--#region Corporate Data-->
+
+                    <Grid Grid.Row="1" Margin="10">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*" />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="0.1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="{StaticResource t_Company}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_StructuralDivision}"
+                            Text="{Binding PPEContract.Employee.StructuralDivision}" />
+
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_Profession}"
+                            Text="{Binding PPEContract.Employee.Profession}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_DateOfEmployment}"
+                            Text="{Binding PPEContract.Employee.DateOfEmployment, StringFormat=dd/MM/yyyy, ConverterCulture=ru-RU}" />
+
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_DateOfProfessionChange}"
+                            Text="{Binding PPEContract.Employee.DateOfProfessionChange, StringFormat=dd/MM/yyyy, ConverterCulture=ru-RU}" />
+
+                    </Grid>
+
+                    <!--#endregion-->
+
+                    <!--#region Physical data-->
+
+                    <Grid Grid.Row="2" Margin="10">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*" />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="0.1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="{StaticResource t_PhysicData}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_Height}"
+                            Text="{Binding PPEContract.Employee.Height}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_Employee_Gender}"
+                            Text="{Binding PPEContract.Employee.Gender}" />
+
+                    </Grid>
+
+                    <!--#endregion-->
+
+                    <!--#region Clothing size-->
+
+                    <Grid Grid.Row="3" Margin="10">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.1*" />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="0.1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.7*" />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="{StaticResource t_Cloth}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_ClothSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.Cloth}" />
+
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_GazMaskSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.GazMask}" />
+
+                        <TextBox
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_SleeveSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.Sleeve}" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_HeaddressSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.Headdress}" />
+
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_RespiratorSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.Respirator}" />
+
+                        <TextBox
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_GloveSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.Glove}" />
+
+                        <TextBox
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Width="200"
+                            Height="40"
+                            IsHitTestVisible="False"
+                            Tag="{StaticResource t_SizeChart_ShoesSize}"
+                            Text="{Binding PPEContract.Employee.EmployeeSizeChart.Shoes}" />
+
+                    </Grid>
+
+                    <!--#endregion-->
+
+                </Grid>
+
+            </ScrollViewer>
+
+            <Grid.Style>
+
+                <Style TargetType="Grid">
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EmployeeRadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PPERadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PPEContractRadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+
+            </Grid.Style>
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <!--#region PPE-->
+
+        <Grid x:Name="PPEGrid" Grid.Row="2">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.45*" />
+                <RowDefinition Height="0.075*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--#region Item Selector-->
+
+            <Grid Grid.Row="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.ColumnSpan="12"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Text="{StaticResource t_ChoicePPE}" />
+
+                <!--#region Item buttons-->
+
+                <RadioButton
+                    x:Name="Item1Button"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item1Button_Click"
+                    IsChecked="True"
+                    Style="{StaticResource SuitChoiceRadioButtonNumOneStyle}" />
+
+                <RadioButton
+                    x:Name="Item2Button"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item2Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumTwoStyle}" />
+
+                <RadioButton
+                    x:Name="Item3Button"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item3Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumThreeStyle}" />
+
+                <RadioButton
+                    x:Name="Item4Button"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item4Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumFourStyle}" />
+
+                <RadioButton
+                    x:Name="Item5Button"
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item5Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumFiveStyle}" />
+
+                <RadioButton
+                    x:Name="Item6Button"
+                    Grid.Row="1"
+                    Grid.Column="5"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item6Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumSixStyle}" />
+
+                <RadioButton
+                    x:Name="Item7Button"
+                    Grid.Row="1"
+                    Grid.Column="6"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item7Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumSevenStyle}" />
+
+                <RadioButton
+                    x:Name="Item8Button"
+                    Grid.Row="1"
+                    Grid.Column="7"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item8Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumEightStyle}" />
+
+                <RadioButton
+                    x:Name="Item9Button"
+                    Grid.Row="1"
+                    Grid.Column="8"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item9Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumNineStyle}" />
+
+                <RadioButton
+                    x:Name="Item10Button"
+                    Grid.Row="1"
+                    Grid.Column="9"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item10Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumTenStyle}" />
+
+                <RadioButton
+                    x:Name="Item11Button"
+                    Grid.Row="1"
+                    Grid.Column="10"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item11Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumElevenStyle}" />
+
+                <RadioButton
+                    x:Name="Item12Button"
+                    Grid.Row="1"
+                    Grid.Column="11"
+                    Width="50"
+                    HorizontalAlignment="Center"
+                    Click="Item12Button_Click"
+                    IsChecked="False"
+                    Style="{StaticResource SuitChoiceRadioButtonNumTwelveStyle}" />
+
+                <!--#endregion-->
+
+            </Grid>
+
+            <!--#endregion-->
+
+            <TextBlock
+                x:Name="NumberPPEPageTextBox"
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="20" />
+
+            <Grid
+                x:Name="PPEGrid1"
+                Grid.Row="2"
+                Visibility="Visible">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE1.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE1.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE1.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE1.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid2"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Grid.Row="1" Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE2.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE2.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE2.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE2.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid3"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE3.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE3.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE3.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE3.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid4"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE4.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE4.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE4.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE4.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid5"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE5.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE5.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE5.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE5.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid6"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE6.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE6.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE6.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE6.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid7"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE7.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE7.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE7.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE7.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid8"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE8.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE8.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE8.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE8.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid9"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE9.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE9.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE9.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE9.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid10"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE10.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE10.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE10.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE10.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid11"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE11.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE11.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE11.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE11.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid
+                x:Name="PPEGrid12"
+                Grid.Row="2"
+                Visibility="Collapsed">
+
+                <Grid Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_Name}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE12.Name}" />
+
+                    <TextBox
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_UnitOfMeasurement}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE12.UnitOfMeasurement}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_QuantityPerYear}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE12.QuantityPerYear}" />
+
+                    <TextBox
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Width="200"
+                        Height="40"
+                        IsHitTestVisible="False"
+                        Tag="{StaticResource t_PPE_CertificateOfConformity}"
+                        Text="{Binding PPEContract.PPEContractBody.PPE12.CertificateOfConformity}" />
+
+                </Grid>
+
+            </Grid>
+
+            <Grid.Style>
+
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EmployeeRadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PPERadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PPEContractRadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+
+            </Grid.Style>
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <!--#region Contract-->
+
+        <Grid x:Name="PPEContractGrid" Grid.Row="2">
+
+            <ListView ItemsSource="{Binding PPEContracts}" SelectedItem="{Binding PPEContract}">
+                <ListView.View>
+                    <GridView>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Id" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Employee.Name}" Header="{StaticResource t_Employee_Name}" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Employee.Surname}" Header="{StaticResource t_Employee_Surname}" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Employee.Patronymic}" Header="{StaticResource t_Employee_Patronymic}" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE1.Name}" Header="Item1" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE2.Name}" Header="Item2" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE3.Name}" Header="Item3" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE4.Name}" Header="Item4" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE5.Name}" Header="Item5" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE6.Name}" Header="Item6" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE7.Name}" Header="Item7" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE8.Name}" Header="Item8" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE9.Name}" Header="Item9" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE10.Name}" Header="Item10" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE11.Name}" Header="Item11" />
+
+                        <GridViewColumn DisplayMemberBinding="{Binding PPEContractBody.PPE12.Name}" Header="Item12" />
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Grid.Style>
+
+                <Style TargetType="Grid">
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=EmployeeRadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PPERadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding ElementName=PPEContractRadioButton, Path=IsChecked}" Value="true">
+                            <Setter Property="Visibility" Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+
+            </Grid.Style>
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <Button
+            Grid.Row="3"
+            Width="200"
+            Height="40"
+            VerticalAlignment="Center"
+            Command="{Binding DeletePPEContractCommand}"
+            Content="{StaticResource t_Delete}" />
+
+    </Grid>
+
 </UserControl>
