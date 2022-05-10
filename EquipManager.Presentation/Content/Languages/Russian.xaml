@@ -225,6 +225,8 @@
 
     <v:String x:Key="tm_ContractSuccessfullyDeleted">Договор успешно удалён.</v:String>
 
+    <v:String x:Key="tm_ContractSuccessfullyExported">Договор успешно экспортирован.</v:String>
+
     <v:String x:Key="tm_MinValue">Минимальное значение</v:String>
 
     <v:String x:Key="tm_MaxValue">Максимальное значение</v:String>

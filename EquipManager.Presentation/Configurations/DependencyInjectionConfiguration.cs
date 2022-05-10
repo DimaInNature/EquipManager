@@ -20,6 +20,8 @@ internal static class DependencyInjectionConfiguration
         services.AddTransient<IPPEContractBodyRepositoryService, PPEContractBodyRepositoryService>();
 
         services.AddTransient<IMessageBoxService, WPFMessageBoxService>();
+
+        services.AddTransient<WordDocumentService>();
     }
 
     public static void AddViewModelsConfiguration(this IServiceCollection services)

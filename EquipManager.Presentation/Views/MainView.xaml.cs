@@ -77,6 +77,13 @@ public sealed partial class MainView : Window
         SetFrame(source: new SettingsMenuView());
     }
 
+    private void ExportPPEContractButton_Click(object sender, RoutedEventArgs e)
+    {
+        (Title, ExportMenuButton.IsChecked) = ("TelPlus - Export", true);
+
+        SetFrame(source: new ExportPPEContractView());
+    }
+
     private void SetFrame(ContentControl source)
     {
         if (source is null) throw new NullReferenceException(nameof(source));

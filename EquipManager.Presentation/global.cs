@@ -20,6 +20,7 @@ global using EquipManager.Presentation.Views.UserControls.Menus;
 global using EquipManager.Presentation.Views.UserControls.PPEContracts;
 global using EquipManager.Presentation.Views.UserControls.PPEs;
 global using EquipManager.Presentation.Views.UserControls.Settings;
+global using EquipManager.Services.Com.Word;
 global using EquipManager.Services.Data.Employees;
 global using EquipManager.Services.Data.EmployeeSizeCharts;
 global using EquipManager.Services.Data.Features.Employees;

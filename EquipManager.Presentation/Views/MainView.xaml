@@ -339,7 +339,7 @@
                             MaxWidth="1100"
                             MaxHeight="420"
                             Margin="5,5,10,5"
-                            Click="ExportButton_Click"
+                            Click="ExportPPEContractButton_Click"
                             Content="{StaticResource t_ExportContract}"
                             ContentStringFormat="{StaticResource t_ExportNow}"
                             Style="{StaticResource c_ExportContractBigMenuButtonStyle}" />

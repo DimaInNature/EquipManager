@@ -225,6 +225,8 @@
 
     <v:String x:Key="tm_ContractSuccessfullyDeleted">Contract succesfully deleted.</v:String>
 
+    <v:String x:Key="tm_ContractSuccessfullyExported">Contract successfully exported.</v:String>
+
     <v:String x:Key="tm_MinValue">Min value</v:String>
 
     <v:String x:Key="tm_MaxValue">Max value</v:String>
