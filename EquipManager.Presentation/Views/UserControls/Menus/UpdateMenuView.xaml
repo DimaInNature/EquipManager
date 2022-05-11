@@ -35,10 +35,17 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
                 <Button
-                    Grid.Column="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
                     MaxWidth="325"
                     Margin="20"
                     Click="EmployeeButton_Click"
@@ -46,20 +53,13 @@
                     Style="{StaticResource c_UpdateEmployeeVerticalMenuButtonStyle}" />
 
                 <Button
-                    Grid.Column="1"
+                    Grid.Column="5"
+                    Grid.ColumnSpan="3"
                     MaxWidth="325"
                     Margin="20"
                     Click="PPEButton_Click"
                     Content="{StaticResource t_PPE}"
                     Style="{StaticResource c_UpdatePPEVerticalMenuButtonStyle}" />
-
-                <Button
-                    Grid.Column="2"
-                    MaxWidth="325"
-                    Margin="20"
-                    Click="ContractButton_Click"
-                    Content="{StaticResource t_Contract}"
-                    Style="{StaticResource c_UpdateContractVerticalMenuButtonStyle}" />
 
             </Grid>
 

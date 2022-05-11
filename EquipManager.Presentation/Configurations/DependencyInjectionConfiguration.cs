@@ -64,7 +64,6 @@ internal static class DependencyInjectionConfiguration
 
         services.AddTransient<IViewModel<CreatePPEContractView>, CreatePPEContractViewModel>();
         services.AddTransient<IViewModel<ViewPPEContractView>, ViewPPEContractViewModel>();
-        services.AddTransient<IViewModel<UpdatePPEContractView>, UpdatePPEContractViewModel>();
         services.AddTransient<IViewModel<DeletePPEContractView>, DeletePPEContractViewModel>();
         services.AddTransient<IViewModel<ExportPPEContractView>, ExportPPEContractViewModel>();
 

@@ -100,7 +100,6 @@
     <None Remove="Content\Images\Controls\VerticalButtons\Delete\ContractDelete.png" />
     <None Remove="Content\Images\Controls\VerticalButtons\Delete\EmployeDelete.png" />
     <None Remove="Content\Images\Controls\VerticalButtons\Delete\SuitDelete.png" />
-    <None Remove="Content\Images\Controls\VerticalButtons\Edit\ContractEdit.png" />
     <None Remove="Content\Images\Controls\VerticalButtons\Edit\EmployeEdit.png" />
     <None Remove="Content\Images\Controls\VerticalButtons\Edit\SuitEdit.png" />
     <None Remove="Content\Images\Controls\VerticalButtons\General\ComicBackground.jpg" />
@@ -392,9 +391,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Images\Controls\VerticalButtons\Delete\SuitDelete.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Images\Controls\VerticalButtons\Edit\ContractEdit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Images\Controls\VerticalButtons\Edit\EmployeEdit.png">

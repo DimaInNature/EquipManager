@@ -19,9 +19,6 @@ public sealed partial class UpdateMenuView : UserControl
     private void PPEButton_Click(object sender, RoutedEventArgs e) =>
          SetFrame(source: new UpdatePPEView());
 
-    private void ContractButton_Click(object sender, RoutedEventArgs e) =>
-         SetFrame(source: new UpdatePPEContractView());
-
     private void SetFrame(ContentControl source)
     {
         if (source is null) throw new NullReferenceException(nameof(source));
