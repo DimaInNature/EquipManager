@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipManager.Presentation", "EquipManager.Presentation\EquipManager.Presentation.csproj", "{AF824C4E-92EB-444F-BA38-EE748FC3F892}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", "{455A0829-2058-4D2A-9545-5B323012AD19}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{455A0829-2058-4D2A-9545-5B323012AD19}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipManager.Infra.Data", "EquipManager.Infra.Data\EquipManager.Infra.Data.csproj", "{DF912095-5E4F-4EFE-9C92-7A20D8AFBA8A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipManager.Domain", "EquipManager.Domain\EquipManager.Domain.csproj", "{BC314E60-ACEA-4343-AE0E-2AE18C23A331}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - Core", "5.2 - Core", "{5DF43390-2895-4ACE-B6F8-0A60299E5014}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - Core", "4.2 - Core", "{5DF43390-2895-4ACE-B6F8-0A60299E5014}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipManager.Infra.Core", "EquipManager.Infra.Core\EquipManager.Infra.Core.csproj", "{7FAFC564-08D0-46D7-A366-3C87B44E6DB5}"
 EndProject
@@ -51,7 +51,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipManager.Services.Inter
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.4 - COM", "2.4 - COM", "{1427A19B-4B70-444C-9E4C-3E828B3D3E31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipManager.Services.Com", "EquipManager.Services.Com\EquipManager.Services.Com.csproj", "{A399FADB-8B80-42B0-B77A-5D4D83B22350}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EquipManager.Services.Com", "EquipManager.Services.Com\EquipManager.Services.Com.csproj", "{A399FADB-8B80-42B0-B77A-5D4D83B22350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
