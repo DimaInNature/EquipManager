@@ -32,6 +32,8 @@ internal sealed class DeletePPEViewModel
 
     #region Commands
 
+    public RelayCommand? LoadCommand { get; private set; }
+
     public RelayCommand? DeletePPECommand { get; private set; }
 
     #endregion
@@ -60,8 +62,6 @@ internal sealed class DeletePPEViewModel
         (_repository, _messageBox) = (repository, messageBox);
 
         InitializeCommand();
-
-        Task.Run(action: LoadData);
     }
 
     #region Command Logic
@@ -79,22 +79,31 @@ internal sealed class DeletePPEViewModel
 
         Clear();
 
-        await Task.Run(action: LoadData);
+        await LoadData();
     }
 
+    private async void ExecuteLoad(object obj) => await LoadData();
+
     private bool CanExecuteDeletePPE(object obj) => PPE is not null;
+
+    private bool CanExecuteLoad(object obj) => true;
 
     #endregion
 
     #region Other Logic
 
-    private void InitializeCommand() =>
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+          canExecuteFunc: CanExecuteLoad);
+
         DeletePPECommand = new(executeAction: ExecuteDeletePPE,
-            canExecuteFunc: CanExecuteDeletePPE);
+           canExecuteFunc: CanExecuteDeletePPE);
+    }
 
     private void Clear() => PPE = null;
 
-    private async void LoadData() =>
+    private async Task LoadData() =>
         PPEs = await _repository.GetPPEListAsync();
 
     #endregion

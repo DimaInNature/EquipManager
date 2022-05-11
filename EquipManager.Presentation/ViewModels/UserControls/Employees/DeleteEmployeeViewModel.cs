@@ -32,6 +32,8 @@ internal sealed class DeleteEmployeeViewModel
 
     #region Commands
 
+    public RelayCommand? LoadCommand { get; private set; }
+
     public RelayCommand? DeleteEmployeeCommand { get; private set; }
 
     #endregion
@@ -60,8 +62,6 @@ internal sealed class DeleteEmployeeViewModel
         (_repository, _messageBox) = (repository, messageBox);
 
         InitializeCommand();
-
-        Task.Run(action: LoadData);
     }
 
     #region Command Logic
@@ -79,22 +79,31 @@ internal sealed class DeleteEmployeeViewModel
 
         Clear();
 
-        await Task.Run(action: LoadData);
+        await LoadData();
     }
 
+    private async void ExecuteLoad(object obj) => await LoadData();
+
     private bool CanExecuteUpdateEmployee(object obj) => Employee is not null;
+
+    private bool CanExecuteLoad(object obj) => true;
 
     #endregion
 
     #region Other Logic
 
-    private void InitializeCommand() =>
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+          canExecuteFunc: CanExecuteLoad);
+
         DeleteEmployeeCommand = new(executeAction: ExecuteUpdateEmployee,
             canExecuteFunc: CanExecuteUpdateEmployee);
+    }
 
     private void Clear() => Employee = null;
 
-    private async void LoadData() =>
+    private async Task LoadData() =>
         Employees = await _repository.GetEmployeeListAsync();
 
     #endregion

@@ -4,6 +4,8 @@
 internal sealed class ChoiceEmployeeViewModel
     : BaseViewModel, IViewModel<ChoiceEmployeeView>
 {
+    #region Members
+
     public IList<Employee> Employees
     {
         get => _employees;
@@ -28,35 +30,51 @@ internal sealed class ChoiceEmployeeViewModel
         }
     }
 
+    #region Commands
+
+    public RelayCommand? LoadCommand { get; private set; }
+
+    #endregion
+
+    #region Private
+
     private Employee? _employee;
 
     private IList<Employee> _employees = new List<Employee>();
 
+    #endregion
+
+    #region Dependencies
+
     private readonly IEmployeeFacadeService _repository;
 
-    private static readonly SemaphoreSlim _semaphore = new(initialCount: 1, maxCount: 1);
+    #endregion
+
+    #endregion
 
     public ChoiceEmployeeViewModel(IEmployeeFacadeService repository)
     {
         _repository = repository;
 
-        Task.Run(action: LoadData);
+        InitializeCommand();
     }
 
-    private async void LoadData()
+    #region Command Logic
+
+    private async void ExecuteLoad(object obj) =>
+        Employees = await _repository.GetEmployeeListAsync();
+
+    private bool CanExecuteLoad(object obj) => true;
+
+    #endregion
+
+    #region Other Logic
+
+    private void InitializeCommand()
     {
-        //TODO Dirty Trick. A thread-safety issue. Two threads are fighting for one dbcontext.
-        Thread.Sleep(5000);
-
-        await _semaphore.WaitAsync();
-
-        try
-        {
-            Employees = await _repository.GetEmployeeListAsync();
-        }
-        finally
-        {
-            _semaphore.Release();
-        }
+        LoadCommand = new(executeAction: ExecuteLoad,
+            canExecuteFunc: CanExecuteLoad);
     }
+
+    #endregion
 }

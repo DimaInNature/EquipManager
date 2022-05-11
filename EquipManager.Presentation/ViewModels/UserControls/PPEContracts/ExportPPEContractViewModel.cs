@@ -31,6 +31,8 @@ internal sealed class ExportPPEContractViewModel
 
     #region Commands
 
+    public RelayCommand? LoadCommand { get; private set; }
+
     public RelayCommand? ExportPPEContractCommand { get; private set; }
 
     #endregion
@@ -61,11 +63,12 @@ internal sealed class ExportPPEContractViewModel
         (_repository, _messageBox, _wordService) = (repository, messageBox, wordService);
 
         InitializeCommand();
-
-        Task.Run(action: LoadData);
     }
 
     #region Command Logic
+
+    private async void ExecuteLoad(object obj) =>
+        PPEContracts = await _repository.GetPPEContractListAsync();
 
     private void ExecuteExportPPEContract(object obj)
     {
@@ -84,20 +87,24 @@ internal sealed class ExportPPEContractViewModel
         }
     }
 
+    private bool CanExecuteLoad(object obj) => true;
+
     private bool CanExecuteExportPPEContract(object obj) => PPEContract is not null;
 
     #endregion
 
     #region Other Logic
 
-    private void InitializeCommand() =>
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+            canExecuteFunc: CanExecuteLoad);
+
         ExportPPEContractCommand = new(executeAction: ExecuteExportPPEContract,
-            canExecuteFunc: CanExecuteExportPPEContract);
+           canExecuteFunc: CanExecuteExportPPEContract);
+    }
 
     private void Clear() => PPEContract = null;
-
-    private async void LoadData() =>
-        PPEContracts = await _repository.GetPPEContractListAsync();
 
     #endregion
 }

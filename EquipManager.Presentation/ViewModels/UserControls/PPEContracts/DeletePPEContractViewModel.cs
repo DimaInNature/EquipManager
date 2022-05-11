@@ -31,6 +31,8 @@ internal sealed class DeletePPEContractViewModel
 
     #region Commands
 
+    public RelayCommand? LoadCommand { get; private set; }
+
     public RelayCommand? DeletePPEContractCommand { get; private set; }
 
     #endregion
@@ -59,11 +61,11 @@ internal sealed class DeletePPEContractViewModel
         (_repository, _messageBox) = (repository, messageBox);
 
         InitializeCommand();
-
-        Task.Run(action: LoadData);
     }
 
     #region Command Logic
+
+    private async void ExecuteLoad(object obj) => await LoadData();
 
     private async void ExecuteDeletePPEContract(object obj)
     {
@@ -78,8 +80,10 @@ internal sealed class DeletePPEContractViewModel
 
         Clear();
 
-        await Task.Run(action: LoadData);
+        await LoadData();
     }
+
+    private bool CanExecuteLoad(object obj) => true;
 
     private bool CanExecuteDeletePPEContract(object obj) => PPEContract is not null;
 
@@ -87,13 +91,18 @@ internal sealed class DeletePPEContractViewModel
 
     #region Other Logic
 
-    private void InitializeCommand() =>
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+         canExecuteFunc: CanExecuteLoad);
+
         DeletePPEContractCommand = new(executeAction: ExecuteDeletePPEContract,
             canExecuteFunc: CanExecuteDeletePPEContract);
+    }
 
     private void Clear() => PPEContract = null;
 
-    private async void LoadData() =>
+    private async Task LoadData() =>
         PPEContracts = await _repository.GetPPEContractListAsync();
 
     #endregion

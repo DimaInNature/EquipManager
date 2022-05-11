@@ -21,4 +21,6 @@ public partial class ChoiceEmployeeView : UserControl
 
         (DataContext as ChoiceEmployeeViewModel).Employee = null;
     }
+
+    private int id = 0;
 }

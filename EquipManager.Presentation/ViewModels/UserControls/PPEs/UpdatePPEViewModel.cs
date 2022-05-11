@@ -32,6 +32,8 @@ internal sealed class UpdatePPEViewModel
 
     #region Commands
 
+    public RelayCommand? LoadCommand { get; private set; }
+
     public RelayCommand? UpdatePPECommand { get; private set; }
 
     #endregion
@@ -60,11 +62,11 @@ internal sealed class UpdatePPEViewModel
         (_repository, _messageBox) = (repository, messageBox);
 
         InitializeCommand();
-
-        Task.Run(action: LoadData);
     }
 
     #region Command Logic
+
+    private async void ExecuteLoad(object obj) => await LoadData();
 
     private async void ExecuteUpdatePPE(object obj)
     {
@@ -87,6 +89,8 @@ internal sealed class UpdatePPEViewModel
         Clear();
     }
 
+    private bool CanExecuteLoad(object obj) => true;
+
     private bool CanExecuteUpdatePPE(object obj)
     {
         if (PPE is null) return false;
@@ -102,13 +106,18 @@ internal sealed class UpdatePPEViewModel
 
     #region Other Logic
 
-    private void InitializeCommand() =>
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+          canExecuteFunc: CanExecuteLoad);
+
         UpdatePPECommand = new(executeAction: ExecuteUpdatePPE,
-            canExecuteFunc: CanExecuteUpdatePPE);
+           canExecuteFunc: CanExecuteUpdatePPE);
+    }
 
     private void Clear() => PPE = null;
 
-    private async void LoadData() =>
+    private async Task LoadData() =>
         PPEs = await _repository.GetPPEListAsync();
 
     #endregion

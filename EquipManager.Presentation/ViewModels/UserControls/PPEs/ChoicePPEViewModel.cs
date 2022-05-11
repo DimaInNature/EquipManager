@@ -30,6 +30,12 @@ internal sealed class ChoicePPEViewModel
         }
     }
 
+    #region Commands
+
+    public RelayCommand? LoadCommand { get; private set; }
+
+    #endregion
+
     #region Private
 
     private List<PPE> _ppes = new();
@@ -44,28 +50,31 @@ internal sealed class ChoicePPEViewModel
 
     #endregion
 
-    private static readonly SemaphoreSlim _semaphore = new(initialCount: 1, maxCount: 1);
-
     #endregion
 
     public ChoicePPEViewModel(IPPEFacadeService repository)
     {
         _repository = repository;
 
-        Task.Run(action: LoadData);
+        InitializeCommand();
     }
 
-    private async void LoadData()
+    #region Command Logic
+
+    private async void ExecuteLoad(object obj) =>
+        PPEs = await _repository.GetPPEListAsync();
+
+    private bool CanExecuteLoad(object obj) => true;
+
+    #endregion
+
+    #region Other Logic
+
+    private void InitializeCommand()
     {
-        await _semaphore.WaitAsync();
-
-        try
-        {
-            PPEs = await _repository.GetPPEListAsync();
-        }
-        finally
-        {
-            _semaphore.Release();
-        }
+        LoadCommand = new(executeAction: ExecuteLoad,
+            canExecuteFunc: CanExecuteLoad);
     }
+
+    #endregion
 }

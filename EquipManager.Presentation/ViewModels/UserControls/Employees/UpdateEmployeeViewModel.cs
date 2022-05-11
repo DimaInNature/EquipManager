@@ -32,6 +32,8 @@ internal sealed class UpdateEmployeeViewModel
 
     #region Commands
 
+    public RelayCommand? LoadCommand { get; private set; }
+
     public RelayCommand? UpdateEmployeeCommand { get; private set; }
 
     #endregion
@@ -60,11 +62,11 @@ internal sealed class UpdateEmployeeViewModel
         (_repository, _messageBox) = (repository, messageBox);
 
         InitializeCommand();
-
-        Task.Run(action: LoadData);
     }
 
     #region Command Logic
+
+    private async void ExecuteLoad(object obj) => await LoadData();
 
     private async void ExecuteUpdateEmployee(object obj)
     {
@@ -96,7 +98,11 @@ internal sealed class UpdateEmployeeViewModel
             icon: MessageBoxImage.Information);
 
         Clear();
+
+        await LoadData();
     }
+
+    private bool CanExecuteLoad(object obj) => true;
 
     private bool CanExecuteUpdateEmployee(object obj)
     {
@@ -116,13 +122,18 @@ internal sealed class UpdateEmployeeViewModel
 
     #region Other Logic
 
-    private void InitializeCommand() =>
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+          canExecuteFunc: CanExecuteLoad);
+
         UpdateEmployeeCommand = new(executeAction: ExecuteUpdateEmployee,
             canExecuteFunc: CanExecuteUpdateEmployee);
+    }
 
     private void Clear() => Employee = null;
 
-    private async void LoadData() =>
+    private async Task LoadData() =>
         Employees = await _repository.GetEmployeeListAsync();
 
     #endregion

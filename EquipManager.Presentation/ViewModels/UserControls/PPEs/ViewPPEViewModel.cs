@@ -4,6 +4,8 @@
 internal sealed class ViewPPEViewModel
     : BaseViewModel, IViewModel<ViewPPEView>
 {
+    #region Members
+
     public IList<PPE> PPEs
     {
         get => _ppes;
@@ -16,17 +18,49 @@ internal sealed class ViewPPEViewModel
         }
     }
 
+    #region Commands
+
+    public RelayCommand? LoadCommand { get; private set; }
+
+    #endregion
+
+    #region Private
+
     private IList<PPE> _ppes = new List<PPE>();
 
+    #endregion
+
+    #region Dependencies
+
     private readonly IPPEFacadeService _repository;
+
+    #endregion
+
+    #endregion
 
     public ViewPPEViewModel(IPPEFacadeService repository)
     {
         _repository = repository;
 
-        Task.Run(LoadData);
+        InitializeCommand();
     }
 
-    private async void LoadData() =>
+    #region Command Logic
+
+    private async void ExecuteLoad(object obj) =>
         PPEs = await _repository.GetPPEListAsync();
+
+    private bool CanExecuteLoad(object obj) => true;
+
+    #endregion
+
+    #region Other Logic
+
+    private void InitializeCommand()
+    {
+        LoadCommand = new(executeAction: ExecuteLoad,
+            canExecuteFunc: CanExecuteLoad);
+    }
+
+    #endregion
 }
