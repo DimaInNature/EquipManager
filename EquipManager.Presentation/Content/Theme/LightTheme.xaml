@@ -736,13 +736,11 @@
                             <Viewbox Grid.Row="1">
 
                                 <TextBlock
-                                    Grid.Row="1"
-                                    MinWidth="100"
-                                    Margin="20,0,0,25"
+                                    Margin="20,0,20,20"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Top"
                                     FontSize="16"
-                                    Foreground="Black"
+                                    Foreground="{TemplateBinding Foreground}"
                                     Text="{TemplateBinding Content}" />
 
                             </Viewbox>
@@ -797,12 +795,11 @@
                             <Viewbox Grid.Row="1">
 
                                 <TextBlock
-                                    MinWidth="100"
-                                    Margin="30,0,0,25"
+                                    Margin="20,0,20,20"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Top"
-                                    FontSize="18"
-                                    Foreground="Black"
+                                    FontSize="16"
+                                    Foreground="{TemplateBinding Foreground}"
                                     Text="{TemplateBinding Content}" />
 
                             </Viewbox>
@@ -857,13 +854,11 @@
                             <Viewbox Grid.Row="1">
 
                                 <TextBlock
-                                    Grid.Row="1"
-                                    MinWidth="100"
-                                    Margin="20,0,0,25"
+                                    Margin="20,0,20,20"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Top"
-                                    FontSize="17"
-                                    Foreground="Black"
+                                    FontSize="16"
+                                    Foreground="{TemplateBinding Foreground}"
                                     Text="{TemplateBinding Content}" />
 
                             </Viewbox>
@@ -919,13 +914,11 @@
                             <Viewbox Grid.Row="1">
 
                                 <TextBlock
-                                    Grid.Row="1"
-                                    MinWidth="100"
-                                    Margin="25,0,0,30"
+                                    Margin="20,0,20,20"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="20"
-                                    Foreground="Black"
+                                    VerticalAlignment="Top"
+                                    FontSize="16"
+                                    Foreground="{TemplateBinding Foreground}"
                                     Text="{TemplateBinding Content}" />
 
                             </Viewbox>
@@ -1020,6 +1013,7 @@
 
                                 <TextBlock
                                     Margin="15,0,0,0"
+                                    HorizontalAlignment="Center"
                                     FontSize="18"
                                     Foreground="Black"
                                     Text="{TemplateBinding Content}"
